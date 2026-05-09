@@ -17,11 +17,7 @@ def index(request):
         'field_images': field_images
     })
 
-def certificates(request):
-    return render(request, 'showcase/certificates.html')
-
-def resources(request):
-    return render(request, 'showcase/resources.html')
 
 def about(request):
     return render(request, 'showcase/about.html')
+

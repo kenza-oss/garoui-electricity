@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jjnro4qt086pivq*fz(wkd!rzu^$#=58aol(yk=f(^u51+)nik
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['garoui-electricity.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['garoui-electricity-prod.onrender.com', 'localhost', '127.0.0.1', '.onrender.com']
 
 
 # Application definition

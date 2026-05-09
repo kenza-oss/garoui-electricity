@@ -29,7 +29,7 @@
 <section class="section" style="padding: 4rem 0; background: #f8fafc;">
     <div class="container">
 
-        <div class="shop-layout" style="display: grid; grid-template-columns: 320px 1fr; gap: 4rem;">
+        <div class="shop-layout">
             <!-- Filters Sidebar -->
             <aside class="shop-filters">
                 <div style="background: white; padding: 3rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-                <div class="products-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
+                <div class="products-grid grid-responsive-3" style="gap: 2.5rem;">
                     {% for product in products %}
                     <div class="product-card" style="background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-premium); position: relative;">
                         <a href="{% url 'shop:product_detail' product.handle %}" style="text-decoration: none; color: inherit;">

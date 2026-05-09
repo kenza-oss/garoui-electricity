@@ -753,33 +753,61 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
 }
 
-/* Responsive */
+/* Utility Classes for Responsive Grids */
+.grid-responsive-2, .grid-responsive-3, .grid-responsive-4, .grid-responsive-about {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-responsive-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-responsive-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-responsive-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-responsive-about { grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+.shop-layout { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; }
+.product-detail-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 8rem; align-items: start; }
+
+/* Responsive adjustments */
 @media (max-width: 1024px) {
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-    .sectors-grid {
-        grid-template-columns: 1fr;
-    }
-    .expertise-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+    .grid-responsive-3, .grid-responsive-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-responsive-about { gap: 4rem; grid-template-columns: 1fr; }
+    .hero-slider h1 { font-size: 3.5rem; }
+    .section { padding: 6rem 0; }
+    .shop-layout { grid-template-columns: 1fr; } /* Sidebar stacks above products */
+    .product-detail-grid { grid-template-columns: 1fr; gap: 4rem; }
 }
 
 @media (max-width: 768px) {
+    .grid-responsive-2, .grid-responsive-3, .grid-responsive-4, .grid-responsive-about { 
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+    .hero-slider h1 { font-size: 2.5rem; }
+    .hero-content { margin-top: 5rem; }
+    .section { padding: 4rem 0; }
+    .section-header h2 { font-size: 2.2rem; }
+    
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        gap: 1.5rem;
     }
-    .mobile-menu-btn {
-        display: block;
+    .nav-links.active {
+        display: flex;
     }
-    .hero h1 {
-        font-size: 2.75rem;
-    }
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-    .expertise-grid {
-        grid-template-columns: 1fr;
-    }
+    .mobile-menu-btn { display: block; color: var(--dark); font-size: 1.5rem; cursor: pointer; background: transparent; border: none; }
+    
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .top-bar-site .top-bar-links { display: none; } /* Hide top links on mobile */
+    .top-bar-site .container { justify-content: flex-end; }
+    
+    .products-grid { grid-template-columns: 1fr; }
+    .mega-grid { grid-template-columns: 1fr; }
+    .application-card { flex-direction: column; text-align: center; align-items: center; }
 }

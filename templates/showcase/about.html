@@ -35,9 +35,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 24px;
         padding: 3rem;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        /* Display controlled by .grid-responsive-3 in HTML */
         text-align: center;
         margin-top: 4rem;
     }
@@ -74,7 +72,7 @@
             </p>
         </div>
 
-        <div class="glass-stats">
+        <div class="glass-stats grid-responsive-3">
             <div class="stat-item">
                 <h3>100%</h3>
                 <p>Conformité Normative</p>
@@ -100,7 +98,7 @@
             <p style="font-size: 1.15rem; color: #64748b; line-height: 1.6;">L'exigence et la sécurité sont au cœur de chacune de nos interventions. Nous construisons des réseaux faits pour durer.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;">
+        <div class="grid-responsive-3" style="gap: 3rem;">
             <div class="vision-card">
                 <div class="icon-wrapper">
                     <i class="fas fa-shield-alt"></i>
@@ -131,7 +129,7 @@
 <!-- Story/Image Section -->
 <section style="padding: 8rem 0; background: white;">
     <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+        <div class="grid-responsive-about" style="gap: 6rem; align-items: center;">
             <div style="position: relative;">
                 <div style="position: absolute; top: -30px; left: -30px; width: 100px; height: 100px; background: #e0e7ff; border-radius: 20px; z-index: 0;"></div>
                 <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200" alt="Ingénieur Électricien" style="width: 100%; border-radius: 24px; position: relative; z-index: 1; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">

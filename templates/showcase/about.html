@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}À Propos de Nous | Garoui Electricity{% endblock %}
+
+{% block content %}
+<style>
+    .about-hero {
+        padding: 12rem 0 6rem;
+        background: #0f172a;
+        position: relative;
+        overflow: hidden;
+    }
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+    }
+    .glass-stats {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 3rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+    .stat-item h3 {
+        font-size: 3.5rem;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+    .stat-item p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+    .vision-card {
+        background: white;
+        border-radius: 24px;
+        padding: 4rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        border: 1px solid #f1f5f9;
+        transition: transform 0.3s ease;
+    }
+    .vision-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+    }
+    .icon-wrapper {
+        width: 80px; height: 80px;
+        background: #f8fafc;
+        border-radius: 20px;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--primary);
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container" style="position: relative; z-index: 2;">
+        <div style="max-width: 800px; margin-bottom: 5rem;">
+            <span style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.1); color: white; border-radius: 100px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem;">Notre Entreprise</span>
+            <h1 style="font-size: 4.5rem; color: white; font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.1; margin-bottom: 2rem;">
+                L'excellence en <br><span style="color: #60a5fa;">ingénierie électrique.</span>
+            </h1>
+            <p style="font-size: 1.25rem; color: #cbd5e1; line-height: 1.7;">
+                Garoui Electricity est votre partenaire de confiance pour la conception, l'installation et la maintenance d'infrastructures électriques B2B. Nous allions rigueur technique et innovation pour sécuriser vos projets les plus ambitieux.
+            </p>
+        </div>
+
+        <div class="glass-stats">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Conformité Normative</p>
+            </div>
+            <div class="stat-item">
+                <h3 style="border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1);">B2B</h3>
+                <p>Expertise Industrielle</p>
+            </div>
+            <div class="stat-item">
+                <h3>7/7</h3>
+                <p>Assistance Technique</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision & Valeurs -->
+<section style="padding: 8rem 0; background: #f8fafc;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 5rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <h2 style="font-size: 3rem; color: var(--dark); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 1.5rem;">Nos Valeurs Fondamentales</h2>
+            <p style="font-size: 1.15rem; color: #64748b; line-height: 1.6;">L'exigence et la sécurité sont au cœur de chacune de nos interventions. Nous construisons des réseaux faits pour durer.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;">
+            <div class="vision-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--dark);">Sécurité Absolue</h3>
+                <p style="color: #64748b; line-height: 1.6;">Chaque installation fait l'objet de contrôles rigoureux pour garantir la protection totale des biens et des personnes.</p>
+            </div>
+
+            <div class="vision-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--dark);">Maîtrise Technologique</h3>
+                <p style="color: #64748b; line-height: 1.6;">Du courant fort au courant faible (domotique, réseaux VDI), nos équipes intègrent les dernières technologies.</p>
+            </div>
+
+            <div class="vision-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--dark);">Engagement Client</h3>
+                <p style="color: #64748b; line-height: 1.6;">Nous accompagnons nos partenaires B2B sur le long terme avec un service après-vente réactif et dédié.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Story/Image Section -->
+<section style="padding: 8rem 0; background: white;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+            <div style="position: relative;">
+                <div style="position: absolute; top: -30px; left: -30px; width: 100px; height: 100px; background: #e0e7ff; border-radius: 20px; z-index: 0;"></div>
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200" alt="Ingénieur Électricien" style="width: 100%; border-radius: 24px; position: relative; z-index: 1; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <div style="position: absolute; bottom: 30px; right: -30px; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); z-index: 2; max-width: 250px;">
+                    <i class="fas fa-quote-left" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <p style="font-style: italic; font-weight: 600; color: var(--dark);">"La fiabilité d'une installation électrique est le socle de toute activité professionnelle."</p>
+                </div>
+            </div>
+            <div>
+                <h2 style="font-size: 3rem; color: var(--dark); font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.2; margin-bottom: 2rem;">Une équipe d'experts à votre service.</h2>
+                <p style="font-size: 1.15rem; color: #64748b; line-height: 1.8; margin-bottom: 2rem;">
+                    Constituée de techniciens et d'ingénieurs hautement qualifiés, notre équipe intervient sur les chantiers les plus exigeants : hôpitaux, usines industrielles et immeubles de haut standing.
+                </p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-weight: 700; color: var(--dark);">
+                        <i class="fas fa-check-circle" style="color: var(--primary);"></i> Études et dimensionnements techniques
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-weight: 700; color: var(--dark);">
+                        <i class="fas fa-check-circle" style="color: var(--primary);"></i> Installation de postes de transformation
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 1rem; font-weight: 700; color: var(--dark);">
+                        <i class="fas fa-check-circle" style="color: var(--primary);"></i> Maintenance préventive et curative
+                    </li>
+                </ul>
+                <div style="margin-top: 3rem;">
+                    <a href="{% url 'projects:project_list' %}" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Voir nos réalisations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

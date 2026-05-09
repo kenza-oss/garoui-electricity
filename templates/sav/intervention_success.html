@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Demande Prise en Charge | Garoui Electricity{% endblock %}
+
+{% block content %}
+<div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+    <div style="text-align: center; max-width: 600px; padding: 4rem; background: white; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
+        
+        <div style="width: 80px; height: 80px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+            <i class="fas fa-check" style="font-size: 2.5rem; color: #22c55e;"></i>
+        </div>
+
+        <h1 style="font-size: 2.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: var(--dark); margin-bottom: 1rem;">
+            Demande Transmise
+        </h1>
+        
+        <p style="color: #64748b; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2.5rem;">
+            Votre demande d'intervention a bien été enregistrée par notre système. Notre équipe de support technique va analyser votre requête et vous recontacter très rapidement.
+        </p>
+
+        <div style="background: #fff1f2; padding: 2rem; border-radius: 16px; border: 1px solid #ffe4e6; margin-bottom: 2.5rem;">
+            <h4 style="color: #e11d48; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <i class="fas fa-phone-alt"></i> Urgence Absolue ?
+            </h4>
+            <p style="color: #be123c; font-size: 0.95rem; margin-bottom: 1rem;">
+                Si votre situation nécessite un arrêt total de production ou présente un danger immédiat, contactez directement notre astreinte :
+            </p>
+            <a href="tel:+21300000000" style="display: inline-block; padding: 0.8rem 2rem; background: #e11d48; color: white; text-decoration: none; font-weight: 700; border-radius: 100px; letter-spacing: 1px;">
+                0550 00 00 00
+            </a>
+        </div>
+
+        <a href="/" style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-arrow-left"></i> Retour à l'accueil
+        </a>
+
+    </div>
+</div>
+{% endblock %}

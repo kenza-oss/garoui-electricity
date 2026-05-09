@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<section style="background: #fff; padding: 100px 0 60px 0; position: relative; overflow: hidden; min-height: 380px;">
+    <!-- Image de fond Full HD – sans overlay, sans flou -->
+    <div style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;">
+        <img src="{% static 'images/shop-header-bg.png' %}"
+             alt=""
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; filter: none;">
+    </div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+        <!-- Breadcrumbs -->
+        <nav style="margin-bottom: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            <a href="/" style="color: rgba(255,255,255,0.5); text-decoration: none; font-weight: 400;">Accueil</a>
+            <span style="margin: 0 0.5rem; opacity: 0.4;">/</span>
+            <span style="color: white; font-weight: 500; opacity: 0.9;">Catalogue Produits</span>
+        </nav>
+
+        <div class="section-header" style="text-align: left;">
+            <span style="color: white; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 0.4rem 1rem; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px);">Gamme Complète ELMARK</span>
+            <h1 style="font-size: 3.5rem; margin-top: 1.5rem; color: white; font-weight: 300; line-height: 1.2; letter-spacing: -1px;">Solutions Électriques<br>& Éclairage</h1>
+            <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 700px; margin-top: 1.5rem; line-height: 1.5; font-weight: 300;">Découvrez notre sélection de plus de 12 000 produits certifiés pour tous vos besoins industriels et tertiaires.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding: 4rem 0; background: #f8fafc;">
+    <div class="container">
+
+        <div class="shop-layout" style="display: grid; grid-template-columns: 320px 1fr; gap: 4rem;">
+            <!-- Filters Sidebar -->
+            <aside class="shop-filters">
+                <div style="background: white; padding: 3rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
+                    <div class="filter-group" style="margin-bottom: 4rem;">
+                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Catégories</h4>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 1.25rem;"><a href="{% url 'shop:product_list' %}" style="color: var(--primary); font-weight: 800; text-decoration: none; display: flex; justify-content: space-between;">Tous les produits <span>({{ total_count }})</span></a></li>
+                            {% for cat in categories %}
+                            <li style="margin-bottom: 1.25rem;">
+                                <a href="?category={{ cat.handle }}" style="color: var(--gray); text-decoration: none; transition: all 0.3s; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
+                                    <i class="{{ cat.icon }}" style="width: 20px; color: var(--primary); opacity: 0.7;"></i>
+                                    {{ cat.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <div class="filter-group" style="margin-bottom: 4rem;">
+                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Séries & Marques</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
+                                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--primary);"> ELMARK Pro
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Green Series
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Stellar
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Protection IP</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP20</span>
+                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP44</span>
+                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP65</span>
+                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP67</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: white; padding: 1.5rem 2rem; border-radius: 16px; border: 1px solid #e2e8f0;">
+                    <p style="margin: 0; color: var(--gray); font-weight: 600;">Affichage de <strong>{{ products|length }}</strong> produits</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--gray); font-size: 0.9rem; font-weight: 600;">Trier par:</span>
+                        <select style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; outline: none; font-weight: 600; color: var(--dark);">
+                            <option>Plus récents</option>
+                            <option>Prix: Croissant</option>
+                            <option>Prix: Décroissant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
+                    {% for product in products %}
+                    <div class="product-card" style="background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-premium); position: relative;">
+                        <a href="{% url 'shop:product_detail' product.handle %}" style="text-decoration: none; color: inherit;">
+                            <div class="product-image" style="height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 3rem; border-bottom: 1px solid #f1f5f9; overflow: hidden;">
+                                {% if product.thumbnail %}
+                                <img src="{{ product.thumbnail.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                {% elif product.images.first %}
+                                    {% with product.images.first as first_image %}
+                                        {% if first_image.image %}
+                                        <img src="{{ first_image.image.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                        {% elif first_image.url %}
+                                        <img src="{{ first_image.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                        {% endif %}
+                                    {% endwith %}
+                                {% else %}
+                                <i class="fas fa-image" style="font-size: 5rem; color: #f1f5f9;"></i>
+                                {% endif %}
+                            </div>
+                            <div class="product-info" style="padding: 2.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <span style="font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">{{ product.collection.name|default:"PRO SERIES" }}</span>
+                                    <span style="font-size: 0.7rem; color: var(--gray); font-weight: 700;">{{ product.sku }}</span>
+                                </div>
+                                <h3 style="font-size: 1.25rem; color: var(--dark); height: 3.5rem; overflow: hidden; line-height: 1.4; font-weight: 700;">{{ product.title }}</h3>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+                                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--dark);">{{ product.price }} DZD</span>
+                                    <div style="background: var(--primary); color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);">
+                                        <i class="fas fa-arrow-right" style="font-size: 0.9rem;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

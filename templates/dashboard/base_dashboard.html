@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mustore Admin | Electra Platform{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --sidebar-bg: #f9fafb;
+            --sidebar-border: #e5e7eb;
+            --sidebar-hover: #f3f4f6;
+            --sidebar-active: #ffffff;
+            --sidebar-text: #6b7280;
+            --sidebar-text-active: #111827;
+            --content-bg: #ffffff;
+            --primary: #0066FF;
+            --primary-light: #eff6ff;
+            --text-main: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--sidebar-bg);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--sidebar-border);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .sidebar-logo i {
+            color: var(--primary);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            background-color: var(--sidebar-hover);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background-color: var(--sidebar-active);
+            color: var(--sidebar-text-active);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border: 1px solid var(--sidebar-border);
+        }
+
+        .sidebar-footer {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--sidebar-border);
+        }
+
+        /* Content Area */
+        .main-content {
+            flex: 1;
+            background-color: var(--content-bg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            height: 64px;
+            border-bottom: 1px solid var(--sidebar-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: #f3f4f6;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            width: 400px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .scrollable-content {
+            flex: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-action {
+            background-color: var(--text-main);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Table Style */
+        .data-card {
+            border: 1px solid var(--sidebar-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            background-color: #f9fafb;
+            border-bottom: 1px solid var(--sidebar-border);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/" class="sidebar-logo">
+            <i class="fas fa-bolt"></i> Electra Platform
+        </a>
+        <nav class="sidebar-nav">
+            <a href="/dashboard/" class="nav-item {% if request.resolver_match.url_name == 'overview' %}active{% endif %}">
+                <i class="fas fa-chart-line"></i> Vue d'ensemble
+            </a>
+            <a href="/dashboard/orders/" class="nav-item {% if request.resolver_match.url_name == 'orders' %}active{% endif %}">
+                <i class="fas fa-shopping-bag"></i> Commandes
+            </a>
+            <a href="/dashboard/products/" class="nav-item {% if request.resolver_match.url_name == 'products' %}active{% endif %}">
+                <i class="fas fa-tag"></i> Produits
+            </a>
+            <a href="/dashboard/inventory/" class="nav-item {% if request.resolver_match.url_name == 'inventory' %}active{% endif %}">
+                <i class="fas fa-boxes"></i> Inventaire
+            </a>
+            <a href="/dashboard/customers/" class="nav-item {% if request.resolver_match.url_name == 'customers' %}active{% endif %}">
+                <i class="fas fa-users"></i> Clients & Partenaires
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-percentage"></i> Promotions
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/dashboard/settings/" class="nav-item {% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
+                <i class="fas fa-cog"></i> Paramètres
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <i class="fas fa-search" style="color: var(--text-secondary);"></i>
+                <input type="text" placeholder="Rechercher...">
+            </div>
+            <div class="user-info" style="display: flex; align-items: center; gap: 1rem;">
+                <div style="text-align: right;">
+                    <p style="font-size: 0.85rem; font-weight: 600;">Admin User</p>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Propriétaire</p>
+                </div>
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.8rem;">
+                    AU
+                </div>
+            </div>
+        </header>
+
+        <div class="scrollable-content">
+            {% block dashboard_content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

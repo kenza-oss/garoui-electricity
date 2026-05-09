@@ -1,0 +1,94 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block title %}Inventaire | Admin Electra{% endblock %}
+
+{% block dashboard_content %}
+<div class="page-header">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Inventaire</h1>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">Suivez les niveaux de stock de tous vos produits.</p>
+    </div>
+    <a href="#" class="btn-action"><i class="fas fa-sync-alt"></i> Mettre à jour le Stock</a>
+</div>
+
+<!-- Stock Summary -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--sidebar-border); display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 44px; height: 44px; border-radius: 10px; background: #d1fae5; display: flex; align-items: center; justify-content: center; color: #10b981;">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+            <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">En Stock</p>
+            <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem;">{{ products|length }}</p>
+        </div>
+    </div>
+    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--sidebar-border); display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 44px; height: 44px; border-radius: 10px; background: #fef3c7; display: flex; align-items: center; justify-content: center; color: #f59e0b;">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div>
+            <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Stock Bas</p>
+            <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem;">{{ products|length }}</p>
+        </div>
+    </div>
+    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--sidebar-border); display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 44px; height: 44px; border-radius: 10px; background: #fee2e2; display: flex; align-items: center; justify-content: center; color: #ef4444;">
+            <i class="fas fa-times-circle"></i>
+        </div>
+        <div>
+            <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Rupture</p>
+            <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem;">0</p>
+        </div>
+    </div>
+</div>
+
+<div class="data-card">
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>SKU</th>
+                <th>Stock Actuel</th>
+                <th>Emplacement</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div style="width: 36px; height: 36px; border-radius: 6px; background: #f3f4f6; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-image" style="color: #d1d5db; font-size: 0.8rem;"></i>
+                        </div>
+                        <span style="font-weight: 600; font-size: 0.9rem;">{{ product.title }}</span>
+                    </div>
+                </td>
+                <td style="font-family: monospace; font-size: 0.85rem; color: var(--text-secondary);">{{ product.sku }}</td>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="flex: 1; background: #f3f4f6; border-radius: 100px; height: 6px; max-width: 100px;">
+                            <div style="width: {% if product.inventory_quantity > 50 %}80{% elif product.inventory_quantity > 10 %}40{% else %}10{% endif %}%; background: {% if product.inventory_quantity > 10 %}#10b981{% elif product.inventory_quantity > 0 %}#f59e0b{% else %}#ef4444{% endif %}; height: 100%; border-radius: 100px;"></div>
+                        </div>
+                        <span style="font-weight: 600;">{{ product.inventory_quantity }}</span>
+                    </div>
+                </td>
+                <td style="font-size: 0.85rem; color: var(--text-secondary);">Dépôt Principal</td>
+                <td>
+                    {% if product.inventory_quantity > 10 %}
+                    <span style="padding: 0.2rem 0.7rem; background: #d1fae5; color: #065f46; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">En Stock</span>
+                    {% elif product.inventory_quantity > 0 %}
+                    <span style="padding: 0.2rem 0.7rem; background: #fef3c7; color: #92400e; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">Stock Bas</span>
+                    {% else %}
+                    <span style="padding: 0.2rem 0.7rem; background: #fee2e2; color: #991b1b; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">Rupture</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="#" style="color: var(--primary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">Ajuster →</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

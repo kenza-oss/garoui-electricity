@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}Mon Panier | Electra Platform{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 150px; background: #f8fafc; min-height: 80vh;">
+    <div class="container">
+        <div class="section-header" style="text-align: left; margin-bottom: 5rem;">
+            <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Votre Sélection</span>
+            <h1 style="font-size: 3.5rem; margin-top: 1.5rem; color: var(--dark); font-weight: 800;">Mon Panier</h1>
+        </div>
+
+        <div id="cart-container" style="background: white; padding: 4rem; border-radius: 32px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
+            <!-- Cart items will be loaded by JS from localStorage -->
+            <div id="cart-empty" style="text-align: center; padding: 4rem 0;">
+                <i class="fas fa-shopping-basket" style="font-size: 5rem; color: #f1f5f9; margin-bottom: 2rem;"></i>
+                <p style="font-size: 1.25rem; color: var(--gray); margin-bottom: 3rem;">Votre panier est actuellement vide.</p>
+                <a href="{% url 'shop:product_list' %}" class="btn-primary" style="padding: 1rem 3rem;">Découvrir nos produits</a>
+            </div>
+
+            <div id="cart-items" style="display: none;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="text-align: left; border-bottom: 2px solid #f1f5f9;">
+                            <th style="padding: 1.5rem 0; color: var(--gray); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Produit</th>
+                            <th style="padding: 1.5rem 0; color: var(--gray); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Quantité</th>
+                            <th style="padding: 1.5rem 0; text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-table-body">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 4rem; display: flex; justify-content: flex-end; align-items: center; gap: 3rem; padding-top: 3rem; border-top: 2px solid #f1f5f9;">
+                    <button onclick="clearCart()" style="background: none; border: none; color: #ef4444; font-weight: 700; cursor: pointer; text-decoration: underline;">Vider le panier</button>
+                    <button onclick="checkout()" class="btn-primary" id="checkout-btn" style="padding: 1.25rem 4rem; font-size: 1.1rem; border: none; cursor: pointer;">Passer la Commande</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCart();
+    });
+
+    async function checkout() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (cart.length === 0) return;
+
+        const btn = document.getElementById('checkout-btn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Traitement...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('/shop/place-order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cart: cart })
+            });
+
+            const result = await response.json();
+            if (result.status === 'success') {
+                localStorage.removeItem('cart');
+                document.getElementById('cart-container').innerHTML = `
+                    <div style="text-align: center; padding: 6rem 0;">
+                        <div style="background: #f0fdf4; color: var(--primary); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 3rem; font-size: 3rem;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h2 style="font-size: 2.5rem; color: var(--dark); font-weight: 800; margin-bottom: 1rem;">Commande Confirmée !</h2>
+                        <p style="color: var(--gray); font-size: 1.2rem; margin-bottom: 3rem;">Votre commande #${result.order_id} a été enregistrée avec succès.</p>
+                        <a href="/" class="btn-primary" style="padding: 1rem 3rem;">Retour à l'accueil</a>
+                    </div>
+                `;
+                // Update navigation badge if exists
+                if (window.updateCartCount) window.updateCartCount();
+            } else {
+                alert('Erreur: ' + result.message);
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        } catch (error) {
+            console.error('Checkout error:', error);
+            alert('Une erreur est survenue lors de la commande.');
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
+
+    function loadCart() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const emptyDiv = document.getElementById('cart-empty');
+        const itemsDiv = document.getElementById('cart-items');
+        const tableBody = document.getElementById('cart-table-body');
+
+        if (cart.length === 0) {
+            emptyDiv.style.display = 'block';
+            itemsDiv.style.display = 'none';
+        } else {
+            emptyDiv.style.display = 'none';
+            itemsDiv.style.display = 'block';
+            tableBody.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.style.borderBottom = '1px solid #f1f5f9';
+                row.innerHTML = `
+                    <td style="padding: 2rem 0;">
+                        <h4 style="font-size: 1.2rem; color: var(--dark); font-weight: 800; margin: 0;">${item.title}</h4>
+                    </td>
+                    <td style="padding: 2rem 0;">
+                        <span style="font-weight: 800; color: var(--primary); background: #f0fdf4; padding: 0.5rem 1rem; border-radius: 8px;">${item.quantity}</span>
+                    </td>
+                    <td style="padding: 2rem 0; text-align: right;">
+                        <button onclick="removeItem(${index})" style="background: #fee2e2; color: #ef4444; border: none; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; transition: all 0.3s;"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    }
+
+    function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+    }
+
+    function clearCart() {
+        localStorage.removeItem('cart');
+        loadCart();
+    }
+</script>
+{% endblock %}

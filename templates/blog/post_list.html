@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Actualités & Expertise | Garoui Electricity{% endblock %}
+
+{% block content %}
+<style>
+    .blog-hero {
+        padding: 8rem 0 4rem;
+        background-color: #0f172a;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+    .category-pills {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    .category-pill {
+        padding: 0.5rem 1.5rem;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    .category-pill:hover, .category-pill.active {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+        padding: 5rem 0;
+    }
+
+    .blog-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+    }
+    .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .blog-cover {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .blog-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .blog-category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+    }
+    .blog-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    .blog-excerpt {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1.5rem;
+        border-top: 1px solid #f1f5f9;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+</style>
+
+<section class="blog-hero">
+    <div class="container">
+        <h1 style="font-size: 3rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 1rem;">
+            Actualités & Expertise
+        </h1>
+        <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+            Restez informé sur nos dernières réalisations, les normes électriques en vigueur et nos conseils techniques pour vos infrastructures.
+        </p>
+        
+        <div class="category-pills">
+            <a href="{% url 'blog:post_list' %}" class="category-pill {% if not current_category %}active{% endif %}">Tout voir</a>
+            {% for cat in categories %}
+                <a href="{% url 'blog:post_list' %}?category={{ cat.slug }}" class="category-pill {% if current_category == cat.slug %}active{% endif %}">
+                    {{ cat.name }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    {% if posts %}
+    <div class="blog-grid">
+        {% for post in posts %}
+        <a href="{% url 'blog:post_detail' post.slug %}" class="blog-card">
+            {% if post.cover_image %}
+            <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="blog-cover">
+            {% else %}
+            <div class="blog-cover" style="background: #e2e8f0; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-image" style="font-size: 3rem; color: #cbd5e1;"></i>
+            </div>
+            {% endif %}
+            
+            <div class="blog-content">
+                {% if post.category %}
+                <div class="blog-category">{{ post.category.name }}</div>
+                {% endif %}
+                <h3 class="blog-title">{{ post.title }}</h3>
+                <p class="blog-excerpt">{{ post.excerpt|truncatewords:20 }}</p>
+                <div class="blog-meta">
+                    <span><i class="fas fa-user-circle" style="margin-right: 5px;"></i> {{ post.author }}</span>
+                    <span>{{ post.created_at|date:"d M Y" }}</span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 5rem 0;">
+        <i class="fas fa-newspaper" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 1.5rem;"></i>
+        <h3 style="color: var(--dark); font-size: 1.5rem; font-weight: 700;">Aucun article pour le moment.</h3>
+        <p style="color: #64748b;">Revenez très bientôt pour de nouvelles actualités techniques.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

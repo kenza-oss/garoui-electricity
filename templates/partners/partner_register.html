@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Devenir Partenaire | Electra Platform{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 150px; background: #f8fafc;">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Programme Partenaires</span>
+                <h2 style="font-size: 3.5rem; margin-top: 1.5rem; color: var(--dark); font-weight: 800;">Rejoignez l'Excellence ELMARK</h2>
+                <div style="width: 80px; height: 5px; background: var(--primary); margin: 2rem auto;"></div>
+                <p style="color: var(--gray); font-size: 1.25rem;">Collaborez avec une marque leader et accédez à des solutions énergétiques de classe mondiale.</p>
+            </div>
+
+            <form method="POST" style="background: white; padding: 5rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
+                {% csrf_token %}
+                
+                <h3 style="font-size: 1.5rem; color: var(--dark); margin-bottom: 3rem; font-weight: 700; border-left: 5px solid var(--primary); padding-left: 1.5rem;">Informations de l'Entreprise</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem;">
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 1rem; color: var(--dark); font-weight: 700; font-size: 0.9rem;">Dénomination Sociale</label>
+                        <input type="text" name="company_name" required style="width: 100%; padding: 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; color: var(--dark); outline: none; transition: all 0.3s;" placeholder="ex: Electro Algerie SARL">
+                    </div>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 1rem; color: var(--dark); font-weight: 700; font-size: 0.9rem;">Email Professionnel</label>
+                        <input type="email" name="email" required style="width: 100%; padding: 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; color: var(--dark); outline: none;" placeholder="contact@entreprise.com">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem;">
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 1rem; color: var(--dark); font-weight: 700; font-size: 0.9rem;">Numéro de Téléphone</label>
+                        <input type="text" name="phone" required style="width: 100%; padding: 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; color: var(--dark); outline: none;" placeholder="+213 ...">
+                    </div>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 1rem; color: var(--dark); font-weight: 700; font-size: 0.9rem;">Siège Social</label>
+                        <input type="text" name="address" required style="width: 100%; padding: 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; color: var(--dark); outline: none;" placeholder="Ville, Algérie">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 4rem;">
+                    <label style="display: block; margin-bottom: 1rem; color: var(--dark); font-weight: 700; font-size: 0.9rem;">Spécialisation & Expertise</label>
+                    <textarea name="description" required style="width: 100%; height: 180px; padding: 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; color: var(--dark); outline: none; resize: none;" placeholder="Décrivez vos principaux domaines d'activité..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; padding: 1.5rem; font-size: 1.1rem; font-weight: 800;">Soumettre ma Candidature</button>
+                
+                <div style="margin-top: 3rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gray); font-size: 0.9rem; padding: 1.5rem; background: #f1f5f9; border-radius: 12px;">
+                    <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
+                    Vos données sont sécurisées et traitées conformément à notre politique de confidentialité.
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

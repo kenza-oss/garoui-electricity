@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Demande d'Intervention & SAV | Garoui Electricity{% endblock %}
+
+{% block content %}
+<style>
+    .sav-hero {
+        padding: 10rem 0 8rem;
+        background: url('{% static "images/sav-bg.jpg" %}') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sav-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+        z-index: 1;
+    }
+    
+    .sav-header-badge {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.2rem;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: 100px;
+        color: #ef4444; /* Tailwind red-500 */
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+
+    .sav-form-container {
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        padding: 4rem;
+        margin-top: -3rem;
+        position: relative;
+        z-index: 10;
+        margin-bottom: 5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s;
+        background: #f8fafc;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        background: white;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .btn-submit-sav {
+        width: 100%;
+        padding: 1.2rem;
+        background: #0f172a; /* Slate 900 */
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .btn-submit-sav:hover {
+        background: #ef4444; /* Red on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+        .sav-form-container {
+            padding: 2rem;
+        }
+    }
+</style>
+
+<section class="sav-hero">
+    <div class="container" style="max-width: 800px; text-align: center; position: relative; z-index: 2;">
+        <div class="sav-header-badge">
+            <i class="fas fa-exclamation-circle"></i> Support & Urgences Techniques
+        </div>
+        <h1 style="font-size: 3rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: white; margin-bottom: 1rem; line-height: 1.2;">
+            Besoin d'une <span style="color: #ef4444;">Intervention Rapide ?</span>
+        </h1>
+        <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6;">
+            Nos équipes techniques interviennent sur site pour diagnostiquer et résoudre vos pannes électriques industrielles ou médicales. Remplissez ce formulaire pour une prise en charge immédiate.
+        </p>
+    </div>
+</section>
+
+<div class="container" style="max-width: 900px;">
+    <div class="sav-form-container">
+        <form method="POST">
+            {% csrf_token %}
+            
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;">
+                1. Vos Coordonnées
+            </h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Nom Complet *</label>
+                    {{ form.client_name }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Entreprise / Établissement *</label>
+                    {{ form.company }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Téléphone (Joignable) *</label>
+                    {{ form.phone }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Professionnel *</label>
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; margin-top: 3rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;">
+                2. Détails du Problème
+            </h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Type d'Intervention *</label>
+                    {{ form.intervention_type }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Niveau d'Urgence *</label>
+                    {{ form.urgency }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Équipement concerné (Optionnel)</label>
+                {{ form.equipment_details }}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description du problème *</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Adresse exacte d'intervention *</label>
+                {{ form.address }}
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <button type="submit" class="btn-submit-sav">
+                    Déclencher l'Intervention <i class="fas fa-paper-plane"></i>
+                </button>
+                <p style="text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 1rem;">
+                    En soumettant ce formulaire, vous serez recontacté par notre service de garde dans les plus brefs délais.
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urgencySelect = document.getElementById('id_urgency');
+        const submitBtn = document.querySelector('.btn-submit-sav');
+        
+        urgencySelect.addEventListener('change', function() {
+            if (this.value === 'critique') {
+                submitBtn.style.background = '#dc2626'; // Red darker
+                submitBtn.innerHTML = 'Déclencher URGENCE ABSOLUE <i class="fas fa-exclamation-triangle"></i>';
+                submitBtn.style.animation = 'pulse 2s infinite';
+            } else {
+                submitBtn.style.background = '#0f172a';
+                submitBtn.innerHTML = 'Déclencher l\'Intervention <i class="fas fa-paper-plane"></i>';
+                submitBtn.style.animation = 'none';
+            }
+        });
+    });
+</script>
+<style>
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+</style>
+{% endblock %}

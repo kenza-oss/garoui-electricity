@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: garoui-electricity
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn electra_platform.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: DJANGO_SETTINGS_MODULE
+        value: electra_platform.settings

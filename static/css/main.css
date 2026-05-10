@@ -901,8 +901,8 @@ h1, h2, h3, h4, h5, h6 {
 
     /* ── PROJECTS GRID ── */
     .premium-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-    .project-card { height: auto !important; display: flex !important; flex-direction: column !important; background: white !important; }
-    .project-image-wrapper { height: 280px !important; flex: 0 0 auto !important; position: relative !important; width: 100% !important; overflow: hidden !important; }
+    .project-card { height: auto !important; display: flex !important; flex-direction: column !important; background: white !important; overflow: visible !important; grid-column: span 1 !important; }
+    .project-image-wrapper { height: 280px !important; flex: 0 0 auto !important; position: relative !important; width: 100% !important; overflow: hidden !important; border-radius: 20px 20px 0 0 !important; }
     .project-image { object-fit: cover !important; width: 100% !important; height: 100% !important; }
     .project-content { 
         position: relative !important; 
@@ -912,16 +912,19 @@ h1, h2, h3, h4, h5, h6 {
         transform: none !important;
         width: 100% !important;
         box-sizing: border-box !important;
+        border-radius: 0 0 20px 20px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     .project-title { color: #1e293b !important; font-size: 1.2rem !important; margin-bottom: 0.75rem !important; font-weight: 700 !important; }
     .project-description { color: #64748b !important; font-size: 0.9rem !important; line-height: 1.5 !important; margin: 0 !important; display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
-    .project-specs { display: none !important; }
     
     /* ── NAVBAR ── */
     .navbar { position: fixed !important; top: 0 !important; width: 100% !important; max-width: 100vw !important; box-sizing: border-box !important; }
     .navbar .container { width: 100% !important; max-width: 100% !important; padding: 0 1rem !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
     .logo { margin-left: 0 !important; }
     .mobile-menu-btn { margin-right: 0 !important; margin-left: auto !important; }
+    .mobile-nav-close-item { display: block !important; }
     
     /* ── FIELD CARDS SCROLLING GALLERY ── */
     .field-card, .field-img-card { 

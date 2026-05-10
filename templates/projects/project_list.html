@@ -373,87 +373,127 @@
     </div>
 </div>
 
-<!-- Filters -->
-<section class="filter-section">
-    <div class="container">
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-            <a href="/projects/" class="filter-btn {% if not active_category %}filter-active{% else %}filter-inactive{% endif %}">
-                Tous les secteurs
-            </a>
-            {% for cat in categories %}
-            <a href="/projects/?category={{ cat.handle }}" class="filter-btn {% if active_category == cat.handle %}filter-active{% else %}filter-inactive{% endif %}">
-                <i class="{{ cat.icon }}"></i> {{ cat.name }}
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- Cinematic Grid -->
+<!-- Cinematic Grid - Hardcoded Categories -->
 <section class="projects-section">
     <div class="container">
         <div class="premium-grid">
             
-            {% for project in projects %}
-            <!-- Logic to make the first item large, next two medium -->
-            <a href="{% url 'projects:project_detail' project.slug %}" 
-               class="project-card {% if forloop.counter == 1 %}card-large{% elif forloop.counter == 2 or forloop.counter == 3 %}card-medium{% else %}card-small{% endif %}">
-                
+            <!-- Category 1: Travaux Publics -->
+            <div class="project-card card-medium">
                 <div class="project-image-wrapper">
-                    {% if project.main_image %}
-                    <img src="{{ project.main_image.url }}" alt="{{ project.title }}" class="project-image">
-                    {% else %}
-                    <div class="project-image" style="background: #1e293b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-bolt" style="font-size: 5rem; color: rgba(255,255,255,0.05);"></i>
-                    </div>
-                    {% endif %}
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Travaux Publics & Infrastructures" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Travaux Publics'">
                     <div class="project-image-overlay"></div>
                     
                     <div class="project-meta-top">
-                        <span class="project-category-badge">{{ project.category.name }}</span>
-                        {% if project.featured %}
-                        <span style="background: var(--primary); color: white; padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
-                            <i class="fas fa-star" style="margin-right: 0.4rem;"></i> À la une
-                        </span>
-                        {% endif %}
+                        <span class="project-category-badge">Infrastructures</span>
                     </div>
 
                     <div class="project-content">
-                        <h3 class="project-title">{{ project.title }}</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
-                            {{ project.location }} {% if project.year %}<span style="opacity: 0.5; margin: 0 0.5rem;">|</span> {{ project.year }}{% endif %}
-                        </div>
-
-                        {% if project.superficie or project.puissance_installee %}
-                        <div class="project-specs">
-                            {% if project.puissance_installee %}
-                            <div class="spec-item">
-                                <span>Puissance</span>
-                                <strong>{{ project.puissance_installee }}</strong>
-                            </div>
-                            {% endif %}
-                            {% if project.superficie %}
-                            <div class="spec-item">
-                                <span>Superficie</span>
-                                <strong>{{ project.superficie }}</strong>
-                            </div>
-                            {% endif %}
-                        </div>
-                        {% endif %}
+                        <h3 class="project-title">Travaux Publics & Infrastructures</h3>
+                        <p style="color: #e2e8f0; font-size: 1rem; line-height: 1.6; margin-top: 1rem; opacity: 0.9;">
+                            Éclairage public, réseaux électriques souterrains et infrastructures de transport. Solutions robustes pour les projets d'envergure nationale.
+                        </p>
                     </div>
                 </div>
-            </a>
-            {% empty %}
-            <div style="grid-column: span 12; text-align: center; padding: 10rem 0;">
-                <div style="display: inline-flex; flex-direction: column; align-items: center; background: white; padding: 5rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
-                    <i class="fas fa-hard-hat" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 2rem;"></i>
-                    <h3 style="font-size: 2rem; color: var(--dark); font-weight: 800; margin-bottom: 1rem; font-family: 'Outfit', sans-serif;">Les réalisations arrivent.</h3>
-                    <p style="color: #64748b; font-size: 1.1rem; max-width: 400px; margin-bottom: 2rem;">Notre portfolio est en cours de mise à jour avec nos dernières études de cas.</p>
-                    <a href="/devis/" class="filter-btn filter-active" style="background: var(--primary);">Confier votre projet</a>
+            </div>
+
+            <!-- Category 2: Hospitalier -->
+            <div class="project-card card-medium">
+                <div class="project-image-wrapper">
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Secteur Hospitalier & Santé" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Hospitalier'">
+                    <div class="project-image-overlay"></div>
+                    
+                    <div class="project-meta-top">
+                        <span class="project-category-badge">Santé</span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Secteur Hospitalier & Santé</h3>
+                        <p style="color: #e2e8f0; font-size: 1rem; line-height: 1.6; margin-top: 1rem; opacity: 0.9;">
+                            Alimentation secourue, salles blanches et équipements biomédicaux. Une expertise pointue pour des environnements critiques où la fiabilité est vitale.
+                        </p>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+
+            <!-- Category 3: Industriel -->
+            <div class="project-card card-small">
+                <div class="project-image-wrapper">
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Industrie & Usines" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Industriel'">
+                    <div class="project-image-overlay"></div>
+                    
+                    <div class="project-meta-top">
+                        <span class="project-category-badge">Industrie</span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Industrie & Usines</h3>
+                        <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin-top: 1rem; opacity: 0.9;">
+                            Postes de transformation haute tension, automatisation industrielle et distribution de puissance pour les usines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Résidentiel -->
+            <div class="project-card card-small">
+                <div class="project-image-wrapper">
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Résidentiel & Promotion Immobilière" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Résidentiel'">
+                    <div class="project-image-overlay"></div>
+                    
+                    <div class="project-meta-top">
+                        <span class="project-category-badge">Immobilier</span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Résidentiel & Promotion</h3>
+                        <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin-top: 1rem; opacity: 0.9;">
+                            Équipements électriques complets pour les grands ensembles immobiliers, domotique et sécurité incendie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 5: Tertiaire -->
+            <div class="project-card card-small">
+                <div class="project-image-wrapper">
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Tertiaire & Commercial" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Tertiaire'">
+                    <div class="project-image-overlay"></div>
+                    
+                    <div class="project-meta-top">
+                        <span class="project-category-badge">Commercial</span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Tertiaire & Commercial</h3>
+                        <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin-top: 1rem; opacity: 0.9;">
+                            Centres commerciaux, sièges sociaux et data centers. Éclairage architectural et gestion technique centralisée (GTC).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 6: Énergies Renouvelables -->
+            <div class="project-card card-large">
+                <div class="project-image-wrapper">
+                    <img src="{% static 'images/placeholder.jpg' %}" alt="Énergies Renouvelables" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Renouvelable'">
+                    <div class="project-image-overlay"></div>
+                    
+                    <div class="project-meta-top">
+                        <span class="project-category-badge">Énergie Verte</span>
+                        <span style="background: var(--primary); color: white; padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+                            <i class="fas fa-leaf" style="margin-right: 0.4rem;"></i> Transition Énergétique
+                        </span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Énergies Renouvelables</h3>
+                        <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6; margin-top: 1rem; max-width: 800px; opacity: 0.9;">
+                            Centrales solaires photovoltaïques, parcs éoliens et systèmes de stockage d'énergie. Nous accompagnons la transition énergétique de l'Algérie avec des solutions durables et performantes.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

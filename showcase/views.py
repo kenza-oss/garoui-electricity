@@ -6,8 +6,8 @@ from partners.models import Partner
 def index(request):
     partners = Partner.objects.filter(is_verified=True).order_by('-created_at')
     
-    # Lecture des images du terrain
-    field_images_dir = os.path.join(settings.MEDIA_ROOT, 'field_images')
+    # Lecture des images du terrain (dans static pour Render)
+    field_images_dir = os.path.join(settings.BASE_DIR, 'static', 'images', 'field_images')
     field_images = []
     if os.path.exists(field_images_dir):
         field_images = [f for f in os.listdir(field_images_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]

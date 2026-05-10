@@ -1,498 +1,97 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Réalisations d'Excellence | Garoui Electricity{% endblock %}
+{% block title %}Nos Secteurs d'Activité | Garoui Electricity{% endblock %}
 
 {% block content %}
-<style>
-    /* Premium Portfolio Styles */
-    .portfolio-hero {
-        position: relative;
-        padding: 12rem 0 8rem;
-        background-color: #050505; /* Deep rich black */
-        overflow: hidden;
-    }
+<!-- Hero Section Moderne -->
+<section class="projects-hero">
+    <div class="hero-overlay"></div>
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="{% static 'videos/portfolio-bg.mp4' %}" type="video/mp4">
+    </video>
     
-    .portfolio-hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 20% 80%, rgba(15, 23, 42, 0.8) 0%, transparent 50%);
-        z-index: 1;
-    }
-
-    .portfolio-hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 900px;
-    }
-
-    .premium-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1.2rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 100px;
-        color: var(--primary);
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-        backdrop-filter: blur(10px);
-    }
-
-    .portfolio-title {
-        font-size: clamp(2.5rem, 8vw, 4.5rem);
-        font-weight: 800;
-        color: #ffffff;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        font-family: 'Outfit', sans-serif;
-        letter-spacing: -1px;
-    }
-
-    .portfolio-subtitle {
-        font-size: 1.25rem;
-        color: #a1a1aa;
-        line-height: 1.6;
-        max-width: 700px;
-        font-weight: 300;
-    }
-
-    /* Stats Glassmorphism */
-    .stats-container {
-        position: relative;
-        z-index: 10;
-        margin-top: -8rem;
-        padding: 0 2rem;
-    }
-
-    .stats-glass {
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 3rem;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    .stat-item {
-        position: relative;
-    }
-
-    .stat-item:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        right: -1rem;
-        top: 10%;
-        height: 80%;
-        width: 1px;
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .stat-value {
-        font-size: 2.8rem;
-        font-weight: 700;
-        color: white;
-        line-height: 1;
-        margin-bottom: 0.5rem;
-        font-family: 'Open Sans', sans-serif;
-    }
-    
-    .stat-value span {
-        color: var(--primary);
-        font-size: 2rem;
-        font-weight: 600;
-        margin-left: 2px;
-    }
-
-    .stat-label {
-        color: #e2e8f0;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    /* Filters */
-    .filter-section {
-        padding: 5rem 0 3rem;
-        background: #f8fafc;
-    }
-
-    .filter-btn {
-        padding: 0.8rem 2rem;
-        border-radius: 100px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .filter-active {
-        background: var(--dark);
-        color: white;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .filter-inactive {
-        background: transparent;
-        color: #64748b;
-        border: 1px solid #cbd5e1;
-    }
-
-    .filter-inactive:hover {
-        border-color: var(--dark);
-        color: var(--dark);
-    }
-
-    /* Cinematic Grid */
-    .projects-section {
-        background: #f8fafc;
-        padding-bottom: 8rem;
-    }
-
-    .premium-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 3rem;
-    }
-
-    .project-card {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        group: hover;
-        background: white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        transition: all 0.5s ease;
-    }
-
-    .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-    }
-
-    .project-image-wrapper {
-        position: relative;
-        height: 450px;
-        overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-        .project-image-wrapper { height: 300px; }
-    }
-
-    .project-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    .project-card:hover .project-image {
-        transform: scale(1.05);
-    }
-
-    .project-image-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-        opacity: 0.6;
-        transition: opacity 0.5s ease;
-    }
-
-    .project-card:hover .project-image-overlay {
-        opacity: 0.8;
-    }
-
-    .project-meta-top {
-        position: absolute;
-        top: 2rem;
-        left: 2rem;
-        right: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        z-index: 2;
-    }
-
-    .project-category-badge {
-        background: rgba(255,255,255,0.9);
-        color: var(--dark);
-        padding: 0.5rem 1.2rem;
-        border-radius: 100px;
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .project-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 3rem 2rem 2rem;
-        z-index: 2;
-        transform: translateY(20px);
-        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    .project-card:hover .project-content {
-        transform: translateY(0);
-    }
-
-    .project-title {
-        color: white;
-        font-size: clamp(1.5rem, 5vw, 2rem);
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        font-family: 'Outfit', sans-serif;
-        line-height: 1.2;
-    }
-
-    .project-location {
-        color: #e2e8f0;
-        font-size: 0.9rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .project-specs {
-        display: flex;
-        gap: 2rem;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        padding-top: 1.5rem;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-
-    .project-card:hover .project-specs {
-        opacity: 1;
-    }
-
-    .spec-item {
-        color: white;
-    }
-
-    .spec-item span {
-        display: block;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--primary);
-        margin-bottom: 0.2rem;
-        font-weight: 700;
-    }
-
-    .spec-item strong {
-        font-size: 1rem;
-        font-weight: 600;
-    }
-
-    /* Layout Variations */
-    .card-large { grid-column: span 12; }
-    .card-large .project-image-wrapper { height: 600px; }
-    .card-large .project-title { font-size: clamp(2rem, 6vw, 3rem); }
-    
-    @media (max-width: 768px) {
-        .card-large .project-image-wrapper { height: 350px; }
-    }
-    
-    .card-medium { grid-column: span 6; }
-    .card-small { grid-column: span 4; }
-
-    @media (max-width: 1024px) {
-        .card-medium { grid-column: span 12; }
-        .card-small { grid-column: span 6; }
-        .stats-glass { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-        .stat-item:nth-child(2)::after { display: none; }
-    }
-    
-    @media (max-width: 768px) {
-        .card-small { grid-column: span 12; }
-        .stats-glass { grid-template-columns: 1fr; }
-        .stat-item::after { display: none; }
-        .portfolio-title { font-size: 3rem; }
-    }
-</style>
-
-<!-- Dark Premium Hero -->
-<section class="portfolio-hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding: 0;">
-    <div class="hero-bg" style="position: absolute; inset: 0; z-index: 0; background: #0F172A;">
-        <!-- Hero Video -->
-        <video id="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-            <source src="{% static 'videos/portfolio-bg.mp4' %}" type="video/mp4">
-        </video>
-
-        <!-- Dark elegant premium filter to keep text visible -->
-        <div style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 2;"></div>
-        <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%); z-index: 2;"></div>
-    </div>
-
-    <div class="container" style="position: relative; z-index: 3; margin-left: 5%; width: 90%; margin-top: -5rem;">
-        <div class="hero-content" style="max-width: 900px;">
-            <!-- Removed Service Bar as requested -->
-
-            <span class="hero-badge" style="background: rgba(255,255,255,0.1); color: white; display: inline-block; padding: 0.4rem 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 1.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);">Portfolio d'Ingénierie</span>
-            <h1 style="font-size: clamp(2.5rem, 10vw, 3.5rem); font-weight: 600; color: white; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">NOS PROJETS<br><span>D'ENVERGURE</span></h1>
-            <p style="font-size: clamp(1rem, 4vw, 1.1rem); font-weight: 400; color: #f1f5f9; line-height: 1.6; margin-bottom: 0; max-width: 700px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);">Découvrez notre sélection de projets majeurs. De l'industrie lourde aux complexes hospitaliers, nous concevons des installations qui redéfinissent les standards de performance en Algérie.</p>
-        </div>
+    <div class="container hero-container">
+        <div class="hero-badge">Expertise & Innovation</div>
+        <h1>Nos Secteurs<br><span>d'Excellence</span></h1>
+        <p>Découvrez comment Garoui Electricity transforme l'infrastructure énergétique de l'Algérie à travers des solutions sur-mesure pour chaque industrie.</p>
     </div>
 </section>
 
-<!-- Stats Glassmorphism -->
-<div class="container stats-container">
-    <div class="stats-glass">
-        <div class="stat-item">
-            <div class="stat-value" id="counter-projets">0<span>+</span></div>
-            <div class="stat-label">Projets Réalisés</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value" id="counter-wilaya">0</div>
-            <div class="stat-label">Zones Couvertes</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value" id="counter-mw">0<span>MVA</span></div>
-            <div class="stat-label">Capacité Déployée</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">20<span>+</span></div>
-            <div class="stat-label">Ans d'Expérience</div>
-        </div>
-    </div>
-</div>
-
-<!-- Cinematic Grid - Hardcoded Categories -->
-<section class="projects-section">
+<!-- Grille des Secteurs (Overhaul) -->
+<section class="modern-projects-section">
     <div class="container">
-        <div class="premium-grid">
+        <div class="projects-modern-grid">
             
-            <!-- Category 1: Travaux Publics -->
-            <div class="project-card card-medium">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat1.jpg' %}" alt="Travaux Publics & Infrastructures" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Travaux Publics'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Infrastructures</span>
-                    </div>
+            <!-- Secteur 1 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat1.jpg' %}" alt="Infrastructures">
+                    <div class="card-badge">Infrastructures</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Travaux Publics & Infrastructures</h3>
-                    <p class="project-description">
-                        Éclairage public, réseaux électriques souterrains et infrastructures de transport. Solutions robustes pour les projets d'envergure nationale.
-                    </p>
+                <div class="card-body">
+                    <h3>Travaux Publics & Infrastructures</h3>
+                    <p>Éclairage public, réseaux électriques souterrains et infrastructures de transport. Solutions robustes pour les projets d'envergure nationale.</p>
                 </div>
             </div>
 
-            <!-- Category 2: Hospitalier -->
-            <div class="project-card card-medium">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat2.jpg' %}" alt="Secteur Hospitalier & Santé" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Hospitalier'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Santé</span>
-                    </div>
+            <!-- Secteur 2 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat2.jpg' %}" alt="Santé">
+                    <div class="card-badge">Santé</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Secteur Hospitalier & Santé</h3>
-                    <p class="project-description">
-                        Alimentation secourue, salles blanches et équipements biomédicaux. Une expertise pointue pour des environnements critiques où la fiabilité est vitale.
-                    </p>
+                <div class="card-body">
+                    <h3>Secteur Hospitalier & Santé</h3>
+                    <p>Alimentation secourue, salles blanches et équipements biomédicaux. Une expertise pointue pour des environnements critiques.</p>
                 </div>
             </div>
 
-            <!-- Category 3: Industriel -->
-            <div class="project-card card-small">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat3.jpg' %}" alt="Industrie & Usines" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Industriel'">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat3.jpg' %}" alt="Industrie & Usines" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Industriel'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Industrie</span>
-                    </div>
+            <!-- Secteur 3 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat3.jpg' %}" alt="Industrie">
+                    <div class="card-badge">Industrie</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Industrie & Usines</h3>
-                    <p class="project-description">
-                        Postes de transformation haute tension, automatisation industrielle et distribution de puissance pour les usines.
-                    </p>
+                <div class="card-body">
+                    <h3>Industrie & Usines</h3>
+                    <p>Postes de transformation haute tension, automatisation industrielle et distribution de puissance pour les sites de production.</p>
                 </div>
             </div>
 
-            <!-- Category 4: Résidentiel -->
-            <div class="project-card card-small">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat4.jpg' %}" alt="Résidentiel & Promotion Immobilière" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Résidentiel'">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat4.jpg' %}" alt="Résidentiel & Promotion Immobilière" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Résidentiel'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Immobilier</span>
-                    </div>
+            <!-- Secteur 4 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat4.jpg' %}" alt="Immobilier">
+                    <div class="card-badge">Immobilier</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Résidentiel & Promotion</h3>
-                    <p class="project-description">
-                        Équipements électriques complets pour les grands ensembles immobiliers, domotique et sécurité incendie.
-                    </p>
+                <div class="card-body">
+                    <h3>Résidentiel & Promotion</h3>
+                    <p>Équipements électriques complets pour les grands ensembles immobiliers, domotique et sécurité incendie.</p>
                 </div>
             </div>
 
-            <!-- Category 5: Tertiaire -->
-            <div class="project-card card-small">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat5.jpg' %}" alt="Tertiaire & Commercial" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Tertiaire'">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat5.jpg' %}" alt="Tertiaire & Commercial" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Tertiaire'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Commercial</span>
-                    </div>
+            <!-- Secteur 5 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat5.jpg' %}" alt="Commercial">
+                    <div class="card-badge">Commercial</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Tertiaire & Commercial</h3>
-                    <p class="project-description">
-                        Centres commerciaux, sièges sociaux et data centers. Éclairage architectural et gestion technique centralisée (GTC).
-                    </p>
+                <div class="card-body">
+                    <h3>Tertiaire & Commercial</h3>
+                    <p>Centres commerciaux, sièges sociaux et data centers. Éclairage architectural et gestion technique centralisée (GTC).</p>
                 </div>
             </div>
 
-            <!-- Category 6: Énergies Renouvelables -->
-            <div class="project-card card-large">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat6.jpg' %}" alt="Énergies Renouvelables" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Renouvelable'">
-                <div class="project-image-wrapper">
-                    <img src="{% static 'images/projects/cat6.jpg' %}" alt="Énergies Renouvelables" class="project-image" onerror="this.src=''; this.style.background='#1e293b'; this.alt='Image manquante: Renouvelable'">
-                    <div class="project-image-overlay"></div>
-                    <div class="project-meta-top">
-                        <span class="project-category-badge">Énergie Verte</span>
-                    </div>
+            <!-- Secteur 6 -->
+            <div class="modern-project-card">
+                <div class="card-image-wrapper">
+                    <img src="{% static 'images/projects/cat6.jpg' %}" alt="Énergie Verte">
+                    <div class="card-badge">Énergie Verte</div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">Énergies Renouvelables</h3>
-                    <p class="project-description">
-                        Centrales solaires photovoltaïques, parcs éoliens et systèmes de stockage d'énergie. Nous accompagnons la transition énergétique de l'Algérie avec des solutions durables et performantes.
-                    </p>
+                <div class="card-body">
+                    <h3>Énergies Renouvelables</h3>
+                    <p>Centrales solaires photovoltaïques et parcs éoliens. Nous accompagnons la transition énergétique avec des solutions durables.</p>
                 </div>
             </div>
 
@@ -500,94 +99,182 @@
     </div>
 </section>
 
-<!-- Section Photos du Terrain (Preuve de Sérieux) -->
+<!-- Galerie du Terrain (Fix) -->
 {% if field_images %}
-<section class="field-gallery-section" style="background: #ffffff; padding: 4rem 0; overflow: hidden; border-top: 1px solid #e2e8f0;">
-    <div class="container" style="text-align: center; margin-bottom: 3rem;">
-        <span style="color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Preuve de Sérieux</span>
-        <h2 style="font-size: clamp(2rem, 8vw, 3rem); color: #0f172a; font-family: 'Outfit', sans-serif; font-weight: 800; margin-top: 0.5rem;">La Réalité de nos Chantiers</h2>
-        <div style="width: 80px; height: 5px; background: #0f172a; margin: 1.5rem auto;"></div>
-        <p style="color: #64748b; font-size: 1rem; max-width: 800px; margin: 0 auto; padding: 0 1rem;">Découvrez nos équipes à l'œuvre sur le terrain.</p>
+<section class="field-gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Réalité du Terrain</h2>
+            <p>Nos équipes en intervention directe sur les chantiers à travers le pays.</p>
+        </div>
     </div>
-
-    <div class="field-marquee-wrapper" style="display: flex; gap: 1rem; overflow: hidden; user-select: none; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;">
-        <div class="field-marquee-content" style="display: flex; gap: 1rem; animation: field-scroll-gallery 60s linear infinite; width: max-content;">
+    <div class="field-marquee-wrapper">
+        <div class="field-marquee-content">
             {% for image in field_images %}
-            <div class="field-img-card" style="flex: 0 0 280px; height: 200px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
-                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier Garoui" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="field-image-item">
+                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier">
             </div>
             {% endfor %}
-            <!-- Duplicate for loop -->
+            <!-- Duplicate -->
             {% for image in field_images %}
-            <div class="field-img-card" style="flex: 0 0 280px; height: 200px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
-                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier Garoui" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="field-image-item">
+                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier">
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
-
-<style>
-@keyframes field-scroll-gallery {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 0.75rem)); }
-}
-.field-marquee-wrapper:hover .field-marquee-content {
-    animation-play-state: paused;
-}
-.field-img-card:hover img {
-    transform: scale(1.02);
-}
-</style>
 {% endif %}
 
-
-<!-- Call To Action Final -->
-<section style="background: #050505; padding: 8rem 0; text-align: center; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.5), transparent);"></div>
-    <div class="container" style="position: relative; z-index: 2;">
-        <h2 style="font-size: 3.5rem; color: white; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 1.5rem;">Prêt à électrifier votre infrastructure ?</h2>
-        <p style="color: #94a3b8; font-size: 1.25rem; max-width: 600px; margin: 0 auto 3rem;">Nos ingénieurs sont à votre disposition pour réaliser une étude technique gratuite et détaillée.</p>
-        <a href="/devis/" style="display: inline-flex; align-items: center; gap: 1rem; padding: 1.2rem 3rem; background: var(--primary); color: white; font-size: 1.1rem; font-weight: 700; text-decoration: none; border-radius: 100px; transition: all 0.3s; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(34, 197, 94, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(34, 197, 94, 0.3)'">
-            Demander un Devis <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
-</section>
-
-<script>
-function animateCounter(id, target) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    
-    // Extraire le texte existant (ex: le <span>+</span>)
-    const suffixHTML = el.innerHTML.replace(/[0-9]/g, '');
-    
-    let count = 0;
-    const duration = 2000; // 2 secondes
-    const fps = 30;
-    const steps = duration / (1000 / fps);
-    const increment = target / steps;
-    
-    const interval = setInterval(() => {
-        count += increment;
-        if (count >= target) {
-            count = target;
-            clearInterval(interval);
-        }
-        el.innerHTML = Math.floor(count) + suffixHTML;
-    }, 1000 / fps);
+<style>
+/* Styles isolés pour cette page */
+.projects-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #000;
+    margin-top: 70px;
+}
+.hero-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 1;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    z-index: 2;
+}
+.hero-container {
+    position: relative;
+    z-index: 3;
+}
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+}
+.projects-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: white;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+.projects-hero h1 span { color: var(--primary); }
+.projects-hero p {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.6;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Si on a moins de 5 projets on met un chiffre fictif pour la démo, sinon on met le vrai count
-    const totalProjects = {% if projects.count < 5 %}45{% else %}{{ projects.count }}{% endif %};
-    
-    setTimeout(() => {
-        animateCounter('counter-projets', totalProjects);
-        animateCounter('counter-wilaya', 18);
-        animateCounter('counter-mw', 120);
-    }, 300);
-});
-</script>
+.modern-projects-section {
+    padding: 6rem 0;
+    background: #f8fafc;
+}
 
+/* LA GRILLE PC (Instruction 1) */
+.projects-modern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.modern-project-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.modern-project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Instruction 3 */
+    transition: transform 0.5s ease;
+}
+.modern-project-card:hover .card-image-wrapper img {
+    transform: scale(1.1);
+}
+
+.card-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: rgba(255,255,255,0.9);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--dark);
+    backdrop-filter: blur(5px);
+}
+
+.card-body {
+    padding: 2rem;
+}
+.card-body h3 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+.card-body p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Galerie Marquee Fix */
+.field-gallery-section { padding: 4rem 0; background: white; overflow: hidden; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 { font-size: 2.5rem; color: #0f172a; margin-bottom: 0.5rem; }
+.section-header p { color: #64748b; }
+
+.field-marquee-wrapper { overflow: hidden; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+.field-marquee-content { display: flex; gap: 1rem; animation: marquee-scroll 60s linear infinite; width: max-content; }
+.field-image-item { flex: 0 0 300px; height: 200px; border-radius: 12px; overflow: hidden; }
+.field-image-item img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 0.5rem)); }
+}
+
+/* RESPONSIVE STRICT (Instruction 2) */
+@media (max-width: 991px) {
+    .projects-modern-grid {
+        grid-template-columns: 1fr; /* Instruction 1 */
+        gap: 2rem;
+    }
+    .projects-hero { height: auto; padding: 6rem 0 4rem; }
+    .projects-hero h1 { font-size: 2.5rem; }
+    .card-image-wrapper { height: 220px; }
+}
+</style>
 {% endblock %}

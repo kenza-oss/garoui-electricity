@@ -889,18 +889,28 @@ h1, h2, h3, h4, h5, h6 {
     div[style*="display: flex"]:not(.field-marquee-content):not(.marquee-inner) { flex-wrap: wrap !important; }
 
     /* ── HERO ── */
-    .hero-slider { height: 75vh; }
-    .hero-content { padding: 0 1rem; }
-    .hero-service-bar { gap: 1rem !important; justify-content: center; }
+    .hero-slider { min-height: 80vh !important; }
+    .hero-content { padding: 2rem 1rem !important; text-align: center; margin-top: 0 !important; }
+    .hero-service-bar { gap: 0.75rem !important; justify-content: center; margin-bottom: 2rem !important; }
+    .hero-service-bar div { flex: 0 0 auto; }
+    .hero-service-bar span { font-size: 0.55rem !important; }
+    h1 { font-size: 1.75rem !important; }
 
     /* ── SECTIONS ── */
     section { padding-left: 0 !important; padding-right: 0 !important; }
 
+    /* ── PROJECTS GRID ── */
+    .project-image-wrapper { height: 220px !important; }
+    .card-large .project-image-wrapper { height: 280px !important; }
+    .project-title { font-size: 1.2rem !important; }
+    .project-content { padding: 1.5rem !important; transform: none !important; }
+    .project-specs { display: none !important; }
+    
     /* ── FIELD CARDS SCROLLING GALLERY ── */
     .field-card, .field-img-card { 
         flex: 0 0 280px !important; 
         width: 280px !important;
-        height: 200px !important; 
+        height: 180px !important; 
         margin-right: 1rem !important;
     }
     .field-marquee-content, .marquee-inner {
@@ -928,8 +938,19 @@ h1, h2, h3, h4, h5, h6 {
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 
     /* ── TOP BAR ── */
-    .top-bar-site .top-bar-links { display: none; }
-    .top-bar-site .container { justify-content: flex-end; }
+    /* ── TOP BAR ── */
+    .top-bar-site .top-bar-links { 
+        display: flex !important; 
+        gap: 1rem; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .top-bar-site .top-bar-links::-webkit-scrollbar { display: none; }
+    .top-bar-site .container { justify-content: center; flex-direction: column; gap: 0.5rem; }
+    .top-bar-links a { font-size: 11px !important; }
 
     /* ── MISC ── */
     .application-card { flex-direction: column; text-align: center; align-items: center; }

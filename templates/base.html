@@ -74,17 +74,18 @@
                 <span class="logo-text">Garoui<span>Electricity</span></span>
             </a>
             <ul class="nav-links">
-                <!-- Mobile Close Button (only visible on mobile) -->
-                <li style="display: none;" class="mobile-nav-close-item">
-                    <button onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.mobile-menu-btn i').className='fas fa-bars';" style="background: none; border: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; padding: 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.75rem; font-weight: 600; font-family: 'Outfit', sans-serif;">
-                        <i class="fas fa-times"></i> Fermer le menu
+                <!-- Mobile Close Header -->
+                <li class="mobile-nav-close-item">
+                    <button onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.mobile-menu-btn i').className='fas fa-bars';" style="width: 100%; justify-content: space-between; background: #f8fafc; border: none; padding: 1rem 1.5rem; display: flex; align-items: center; color: var(--dark); font-weight: 700; font-family: 'Outfit', sans-serif; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                        <span>Menu de Navigation</span>
+                        <i class="fas fa-times" style="font-size: 1.2rem; background: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></i>
                     </button>
                 </li>
                 <li class="has-mega">
                     <a href="/shop/">Produits <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <div class="mega-menu">
                         <div class="container">
-                            <div class="mega-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding: 2rem 0;">
+                            <div class="mega-grid">
                                 {% for cat in all_categories %}
                                     {% if forloop.counter0|divisibleby:5 %}
                                         <div class="mega-col">

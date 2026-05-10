@@ -2,6 +2,104 @@
 
 {% block content %}
 {% load static %}
+<style>
+/* Custom Checkboxes for Sidebar */
+.custom-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--dark);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.custom-checkbox-label:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.custom-checkbox-input {
+    display: none;
+}
+
+.custom-checkbox-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: white;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.custom-checkbox-input:checked + .custom-checkbox-box {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(34,197,94,0.2);
+}
+
+.custom-checkbox-box i {
+    color: white;
+    font-size: 12px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.custom-checkbox-input:checked + .custom-checkbox-box i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Custom Pills */
+.ip-pill {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.ip-pill:hover, .ip-pill.active {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(34, 197, 94, 0.05);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15);
+    transform: translateY(-2px);
+}
+
+.filter-title {
+    margin-bottom: 2rem; 
+    font-size: 1.25rem; 
+    color: var(--dark); 
+    font-weight: 800; 
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.filter-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+}
+</style>
+
 <section style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); padding: 120px 0 80px 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <!-- Subtly animated geometric background pattern -->
     <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5;"></div>
@@ -30,7 +128,7 @@
             <aside class="shop-filters">
                 <div style="background: white; padding: 3rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
                     <div class="filter-group" style="margin-bottom: 4rem;">
-                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Catégories</h4>
+                        <h4 class="filter-title">Catégories</h4>
                         <ul style="list-style: none;">
                             <li style="margin-bottom: 1.25rem;"><a href="{% url 'shop:product_list' %}" style="color: var(--primary); font-weight: 800; text-decoration: none; display: flex; justify-content: space-between;">Tous les produits <span>({{ total_count }})</span></a></li>
                             {% for cat in categories %}
@@ -45,27 +143,33 @@
                     </div>
                     
                     <div class="filter-group" style="margin-bottom: 4rem;">
-                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Séries & Marques</h4>
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
-                                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--primary);"> ELMARK Pro
+                        <h4 class="filter-title">Séries & Marques</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" checked class="custom-checkbox-input">
+                                <div class="custom-checkbox-box"><i class="fas fa-check"></i></div>
+                                ELMARK Pro
                             </label>
-                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
-                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Green Series
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" class="custom-checkbox-input">
+                                <div class="custom-checkbox-box"><i class="fas fa-check"></i></div>
+                                Green Series
                             </label>
-                            <label style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); font-weight: 600; cursor: pointer;">
-                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Stellar
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" class="custom-checkbox-input">
+                                <div class="custom-checkbox-box"><i class="fas fa-check"></i></div>
+                                Stellar
                             </label>
                         </div>
                     </div>
 
                     <div class="filter-group">
-                        <h4 style="margin-bottom: 2rem; font-size: 1.25rem; color: var(--dark); font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Protection IP</h4>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP20</span>
-                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP44</span>
-                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP65</span>
-                            <span style="padding: 0.5rem 1rem; background: #f1f5f9; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: var(--dark); cursor: pointer;">IP67</span>
+                        <h4 class="filter-title">Protection IP</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span class="ip-pill active">IP20</span>
+                            <span class="ip-pill">IP44</span>
+                            <span class="ip-pill">IP65</span>
+                            <span class="ip-pill">IP67</span>
                         </div>
                     </div>
                 </div>

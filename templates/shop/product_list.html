@@ -100,7 +100,8 @@
 }
 </style>
 
-<section style="background: url('{% static \'images/shop-header-new.jpg\' %}') center/cover no-repeat; padding: 120px 0 80px 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+{% static 'images/shop-header-new.jpg' as shop_bg_img %}
+<section style="background: url('{{ shop_bg_img }}') center/cover no-repeat; padding: 120px 0 80px 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <!-- Dark gradient overlay for text readability -->
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.7)); z-index: 1;"></div>
     <!-- Subtly animated geometric background pattern -->

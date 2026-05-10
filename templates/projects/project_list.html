@@ -46,7 +46,7 @@
     }
 
     .portfolio-title {
-        font-size: 4.5rem;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
         font-weight: 800;
         color: #ffffff;
         line-height: 1.1;
@@ -193,6 +193,10 @@
         overflow: hidden;
     }
 
+    @media (max-width: 768px) {
+        .project-image-wrapper { height: 300px; }
+    }
+
     .project-image {
         width: 100%;
         height: 100%;
@@ -255,7 +259,7 @@
 
     .project-title {
         color: white;
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 5vw, 2rem);
         font-weight: 800;
         margin-bottom: 0.5rem;
         font-family: 'Outfit', sans-serif;
@@ -307,7 +311,11 @@
     /* Layout Variations */
     .card-large { grid-column: span 12; }
     .card-large .project-image-wrapper { height: 600px; }
-    .card-large .project-title { font-size: 3rem; }
+    .card-large .project-title { font-size: clamp(2rem, 6vw, 3rem); }
+    
+    @media (max-width: 768px) {
+        .card-large .project-image-wrapper { height: 350px; }
+    }
     
     .card-medium { grid-column: span 6; }
     .card-small { grid-column: span 4; }
@@ -345,8 +353,8 @@
             <!-- Removed Service Bar as requested -->
 
             <span class="hero-badge" style="background: rgba(255,255,255,0.1); color: white; display: inline-block; padding: 0.4rem 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 1.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);">Portfolio d'Ingénierie</span>
-            <h1 style="font-size: 3.5rem; font-weight: 600; color: white; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">NOS PROJETS<br><span>D'ENVERGURE</span></h1>
-            <p style="font-size: 1.1rem; font-weight: 400; color: #f1f5f9; line-height: 1.6; margin-bottom: 0; max-width: 700px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);">Découvrez notre sélection de projets majeurs. De l'industrie lourde aux complexes hospitaliers, nous concevons des installations qui redéfinissent les standards de performance en Algérie.</p>
+            <h1 style="font-size: clamp(2.5rem, 10vw, 3.5rem); font-weight: 600; color: white; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">NOS PROJETS<br><span>D'ENVERGURE</span></h1>
+            <p style="font-size: clamp(1rem, 4vw, 1.1rem); font-weight: 400; color: #f1f5f9; line-height: 1.6; margin-bottom: 0; max-width: 700px; text-shadow: 0 1px 5px rgba(0,0,0,0.4);">Découvrez notre sélection de projets majeurs. De l'industrie lourde aux complexes hospitaliers, nous concevons des installations qui redéfinissent les standards de performance en Algérie.</p>
         </div>
     </div>
 </section>
@@ -504,21 +512,21 @@
 <section class="field-gallery-section" style="background: #ffffff; padding: 4rem 0; overflow: hidden; border-top: 1px solid #e2e8f0;">
     <div class="container" style="text-align: center; margin-bottom: 3rem;">
         <span style="color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Preuve de Sérieux</span>
-        <h2 style="font-size: 3rem; color: #0f172a; font-family: 'Outfit', sans-serif; font-weight: 800; margin-top: 0.5rem;">La Réalité de nos Chantiers</h2>
+        <h2 style="font-size: clamp(2rem, 8vw, 3rem); color: #0f172a; font-family: 'Outfit', sans-serif; font-weight: 800; margin-top: 0.5rem;">La Réalité de nos Chantiers</h2>
         <div style="width: 80px; height: 5px; background: #0f172a; margin: 1.5rem auto;"></div>
-        <p style="color: #64748b; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Découvrez nos équipes à l'œuvre sur le terrain.</p>
+        <p style="color: #64748b; font-size: 1rem; max-width: 800px; margin: 0 auto; padding: 0 1rem;">Découvrez nos équipes à l'œuvre sur le terrain.</p>
     </div>
 
-    <div class="field-marquee-wrapper" style="display: flex; gap: 1.5rem; overflow: hidden; user-select: none;">
-        <div class="field-marquee-content" style="display: flex; gap: 1.5rem; animation: field-scroll-gallery 60s linear infinite;">
+    <div class="field-marquee-wrapper" style="display: flex; gap: 1rem; overflow: hidden; user-select: none;">
+        <div class="field-marquee-content" style="display: flex; gap: 1rem; animation: field-scroll-gallery 60s linear infinite;">
             {% for image in field_images %}
-            <div class="field-img-card" style="flex: 0 0 400px; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div class="field-img-card" style="flex: 0 0 85vw; max-width: 400px; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
                 <img src="{{ MEDIA_URL }}field_images/{{ image }}" alt="Chantier Garoui" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.6s ease;">
             </div>
             {% endfor %}
             <!-- Duplicate for loop -->
             {% for image in field_images %}
-            <div class="field-img-card" style="flex: 0 0 400px; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <div class="field-img-card" style="flex: 0 0 85vw; max-width: 400px; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
                 <img src="{{ MEDIA_URL }}field_images/{{ image }}" alt="Chantier Garoui" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.6s ease;">
             </div>
             {% endfor %}

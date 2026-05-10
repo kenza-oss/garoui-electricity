@@ -890,12 +890,13 @@ h1, h2, h3, h4, h5, h6 {
     /* ── HERO ── */
     .hero-slider { height: 75vh; }
     .hero-content { padding: 0 1rem; }
+    .hero-service-bar { gap: 1rem !important; justify-content: center; }
 
     /* ── SECTIONS ── */
     section { padding-left: 0 !important; padding-right: 0 !important; }
 
     /* ── FIELD CARDS SCROLLING GALLERY ── */
-    .field-card { flex: 0 0 85vw !important; height: 260px !important; }
+    .field-card, .field-img-card { flex: 0 0 85vw !important; height: 260px !important; }
 
     /* ── SHOP ── */
     .shop-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }

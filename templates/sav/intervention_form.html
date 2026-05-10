@@ -79,11 +79,7 @@
         background: white;
     }
 
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-    }
+
 
     .btn-submit-sav {
         width: 100%;
@@ -109,9 +105,7 @@
     }
 
     @media (max-width: 768px) {
-        .form-row {
-            grid-template-columns: 1fr;
-        }
+
         .sav-form-container {
             padding: 2rem;
         }
@@ -140,7 +134,7 @@
             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;">
                 1. Vos Coordonnées
             </h3>
-            <div class="form-row">
+            <div class="grid-responsive-2" style="gap: 1.5rem; margin-bottom: 1.5rem;">
                 <div class="form-group">
                     <label class="form-label">Nom Complet *</label>
                     {{ form.client_name }}
@@ -150,7 +144,7 @@
                     {{ form.company }}
                 </div>
             </div>
-            <div class="form-row">
+            <div class="grid-responsive-2" style="gap: 1.5rem; margin-bottom: 1.5rem;">
                 <div class="form-group">
                     <label class="form-label">Téléphone (Joignable) *</label>
                     {{ form.phone }}
@@ -164,7 +158,7 @@
             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; margin-top: 3rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;">
                 2. Détails du Problème
             </h3>
-            <div class="form-row">
+            <div class="grid-responsive-2" style="gap: 1.5rem; margin-bottom: 1.5rem;">
                 <div class="form-group">
                     <label class="form-label">Type d'Intervention *</label>
                     {{ form.intervention_type }}

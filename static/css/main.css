@@ -954,11 +954,13 @@ h1, h2, h3, h4, h5, h6 {
     .top-bar-links a { font-size: 11px !important; }
 
     /* ── MISC ── */
+    .navbar { position: fixed !important; width: 100% !important; max-width: 100vw !important; top: 35px !important; }
     .application-card { flex-direction: column; text-align: center; align-items: center; }
-    .logo { font-size: 1.2rem !important; gap: 0.5rem !important; max-width: 70%; }
-    .logo-text { font-size: 1.1rem !important; display: flex; flex-direction: column; line-height: 1; }
+    .logo { font-size: 1.1rem !important; gap: 0.4rem !important; max-width: 60%; }
+    .logo-text { font-size: 1rem !important; display: flex; flex-direction: column; line-height: 1; }
     .logo-text span { margin-left: 0 !important; }
-    .logo-visual svg { width: 34px !important; height: 34px !important; }
+    .logo-visual svg { width: 30px !important; height: 30px !important; }
+    .mobile-menu-btn { margin-left: auto; padding: 0.5rem; }
 
     /* ── MOBILE CLOSE BUTTON ── */
     .mobile-nav-close-item {

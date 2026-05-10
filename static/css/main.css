@@ -900,8 +900,9 @@ h1, h2, h3, h4, h5, h6 {
     section { padding-left: 0 !important; padding-right: 0 !important; }
 
     /* ── PROJECTS GRID ── */
-    .project-image-wrapper { height: auto !important; aspect-ratio: 16/9 !important; }
-    .card-large .project-image-wrapper { height: auto !important; aspect-ratio: 16/9 !important; }
+    .project-image-wrapper { height: 350px !important; background: #0a0a0a !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+    .project-image { object-fit: contain !important; width: 100% !important; height: 100% !important; }
+    .card-large .project-image-wrapper { height: 350px !important; }
     .project-title { font-size: 1.1rem !important; }
     .project-content { padding: 1.25rem !important; transform: none !important; }
     .project-specs { display: none !important; }

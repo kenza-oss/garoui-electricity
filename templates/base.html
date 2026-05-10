@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=3.5">
     
     {% block extra_css %}{% endblock %}
 </head>
@@ -74,6 +74,12 @@
                 <span class="logo-text">Garoui<span>Electricity</span></span>
             </a>
             <ul class="nav-links">
+                <!-- Mobile Close Button (only visible on mobile) -->
+                <li style="display: none;" class="mobile-nav-close-item">
+                    <button onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.mobile-menu-btn i').className='fas fa-bars';" style="background: none; border: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; padding: 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.75rem; font-weight: 600; font-family: 'Outfit', sans-serif;">
+                        <i class="fas fa-times"></i> Fermer le menu
+                    </button>
+                </li>
                 <li class="has-mega">
                     <a href="/shop/">Produits <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <div class="mega-menu">
@@ -101,7 +107,6 @@
                 </li>
                 <li><a href="/#secteurs">Domaines d'Application</a></li>
                 <li><a href="/#expertise">Expertise Technique</a></li>
-
                 <li><a href="/projects/">Réalisations</a></li>
                 <li><a href="{% url 'sav:intervention_request' %}" style="color: #ef4444; font-weight: 600;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Urgence SAV</a></li>
             </ul>

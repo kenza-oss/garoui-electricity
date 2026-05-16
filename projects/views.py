@@ -1,30 +1,69 @@
 import os
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
-from .models import Project, ProjectCategory
+from .models import Project, ProjectCategory, SonelgazMissionImage
+
+MISSION_CATEGORIES = [
+    {
+        'key': 'coupure',
+        'label': 'Coupure',
+        'icon': 'fas fa-power-off',
+        'color': '#ef4444',
+        'description': "Chaque jour, les équipes de Garoui Electricity interviennent en urgence sur les réseaux électriques Sonelgaz pour localiser et isoler les zones de coupure. Ce travail de précision requiert une réactivité maximale pour minimiser le temps sans courant pour les abonnés.",
+        'challenge': "Identifier rapidement la source du défaut sur un réseau complexe tout en garantissant la sécurité des techniciens et du voisinage.",
+    },
+    {
+        'key': 'retablissement',
+        'label': 'Rétablissement',
+        'icon': 'fas fa-bolt',
+        'color': '#f59e0b',
+        'description': "Après chaque intervention de coupure, le rétablissement du courant est une mission critique qui exige rigueur et méthode. Nos électriciens procèdent à la vérification complète du circuit avant la remise sous tension pour assurer la sécurité totale.",
+        'challenge': "Garantir un rétablissement sûr et complet du service sans risque de récidive, en vérifiant chaque point du circuit réparé.",
+    },
+    {
+        'key': 'branchements',
+        'label': 'Branchements',
+        'icon': 'fas fa-plug',
+        'color': '#3b82f6',
+        'description': "Le raccordement de nouveaux abonnés au réseau Sonelgaz est l'une des missions les plus fréquentes. Nos équipes réalisent les travaux de tranchée, de tirage de câble et de raccordement au coffret de comptage dans le strict respect des normes Sonelgaz.",
+        'challenge': "Respecter les délais stricts imposés par le client tout en appliquant les normes techniques de Sonelgaz pour un branchement durable et sécurisé.",
+    },
+    {
+        'key': 'detecteur_co',
+        'label': 'Détecteur CO',
+        'icon': 'fas fa-wind',
+        'color': '#8b5cf6',
+        'description': "Dans le cadre du programme national de sécurité domestique, Garoui Electricity déploie des détecteurs de monoxyde de carbone dans les foyers. Cette mission de prévention contribue directement à la protection des vies humaines contre ce danger invisible.",
+        'challenge': "Sensibiliser les habitants et installer les détecteurs aux emplacements stratégiques (proximité des chaudières, cuisines) pour une détection optimale.",
+    },
+    {
+        'key': 'changement_compteur',
+        'label': 'Changement de Compteur',
+        'icon': 'fas fa-tachometer-alt',
+        'color': '#10b981',
+        'description': "La modernisation du parc de compteurs est un chantier continu. Nos techniciens remplacent les anciens compteurs mécaniques par les nouveaux compteurs intelligents (prépayés ou à lecture à distance), améliorant ainsi la gestion de la consommation pour les abonnés.",
+        'challenge': "Procéder au changement sans interruption prolongée du service et configurer correctement le nouveau compteur selon le contrat de l'abonné.",
+    },
+]
 
 def project_list(request):
-    category_handle = request.GET.get('category', '')
-    projects = Project.objects.all()
-    categories = ProjectCategory.objects.all()
+    # Fetch Sonelgaz images grouped by category key
+    all_mission_images = SonelgazMissionImage.objects.all()
+    images_by_category = {}
+    for img in all_mission_images:
+        if img.category not in images_by_category:
+            images_by_category[img.category] = []
+        images_by_category[img.category].append(img)
 
-    if category_handle:
-        projects = projects.filter(category__handle=category_handle)
-
-    featured = projects.filter(featured=True)[:3]
-
-    # Lecture des images du terrain (dans static pour Render)
-    field_images_dir = os.path.join(settings.BASE_DIR, 'static', 'images', 'field_images')
-    field_images = []
-    if os.path.exists(field_images_dir):
-        field_images = [f for f in os.listdir(field_images_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    # Merge images into categories
+    missions = []
+    for cat in MISSION_CATEGORIES:
+        cat_copy = dict(cat)
+        cat_copy['images'] = images_by_category.get(cat['key'], [])
+        missions.append(cat_copy)
 
     return render(request, 'projects/project_list.html', {
-        'projects': projects,
-        'categories': categories,
-        'active_category': category_handle,
-        'featured': featured,
-        'field_images': field_images,
+        'missions': missions,
     })
 
 

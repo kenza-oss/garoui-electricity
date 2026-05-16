@@ -74,3 +74,29 @@ class ProjectGallery(models.Model):
     class Meta:
         verbose_name = "Photo de galerie"
         verbose_name_plural = "Photos de galerie"
+
+
+class SonelgazMissionImage(models.Model):
+    CATEGORY_CHOICES = [
+        ('coupure', 'Coupure'),
+        ('retablissement', 'Rétablissement'),
+        ('branchements', 'Branchements'),
+        ('detecteur_co', 'Détecteur de Monoxyde de Carbone'),
+        ('changement_compteur', 'Changement de Compteur'),
+    ]
+    category = models.CharField(
+        max_length=30,
+        choices=CATEGORY_CHOICES,
+        verbose_name="Catégorie de mission"
+    )
+    image = models.ImageField(upload_to='sonelgaz/', verbose_name="Photo")
+    caption = models.CharField(max_length=200, blank=True, verbose_name="Légende (optionnel)")
+
+    class Meta:
+        verbose_name = "Image de mission Sonelgaz"
+        verbose_name_plural = "Images de missions Sonelgaz"
+        ordering = ['category']
+
+    def __str__(self):
+        return f"{self.get_category_display()} - {self.caption or 'Image'}"
+

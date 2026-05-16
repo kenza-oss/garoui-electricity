@@ -1,103 +1,323 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Nos Secteurs d'Activité | Garoui Electricity{% endblock %}
+{% block title %}Réalisations & Partenariat Sonelgaz | Garoui Electricity{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ─── Hero ─── */
+    .real-hero {
+        position: relative;
+        height: 65vh;
+        min-height: 480px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(10,15,30,0.92) 0%, rgba(10,15,30,0.7) 100%),
+                    url('https://images.unsplash.com/photo-1605152276897-4f618f831968?q=80&w=2070') center/cover no-repeat;
+        overflow: hidden;
+    }
+    .real-hero-content { position: relative; z-index: 2; }
+    .real-hero-badge {
+        display: inline-flex; align-items: center; gap: .5rem;
+        background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+        color: #94a3b8; font-size: .8rem; font-weight: 600; letter-spacing: 2px;
+        text-transform: uppercase; padding: .4rem 1rem; border-radius: 999px;
+        margin-bottom: 1.5rem;
+    }
+    .real-hero h1 {
+        font-family: 'Outfit', sans-serif; font-size: clamp(2.4rem,6vw,4rem);
+        color: white; line-height: 1.15; margin-bottom: 1.2rem; font-weight: 700;
+    }
+    .real-hero h1 span { color: var(--primary); }
+    .real-hero p { color: #94a3b8; font-size: 1.15rem; max-width: 620px; line-height: 1.7; font-weight: 300; }
+
+    /* ─── Sectors ─── */
+    .sectors-section { padding: 7rem 0; background: #f8fafc; }
+    .section-label {
+        text-align: center; margin-bottom: 3.5rem;
+    }
+    .section-label .tag {
+        display: inline-block; background: rgba(var(--primary-rgb),.1);
+        color: var(--primary); font-size: .75rem; font-weight: 700;
+        letter-spacing: 2px; text-transform: uppercase;
+        padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    .section-label h2 {
+        font-family: 'Outfit', sans-serif; font-size: 2.5rem;
+        color: var(--dark); font-weight: 700; margin-bottom: .8rem;
+    }
+    .section-label p { color: #64748b; font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+
+    .sectors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.8rem;
+    }
+    .sector-card {
+        border-radius: 18px; overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,.07);
+        transition: transform .35s, box-shadow .35s;
+        background: white;
+    }
+    .sector-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,.12); }
+    .sector-card-img {
+        height: 200px; overflow: hidden; position: relative;
+    }
+    .sector-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .sector-card:hover .sector-card-img img { transform: scale(1.07); }
+    .sector-card-img .badge {
+        position: absolute; top: 1rem; left: 1rem;
+        background: rgba(0,0,0,.55); backdrop-filter: blur(5px);
+        color: white; font-size: .72rem; font-weight: 700;
+        letter-spacing: 1px; text-transform: uppercase;
+        padding: .3rem .75rem; border-radius: 999px;
+    }
+    .sector-card-body { padding: 1.4rem 1.6rem 1.8rem; }
+    .sector-card-body h3 { font-family: 'Outfit', sans-serif; font-size: 1.15rem; color: var(--dark); margin-bottom: .6rem; font-weight: 700; }
+    .sector-card-body p { color: #64748b; font-size: .9rem; line-height: 1.6; }
+
+    /* ─── Sonelgaz Partnership Banner ─── */
+    .sonelgaz-banner {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 5rem 0;
+    }
+    .sonelgaz-inner {
+        display: flex; align-items: center; gap: 4rem;
+    }
+    .sonelgaz-logo-block {
+        flex-shrink: 0; text-align: center;
+    }
+    .sonelgaz-logo-block .s-logo {
+        width: 140px; height: 140px; border-radius: 24px;
+        background: white; display: flex; align-items: center;
+        justify-content: center; margin: 0 auto 1rem;
+        box-shadow: 0 15px 40px rgba(0,0,0,.4);
+    }
+    .sonelgaz-logo-block .s-logo span {
+        font-family: 'Outfit', sans-serif; font-size: 1.4rem;
+        font-weight: 800; color: #0066b2; letter-spacing: -1px; line-height: 1.1;
+        text-align: center;
+    }
+    .sonelgaz-logo-block p { color: #64748b; font-size: .8rem; }
+    .sonelgaz-text { flex: 1; }
+    .sonelgaz-text .partner-tag {
+        display: inline-flex; align-items: center; gap: .5rem;
+        background: rgba(var(--primary-rgb),.15); color: var(--primary);
+        font-size: .75rem; font-weight: 700; letter-spacing: 2px;
+        text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px;
+        margin-bottom: 1.5rem;
+    }
+    .sonelgaz-text h2 {
+        font-family: 'Outfit', sans-serif; font-size: 2.2rem;
+        color: white; margin-bottom: 1.2rem; font-weight: 700; line-height: 1.25;
+    }
+    .sonelgaz-text p { color: #94a3b8; font-size: 1rem; line-height: 1.75; font-weight: 300; margin-bottom: 1rem; }
+    .sonelgaz-stats {
+        display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .s-stat { text-align: center; }
+    .s-stat .num {
+        font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800;
+        color: var(--primary); display: block;
+    }
+    .s-stat .lbl { color: #64748b; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ─── Mission Categories ─── */
+    .missions-section { padding: 7rem 0; background: #0f172a; }
+    .missions-section .section-label h2 { color: white; }
+    .missions-section .section-label p { color: #64748b; }
+
+    .mission-card {
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        transition: border-color .3s;
+    }
+    .mission-card:last-child { margin-bottom: 0; }
+    .mission-card:hover { border-color: rgba(255,255,255,.18); }
+
+    .mission-header {
+        display: flex; align-items: center; gap: 1.5rem;
+        margin-bottom: 1.8rem;
+    }
+    .mission-icon {
+        width: 64px; height: 64px; border-radius: 16px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.6rem; flex-shrink: 0;
+    }
+    .mission-header-text h3 {
+        font-family: 'Outfit', sans-serif; font-size: 1.6rem;
+        color: white; font-weight: 700; margin-bottom: .3rem;
+    }
+    .mission-header-text .mission-sub {
+        color: #64748b; font-size: .85rem; text-transform: uppercase;
+        letter-spacing: 1.5px; font-weight: 600;
+    }
+
+    .mission-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+    .mission-desc p { color: #94a3b8; font-size: .98rem; line-height: 1.75; font-weight: 300; }
+    .mission-challenge {
+        background: rgba(255,255,255,.04); border-radius: 12px;
+        padding: 1.2rem 1.5rem; border-left: 3px solid;
+    }
+    .mission-challenge .ch-label {
+        color: #64748b; font-size: .72rem; text-transform: uppercase;
+        letter-spacing: 2px; font-weight: 700; margin-bottom: .7rem;
+        display: flex; align-items: center; gap: .5rem;
+    }
+    .mission-challenge p { color: #cbd5e1; font-size: .9rem; line-height: 1.65; font-weight: 300; }
+
+    /* ─── Auto-scroll gallery inside mission card ─── */
+    .mission-gallery-wrapper { overflow: hidden; position: relative; }
+    .mission-gallery-track {
+        display: flex; gap: 1rem; width: max-content;
+        animation: mission-marquee 22s linear infinite;
+    }
+    .mission-gallery-track:hover { animation-play-state: paused; }
+    .mission-gallery-item {
+        width: 220px; height: 155px; border-radius: 12px;
+        overflow: hidden; flex-shrink: 0;
+        box-shadow: 0 6px 15px rgba(0,0,0,.3);
+        transition: transform .3s;
+    }
+    .mission-gallery-item:hover { transform: scale(1.04); }
+    .mission-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .no-images-placeholder {
+        width: 100%; height: 120px; border-radius: 12px;
+        background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.1);
+        display: flex; align-items: center; justify-content: center;
+        color: #475569; font-size: .9rem; gap: .5rem;
+    }
+
+    @keyframes mission-marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - .5rem)); }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 991px) {
+        .sonelgaz-inner { flex-direction: column; gap: 2rem; text-align: center; }
+        .sonelgaz-logo-block .s-logo { margin: 0 auto; }
+        .sonelgaz-stats { justify-content: center; }
+        .mission-body { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+        .real-hero { height: auto; padding: 5rem 0; }
+        .sectors-section, .missions-section { padding: 4rem 0; }
+        .mission-card { padding: 1.5rem; }
+        .mission-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<!-- Hero Section Moderne -->
-<section class="projects-hero">
-    <div class="hero-overlay"></div>
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="{% static 'videos/portfolio-bg.mp4' %}" type="video/mp4">
-    </video>
-    
-    <div class="container hero-container">
-        <div class="hero-badge">Expertise & Innovation</div>
-        <h1>Nos Secteurs<br><span>d'Excellence</span></h1>
-        <p>Découvrez comment Garoui Electricity transforme l'infrastructure énergétique de l'Algérie à travers des solutions sur-mesure pour chaque industrie.</p>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="real-hero">
+    <div class="container real-hero-content">
+        <div class="real-hero-badge"><i class="fas fa-hard-hat"></i> Expertise & Terrain</div>
+        <h1>Nos <span>Réalisations</span><br>& Secteurs d'Activité</h1>
+        <p>Depuis plus de 10 ans, Garoui Electricity intervient sur le terrain aux côtés de Sonelgaz et déploie son expertise dans tous les secteurs de l'économie algérienne.</p>
     </div>
 </section>
 
-<!-- Grille des Secteurs (Premium Overhaul) -->
-<section class="modern-projects-section">
+<!-- ═══════════════════ SECTORS ═══════════════════ -->
+<section class="sectors-section">
     <div class="container">
-        <div class="grid-projets">
-            
-            <!-- Secteur 1 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat1.jpg' %}" alt="Infrastructures">
-                    <div class="project-card-badge">Infrastructures</div>
+        <div class="section-label">
+            <span class="tag">Domaines d'Application</span>
+            <h2>Secteurs d'Intervention</h2>
+            <p>Garoui Electricity accompagne tous types de clients, des projets publics aux complexes privés haut standing.</p>
+        </div>
+        <div class="sectors-grid">
+
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800" alt="Travaux Publics">
+                    <div class="badge">Travaux Publics</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
                     <h3>Travaux Publics & Infrastructures</h3>
-                    <p>Éclairage public, réseaux électriques souterrains et infrastructures de transport. Solutions robustes pour les projets d'envergure nationale.</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <p>Éclairage public, réseaux souterrains et infrastructures de transport. Solutions robustes pour les projets d'envergure nationale.</p>
                 </div>
             </div>
 
-            <!-- Secteur 2 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat2.jpg' %}" alt="Santé">
-                    <div class="project-card-badge">Santé</div>
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=800" alt="Santé">
+                    <div class="badge">Hospitalier</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
                     <h3>Secteur Hospitalier & Santé</h3>
                     <p>Alimentation secourue, salles blanches et équipements biomédicaux. Une expertise pointue pour des environnements critiques.</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
-            <!-- Secteur 3 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat3.jpg' %}" alt="Industrie">
-                    <div class="project-card-badge">Industrie</div>
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&w=800" alt="Industrie">
+                    <div class="badge">Industrie</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
                     <h3>Industrie & Usines</h3>
-                    <p>Postes de transformation haute tension, automatisation industrielle et distribution de puissance pour les sites de production.</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <p>Postes de transformation haute tension, automatisation industrielle et distribution de puissance pour sites de production.</p>
                 </div>
             </div>
 
-            <!-- Secteur 4 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat4.jpg' %}" alt="Immobilier">
-                    <div class="project-card-badge">Immobilier</div>
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=800" alt="Résidentiel">
+                    <div class="badge">Résidentiel</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
                     <h3>Résidentiel & Promotion</h3>
-                    <p>Équipements électriques complets pour les grands ensembles immobiliers, domotique et sécurité incendie.</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <p>Équipements complets pour grands ensembles immobiliers, domotique et sécurité incendie.</p>
                 </div>
             </div>
 
-            <!-- Secteur 5 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat5.jpg' %}" alt="Commercial">
-                    <div class="project-card-badge">Commercial</div>
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" alt="Hôtels">
+                    <div class="badge">Hôtels & Complexes</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
+                    <h3>Hôtels & Complexes Touristiques</h3>
+                    <p>Installations électriques haut de gamme pour hôtels, complexes hôteliers et infrastructures touristiques.</p>
+                </div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800" alt="Universités">
+                    <div class="badge">Éducation</div>
+                </div>
+                <div class="sector-card-body">
+                    <h3>Universités & Établissements Scolaires</h3>
+                    <p>Infrastructures électriques complètes pour les cités universitaires, lycées et établissements d'enseignement.</p>
+                </div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" alt="Tertiaire">
+                    <div class="badge">Tertiaire</div>
+                </div>
+                <div class="sector-card-body">
                     <h3>Tertiaire & Commercial</h3>
                     <p>Centres commerciaux, sièges sociaux et data centers. Éclairage architectural et gestion technique centralisée (GTC).</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
-            <!-- Secteur 6 -->
-            <div class="project-card-premium">
-                <div class="project-card-img-wrapper">
-                    <img src="{% static 'images/projects/cat6.jpg' %}" alt="Énergie Verte">
-                    <div class="project-card-badge">Énergie Verte</div>
+            <div class="sector-card">
+                <div class="sector-card-img">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800" alt="Énergies Renouvelables">
+                    <div class="badge">Énergie Verte</div>
                 </div>
-                <div class="project-card-body">
+                <div class="sector-card-body">
                     <h3>Énergies Renouvelables</h3>
-                    <p>Centrales solaires photovoltaïques et parcs éoliens. Nous accompagnons la transition énergétique avec des solutions durables.</p>
-                    <a href="#" class="project-card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <p>Centrales solaires photovoltaïques et intégration des énergies vertes dans le réseau national.</p>
                 </div>
             </div>
 
@@ -105,106 +325,87 @@
     </div>
 </section>
 
-<!-- Galerie du Terrain (Fix) -->
-{% if field_images %}
-<section class="field-gallery-section">
+<!-- ═══════════════════ SONELGAZ BANNER ═══════════════════ -->
+<section class="sonelgaz-banner">
     <div class="container">
-        <div class="section-header">
-            <h2>Réalité du Terrain</h2>
-            <p>Nos équipes en intervention directe sur les chantiers à travers le pays.</p>
-        </div>
-    </div>
-    <div class="field-marquee-wrapper">
-        <div class="field-marquee-content">
-            {% for image in field_images %}
-            <div class="field-image-item">
-                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier">
+        <div class="sonelgaz-inner">
+            <div class="sonelgaz-logo-block">
+                <div class="s-logo">
+                    <span>SONE<br>LGAZ</span>
+                </div>
+                <p>Partenaire Officiel</p>
             </div>
-            {% endfor %}
-            <!-- Duplicate -->
-            {% for image in field_images %}
-            <div class="field-image-item">
-                <img src="{% static 'images/field_images/' %}{{ image }}" alt="Chantier">
+            <div class="sonelgaz-text">
+                <span class="partner-tag"><i class="fas fa-handshake"></i> Collaboration Institutionnelle</span>
+                <h2>Garoui Electricity,<br>Partenaire de Confiance de Sonelgaz</h2>
+                <p>Dans le cadre de sa mission de service public, Garoui Electricity a établi une collaboration étroite et durable avec <strong style="color:white;">Sonelgaz</strong>, le principal opérateur du réseau électrique national algérien. Nos équipes qualifiées opèrent chaque jour sur le terrain pour assurer la continuité, la sécurité et la modernisation du réseau de distribution électrique au bénéfice de milliers d'abonnés.</p>
+                <p>Cette collaboration porte sur 5 grands types de missions, allant de la gestion des urgences de coupure à la modernisation du parc de compteurs intelligents.</p>
+                <div class="sonelgaz-stats">
+                    <div class="s-stat"><span class="num">5</span><span class="lbl">Types de Missions</span></div>
+                    <div class="s-stat"><span class="num">+500</span><span class="lbl">Interventions / An</span></div>
+                    <div class="s-stat"><span class="num">24/7</span><span class="lbl">Disponibilité</span></div>
+                </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
-{% endif %}
 
-<style>
-/* Hero & Gallery Styles (Preserved but isolated) */
-.projects-hero {
-    position: relative;
-    height: 60vh;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: #000;
-    margin-top: 0; /* Adjusted for fixed navbar */
-}
-.hero-video {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%; min-height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
-    z-index: 1;
-}
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
-    z-index: 2;
-}
-.hero-container {
-    position: relative;
-    z-index: 3;
-}
-.projects-hero h1 {
-    font-size: clamp(3rem, 10vw, 5rem);
-    color: white;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-}
-.projects-hero h1 span { color: var(--primary); }
-.projects-hero p {
-    color: #cbd5e1;
-    font-size: 1.25rem;
-    max-width: 700px;
-    line-height: 1.6;
-}
+<!-- ═══════════════════ SONELGAZ MISSIONS ═══════════════════ -->
+<section class="missions-section">
+    <div class="container">
+        <div class="section-label">
+            <span class="tag" style="background: rgba(255,255,255,.07); color: #94a3b8;">5 Catégories de Missions</span>
+            <h2>Nos Missions Sonelgaz au Quotidien</h2>
+            <p>Chaque intervention est un défi relevé avec rigueur et professionnalisme par nos techniciens certifiés.</p>
+        </div>
 
-.modern-projects-section {
-    padding: 8rem 0;
-    background: #fdfdfd;
-}
+        {% for mission in missions %}
+        <div class="mission-card">
+            <div class="mission-header">
+                <div class="mission-icon" style="background: {{ mission.color }}22; color: {{ mission.color }};">
+                    <i class="{{ mission.icon }}"></i>
+                </div>
+                <div class="mission-header-text">
+                    <h3>{{ mission.label }}</h3>
+                    <span class="mission-sub">Mission Sonelgaz</span>
+                </div>
+            </div>
 
-/* Gallery Marquee */
-.field-gallery-section { padding: 6rem 0; background: white; overflow: hidden; }
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-header h2 { font-size: 3rem; color: #0f172a; margin-bottom: 1rem; }
-.section-header p { color: #64748b; font-size: 1.1rem; }
+            <div class="mission-body">
+                <div class="mission-desc">
+                    <p>{{ mission.description }}</p>
+                </div>
+                <div class="mission-challenge" style="border-color: {{ mission.color }};">
+                    <div class="ch-label"><i class="fas fa-exclamation-circle" style="color: {{ mission.color }};"></i> Le Défi Quotidien</div>
+                    <p>{{ mission.challenge }}</p>
+                </div>
+            </div>
 
-.field-marquee-wrapper { overflow: hidden; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
-.field-marquee-content { display: flex; gap: 1.5rem; animation: marquee-scroll 80s linear infinite; width: max-content; }
-.field-image-item { flex: 0 0 400px; height: 280px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.field-image-item img { width: 100%; height: 100%; object-fit: cover; }
+            <div class="mission-gallery-wrapper">
+                {% if mission.images %}
+                    <div class="mission-gallery-track" id="track-{{ mission.key }}">
+                        {% for img in mission.images %}
+                            <div class="mission-gallery-item">
+                                <img src="{{ img.image.url }}" alt="{{ img.caption|default:mission.label }}" loading="lazy">
+                            </div>
+                        {% endfor %}
+                        {% for img in mission.images %}
+                            <div class="mission-gallery-item">
+                                <img src="{{ img.image.url }}" alt="{{ img.caption|default:mission.label }}" loading="lazy">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-images-placeholder">
+                        <i class="fas fa-images"></i>
+                        <span>Aucune photo ajoutée pour cette catégorie. Ajoutez-en depuis l'administration.</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
 
-@keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 0.75rem)); }
-}
+    </div>
+</section>
 
-@media (max-width: 991px) {
-    .projects-hero { min-height: 350px; padding: 4rem 0; }
-    .projects-hero h1 { font-size: 2.5rem; }
-    .modern-projects-section { padding: 4rem 0; }
-    .field-image-item { flex: 0 0 300px; height: 200px; }
-}
-</style>pper { height: 220px; }
-}
-</style>
 {% endblock %}

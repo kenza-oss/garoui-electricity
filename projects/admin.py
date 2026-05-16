@@ -1,9 +1,16 @@
 from django.contrib import admin
-from .models import Project, ProjectCategory, ProjectGallery
+from .models import Project, ProjectCategory, ProjectGallery, SonelgazMissionImage
 
 class ProjectGalleryInline(admin.TabularInline):
     model = ProjectGallery
     extra = 3
+
+@admin.register(SonelgazMissionImage)
+class SonelgazMissionImageAdmin(admin.ModelAdmin):
+    list_display = ('get_category_display', 'caption', 'image')
+    list_filter = ('category',)
+    search_fields = ('caption',)
+
 
 @admin.register(ProjectCategory)
 class ProjectCategoryAdmin(admin.ModelAdmin):

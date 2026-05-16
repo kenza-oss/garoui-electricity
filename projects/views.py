@@ -9,8 +9,8 @@ MISSION_CATEGORIES = [
         'label': 'Coupure',
         'icon': 'fas fa-power-off',
         'color': '#ef4444',
-        'description': "Sur ordre de Sonelgaz, les équipes de Garoui Electricity effectuent des coupures de courant chez les abonnés ayant des impayés de consommation. Cette mission administrative et technique vise à régulariser la situation des abonnés défaillants et à assurer l'équité dans la gestion du réseau.",
-        'challenge': "Intervenir avec professionnalisme et dans le strict respect des procédures Sonelgaz, en localisant précisément le compteur de l'abonné concerné, même dans des immeubles complexes ou des zones difficiles d'accès.",
+        'description': "Sur ordre de Sonelgaz, les équipes de Garoui Electricity effectuent des coupures d'alimentation électrique chez les abonnés n'ayant pas régularisé leur situation (impayés). Cette mission délicate est réalisée dans le respect des procédures réglementaires en vigueur, en coordination directe avec les services de Sonelgaz.",
+        'challenge': "Localiser rapidement et précisément l'abonné concerné, procéder à la coupure dans les règles de sécurité et établir un rapport d'intervention complet pour Sonelgaz.",
     },
     {
         'key': 'retablissement',

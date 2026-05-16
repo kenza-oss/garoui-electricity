@@ -28,6 +28,7 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('devis/', include('devis.urls')),
     path('sav/', include('sav.urls', namespace='sav')),
+    path('equipe/', include('team.urls')),
 
 ]
 

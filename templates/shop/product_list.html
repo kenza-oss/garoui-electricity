@@ -3,122 +3,135 @@
 {% block content %}
 {% load static %}
 <style>
-/* Custom Checkboxes for Sidebar */
-.custom-checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--dark);
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    transition: all 0.2s ease;
-    user-select: none;
-}
+    /* Custom Checkboxes for Sidebar */
+    .custom-checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--dark);
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.5rem 0;
+        transition: all 0.2s ease;
+        user-select: none;
+    }
 
-.custom-checkbox-label:hover {
-    color: var(--primary);
-    transform: translateX(5px);
-}
+    .custom-checkbox-label:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+    }
 
-.custom-checkbox-input {
-    display: none;
-}
+    .custom-checkbox-input {
+        display: none;
+    }
 
-.custom-checkbox-box {
-    width: 22px;
-    height: 22px;
-    border: 2px solid #cbd5e1;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    background: white;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-}
+    .custom-checkbox-box {
+        width: 22px;
+        height: 22px;
+        border: 2px solid #cbd5e1;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        background: white;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
 
-.custom-checkbox-input:checked + .custom-checkbox-box {
-    background: var(--primary);
-    border-color: var(--primary);
-    box-shadow: 0 4px 10px rgba(34,197,94,0.2);
-}
+    .custom-checkbox-input:checked+.custom-checkbox-box {
+        background: var(--primary);
+        border-color: var(--primary);
+        box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+    }
 
-.custom-checkbox-box i {
-    color: white;
-    font-size: 12px;
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+    .custom-checkbox-box i {
+        color: white;
+        font-size: 12px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-.custom-checkbox-input:checked + .custom-checkbox-box i {
-    opacity: 1;
-    transform: scale(1);
-}
+    .custom-checkbox-input:checked+.custom-checkbox-box i {
+        opacity: 1;
+        transform: scale(1);
+    }
 
-/* Custom Pills */
-.ip-pill {
-    padding: 0.6rem 1.2rem;
-    background: white;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-}
+    /* Custom Pills */
+    .ip-pill {
+        padding: 0.6rem 1.2rem;
+        background: white;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    }
 
-.ip-pill:hover, .ip-pill.active {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: rgba(34, 197, 94, 0.05);
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15);
-    transform: translateY(-2px);
-}
+    .ip-pill:hover,
+    .ip-pill.active {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: rgba(34, 197, 94, 0.05);
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15);
+        transform: translateY(-2px);
+    }
 
-.filter-title {
-    margin-bottom: 2rem; 
-    font-size: 1.25rem; 
-    color: var(--dark); 
-    font-weight: 800; 
-    padding-bottom: 1rem;
-    position: relative;
-}
+    .filter-title {
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        color: var(--dark);
+        font-weight: 800;
+        padding-bottom: 1rem;
+        position: relative;
+    }
 
-.filter-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 3px;
-}
+    .filter-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 3px;
+    }
 </style>
 
 {% static 'images/shop-header-new.jpg' as shop_bg_img %}
-<section style="background: url('{{ shop_bg_img }}') center/cover no-repeat; padding: 120px 0 80px 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+<section
+    style="background: url('{{ shop_bg_img }}') center/cover no-repeat; padding: 120px 0 80px 0; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <!-- Dark gradient overlay for text readability -->
-    <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.7)); z-index: 1;"></div>
+    <div
+        style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.7)); z-index: 1;">
+    </div>
     <!-- Subtly animated geometric background pattern -->
-    <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5; z-index: 1;"></div>
-    
+    <div
+        style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5; z-index: 1;">
+    </div>
+
     <div class="container" style="position: relative; z-index: 2;">
         <!-- Breadcrumbs -->
         <nav style="margin-bottom: 2rem; font-size: 0.85rem; color: #94A3B8;">
-            <a href="/" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#94A3B8'">Accueil</a>
+            <a href="/" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;"
+                onmouseover="this.style.color='white'" onmouseout="this.style.color='#94A3B8'">Accueil</a>
             <span style="margin: 0 0.5rem; color: #475569;">/</span>
             <span style="color: white; font-weight: 600;">Catalogue Produits</span>
         </nav>
 
         <div class="section-header" style="text-align: left; max-width: 800px;">
-            <span style="display: inline-block; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; background: rgba(34, 197, 94, 0.1); padding: 0.5rem 1.2rem; border-radius: 100px; margin-bottom: 1.5rem; border: 1px solid rgba(34, 197, 94, 0.2);">Gamme Complète ELMARK</span>
-            <h1 style="font-size: 3.5rem; color: white; font-weight: 800; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 1.5rem;">Solutions Électriques <br>& Éclairage</h1>
-            <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 1.7; font-weight: 400; max-width: 600px;">Découvrez notre sélection de plus de 12 000 produits certifiés pour tous vos besoins industriels et tertiaires. Qualité, sécurité et performance garanties.</p>
+            <span
+                style="display: inline-block; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; background: rgba(34, 197, 94, 0.1); padding: 0.5rem 1.2rem; border-radius: 100px; margin-bottom: 1.5rem; border: 1px solid rgba(34, 197, 94, 0.2);">Gamme
+                Complète ELMARK</span>
+            <h1
+                style="font-size: 3.5rem; color: white; font-weight: 800; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; margin-bottom: 1.5rem;">
+                Solutions Électriques <br>& Éclairage</h1>
+            <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 1.7; font-weight: 400; max-width: 600px;">
+                Découvrez notre sélection de plus de 12 000 produits certifiés pour tous vos besoins industriels et
+                tertiaires. Qualité, sécurité et performance garanties.</p>
         </div>
     </div>
 </section>
@@ -129,22 +142,27 @@
         <div class="shop-layout">
             <!-- Filters Sidebar -->
             <aside class="shop-filters">
-                <div style="background: white; padding: 3rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
+                <div
+                    style="background: white; padding: 3rem; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-premium);">
                     <div class="filter-group" style="margin-bottom: 4rem;">
                         <h4 class="filter-title">Catégories</h4>
                         <ul style="list-style: none;">
-                            <li style="margin-bottom: 1.25rem;"><a href="{% url 'shop:product_list' %}" style="color: var(--primary); font-weight: 800; text-decoration: none; display: flex; justify-content: space-between;">Tous les produits <span>({{ total_count }})</span></a></li>
+                            <li style="margin-bottom: 1.25rem;"><a href="{% url 'shop:product_list' %}"
+                                    style="color: var(--primary); font-weight: 800; text-decoration: none; display: flex; justify-content: space-between;">Tous
+                                    les produits <span>({{ total_count }})</span></a></li>
                             {% for cat in categories %}
                             <li style="margin-bottom: 1.25rem;">
-                                <a href="?category={{ cat.handle }}" style="color: var(--gray); text-decoration: none; transition: all 0.3s; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
-                                    <i class="{{ cat.icon }}" style="width: 20px; color: var(--primary); opacity: 0.7;"></i>
+                                <a href="?category={{ cat.handle }}"
+                                    style="color: var(--gray); text-decoration: none; transition: all 0.3s; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
+                                    <i class="{{ cat.icon }}"
+                                        style="width: 20px; color: var(--primary); opacity: 0.7;"></i>
                                     {{ cat.name }}
                                 </a>
                             </li>
                             {% endfor %}
                         </ul>
                     </div>
-                    
+
                     <div class="filter-group" style="margin-bottom: 4rem;">
                         <h4 class="filter-title">Séries & Marques</h4>
                         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
@@ -180,11 +198,14 @@
 
             <!-- Products Grid -->
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: white; padding: 1.5rem 2rem; border-radius: 16px; border: 1px solid #e2e8f0;">
-                    <p style="margin: 0; color: var(--gray); font-weight: 600;">Affichage de <strong>{{ products|length }}</strong> produits</p>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: white; padding: 1.5rem 2rem; border-radius: 16px; border: 1px solid #e2e8f0;">
+                    <p style="margin: 0; color: var(--gray); font-weight: 600;">Affichage de <strong>{{ products|length
+                            }}</strong> produits</p>
                     <div style="display: flex; align-items: center; gap: 1rem;">
                         <span style="color: var(--gray); font-size: 0.9rem; font-weight: 600;">Trier par:</span>
-                        <select style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; outline: none; font-weight: 600; color: var(--dark);">
+                        <select
+                            style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; outline: none; font-weight: 600; color: var(--dark);">
                             <option>Plus récents</option>
                             <option>Prix: Croissant</option>
                             <option>Prix: Décroissant</option>
@@ -194,32 +215,47 @@
 
                 <div class="products-grid grid-responsive-3" style="gap: 2.5rem;">
                     {% for product in products %}
-                    <div class="product-card" style="background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-premium); position: relative;">
-                        <a href="{% url 'shop:product_detail' product.handle %}" style="text-decoration: none; color: inherit;">
-                            <div class="product-image" style="height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 3rem; border-bottom: 1px solid #f1f5f9; overflow: hidden;">
+                    <div class="product-card"
+                        style="background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-premium); position: relative;">
+                        <a href="{% url 'shop:product_detail' product.handle %}"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="product-image"
+                                style="height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 3rem; border-bottom: 1px solid #f1f5f9; overflow: hidden;">
                                 {% if product.thumbnail %}
-                                <img src="{{ product.thumbnail.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                <img src="{{ product.thumbnail.url }}" alt="{{ product.title }}"
+                                    style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
                                 {% elif product.images.first %}
-                                    {% with product.images.first as first_image %}
-                                        {% if first_image.image %}
-                                        <img src="{{ first_image.image.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
-                                        {% elif first_image.url %}
-                                        <img src="{{ first_image.url }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
-                                        {% endif %}
-                                    {% endwith %}
+                                {% with product.images.first as first_image %}
+                                {% if first_image.image %}
+                                <img src="{{ first_image.image.url }}" alt="{{ product.title }}"
+                                    style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                {% elif first_image.url %}
+                                <img src="{{ first_image.url }}" alt="{{ product.title }}"
+                                    style="max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s ease;">
+                                {% endif %}
+                                {% endwith %}
                                 {% else %}
                                 <i class="fas fa-image" style="font-size: 5rem; color: #f1f5f9;"></i>
                                 {% endif %}
                             </div>
                             <div class="product-info" style="padding: 2.5rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                                    <span style="font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">{{ product.collection.name|default:"PRO SERIES" }}</span>
-                                    <span style="font-size: 0.7rem; color: var(--gray); font-weight: 700;">{{ product.sku }}</span>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <span
+                                        style="font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">{{
+                                        product.collection.name|default:"PRO SERIES" }}</span>
+                                    <span style="font-size: 0.7rem; color: var(--gray); font-weight: 700;">{{
+                                        product.sku }}</span>
                                 </div>
-                                <h3 style="font-size: 1.25rem; color: var(--dark); height: 3.5rem; overflow: hidden; line-height: 1.4; font-weight: 700;">{{ product.title }}</h3>
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
-                                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--dark);">{{ product.price }} DZD</span>
-                                    <div style="background: var(--primary); color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);">
+                                <h3
+                                    style="font-size: 1.25rem; color: var(--dark); height: 3.5rem; overflow: hidden; line-height: 1.4; font-weight: 700;">
+                                    {{ product.title }}</h3>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+                                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--dark);">{{
+                                        product.price }} DZD</span>
+                                    <div
+                                        style="background: var(--primary); color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);">
                                         <i class="fas fa-arrow-right" style="font-size: 0.9rem;"></i>
                                     </div>
                                 </div>

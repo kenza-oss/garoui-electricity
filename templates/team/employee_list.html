@@ -1,0 +1,554 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notre Équipe | Garoui Electricity{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Team Page Specific Styles - Glassmorphism */
+    .team-header {
+        text-align: center;
+        padding: 5rem 0 3rem;
+        background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop') center/cover;
+        color: white;
+    }
+    .team-header h1 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .team-header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .team-container {
+        padding: 4rem 0;
+        background-color: #f8fafc;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* Glassmorphism Card */
+    .team-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s ease;
+        position: relative;
+    }
+
+    .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 1);
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .team-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+        opacity: 0.15;
+        z-index: 0;
+    }
+
+    .team-card .card-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 2rem auto 1rem;
+        border: 4px solid white;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .team-card .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .team-card .card-content {
+        padding: 1.5rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .team-card h3 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.4rem;
+        color: var(--dark);
+        margin-bottom: 0.3rem;
+        font-weight: 700;
+    }
+
+    .team-card .role {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .team-card .address {
+        color: var(--gray);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+    }
+
+    .team-card .btn-profil {
+        display: inline-block;
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--dark);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .team-card .btn-profil:hover {
+        background: var(--primary);
+        transform: scale(1.02);
+    }
+
+    /* Modal Styles */
+    .cv-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        padding: 1rem;
+    }
+
+    .cv-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .cv-modal {
+        background: white;
+        width: 100%;
+        max-width: 800px;
+        max-height: 90vh;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        overflow-y: auto;
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+
+    .cv-modal-overlay.active .cv-modal {
+        transform: translateY(0) scale(1);
+    }
+
+    .cv-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: #f1f5f9;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        color: var(--dark);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 10;
+    }
+
+    .cv-close:hover {
+        background: #e2e8f0;
+        color: #ef4444;
+        transform: rotate(90deg);
+    }
+
+    .cv-header {
+        display: flex;
+        align-items: center;
+        padding: 2.5rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-bottom: 1px solid #cbd5e1;
+    }
+
+    .cv-header-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        object-fit: cover;
+        margin-right: 2rem;
+    }
+
+    .cv-header-info h2 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 2rem;
+        color: var(--dark);
+        margin-bottom: 0.2rem;
+    }
+
+    .cv-header-info .cv-role {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cv-header-info .cv-address {
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+
+    .cv-body {
+        padding: 2.5rem;
+    }
+
+    .cv-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .cv-section h4 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 0.5rem;
+    }
+
+    .cv-section h4 i {
+        color: var(--primary);
+    }
+
+    .cv-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cv-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        color: #475569;
+        line-height: 1.6;
+    }
+
+    .cv-list li::before {
+        content: '•';
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2rem;
+    }
+
+    /* Scrollable Image Gallery */
+    .cv-gallery-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) #f1f5f9;
+    }
+
+    .cv-gallery-wrapper::-webkit-scrollbar {
+        height: 8px;
+    }
+    .cv-gallery-wrapper::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 4px;
+    }
+    .cv-gallery-wrapper::-webkit-scrollbar-thumb {
+        background-color: var(--primary);
+        border-radius: 4px;
+    }
+
+    .cv-gallery {
+        display: flex;
+        gap: 1rem;
+        width: max-content;
+    }
+
+    .cv-gallery-item {
+        width: 200px;
+        height: 150px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .cv-gallery-item:hover {
+        transform: scale(1.05);
+    }
+
+    .cv-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+        .cv-header {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        .cv-header-img {
+            margin-right: 0;
+            margin-bottom: 1rem;
+            width: 120px;
+            height: 120px;
+        }
+        .cv-body {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="team-header">
+    <div class="container">
+        <h1>Notre Équipe d'Experts</h1>
+        <p>Découvrez les professionnels qualifiés qui font la force de Garoui Electricity. Des techniciens passionnés au service de vos projets.</p>
+    </div>
+</div>
+
+<div class="team-container">
+    <div class="container">
+        <div class="team-grid">
+            {% for item in employee_data %}
+            <div class="team-card glass-effect" 
+                 data-name="{{ item.employee.first_name }} {{ item.employee.last_name }}"
+                 data-role="{{ item.employee.role }}"
+                 data-address="{{ item.employee.address }}"
+                 data-photo="{% if item.employee.profile_photo %}{{ item.employee.profile_photo.url }}{% else %}{% static 'images/default_avatar.png' %}{% endif %}"
+                 data-experiences="{{ item.experiences|join:'|||' }}"
+                 data-works="{{ item.works|join:'|||' }}"
+                 data-images="{% for img in item.employee.work_images.all %}{{ img.image.url }}{% if not forloop.last %}|||{% endif %}{% endfor %}">
+                <div class="card-image">
+                    {% if item.employee.profile_photo %}
+                        <img src="{{ item.employee.profile_photo.url }}" alt="{{ item.employee.first_name }}">
+                    {% else %}
+                        <!-- Fallback avatar -->
+                        <div style="width: 100%; height: 100%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 3rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <h3>{{ item.employee.first_name }} {{ item.employee.last_name }}</h3>
+                    <p class="role">{{ item.employee.role }}</p>
+                    <p class="address"><i class="fas fa-map-marker-alt"></i> {{ item.employee.address }}</p>
+                    <button class="btn-profil" onclick="openCVModal(this.closest('.team-card'))">Voir profil</button>
+                </div>
+            </div>
+            {% empty %}
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <i class="fas fa-users" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--dark); font-family: 'Outfit', sans-serif;">L'équipe s'agrandit</h3>
+                <p style="color: var(--gray);">Aucun profil n'a été ajouté pour le moment. Revenez bientôt !</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Le Modal CV Unique -->
+<div class="cv-modal-overlay" id="cvModalOverlay">
+    <div class="cv-modal">
+        <button class="cv-close" onclick="closeCVModal()"><i class="fas fa-times"></i></button>
+        
+        <div class="cv-header">
+            <img src="" alt="Profile" id="cvPhoto" class="cv-header-img" onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div id="cvPhotoFallback" style="display:none; width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #e2e8f0; align-items: center; justify-content: center; color: #94a3b8; font-size: 2.5rem; margin-right: 2rem; flex-shrink: 0;">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="cv-header-info">
+                <h2 id="cvName">Nom Prénom</h2>
+                <div class="cv-role" id="cvRole">Poste</div>
+                <div class="cv-address"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> <span id="cvAddress">Adresse</span></div>
+            </div>
+        </div>
+
+        <div class="cv-body">
+            <div class="cv-section">
+                <h4><i class="fas fa-briefcase"></i> Expérience Professionnelle</h4>
+                <ul class="cv-list" id="cvExperiences">
+                    <!-- Rempli par JS -->
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h4><i class="fas fa-tools"></i> Travaux Réalisés</h4>
+                <ul class="cv-list" id="cvWorks">
+                    <!-- Rempli par JS -->
+                </ul>
+            </div>
+
+            <div class="cv-section" id="cvGallerySection">
+                <h4><i class="fas fa-images"></i> Galerie de Réalisations</h4>
+                <div class="cv-gallery-wrapper">
+                    <div class="cv-gallery" id="cvGallery">
+                        <!-- Rempli par JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function openCVModal(cardElement) {
+        // Retrieve data
+        const name = cardElement.getAttribute('data-name');
+        const role = cardElement.getAttribute('data-role');
+        const address = cardElement.getAttribute('data-address');
+        const photo = cardElement.getAttribute('data-photo');
+        const expsStr = cardElement.getAttribute('data-experiences');
+        const worksStr = cardElement.getAttribute('data-works');
+        const imagesStr = cardElement.getAttribute('data-images');
+
+        // Populate Modal Header
+        document.getElementById('cvName').textContent = name;
+        document.getElementById('cvRole').textContent = role;
+        document.getElementById('cvAddress').textContent = address;
+        
+        const photoEl = document.getElementById('cvPhoto');
+        const fallbackEl = document.getElementById('cvPhotoFallback');
+        if(photo && photo.trim() !== '') {
+            photoEl.src = photo;
+            photoEl.style.display = 'block';
+            fallbackEl.style.display = 'none';
+        } else {
+            photoEl.style.display = 'none';
+            fallbackEl.style.display = 'flex';
+        }
+
+        // Populate Experiences
+        const expsList = document.getElementById('cvExperiences');
+        expsList.innerHTML = '';
+        if(expsStr) {
+            const exps = expsStr.split('|||');
+            exps.forEach(exp => {
+                if(exp.trim() !== '') {
+                    const li = document.createElement('li');
+                    li.textContent = exp;
+                    expsList.appendChild(li);
+                }
+            });
+        }
+
+        // Populate Works
+        const worksList = document.getElementById('cvWorks');
+        worksList.innerHTML = '';
+        if(worksStr) {
+            const works = worksStr.split('|||');
+            works.forEach(work => {
+                if(work.trim() !== '') {
+                    const li = document.createElement('li');
+                    li.textContent = work;
+                    worksList.appendChild(li);
+                }
+            });
+        }
+
+        // Populate Gallery
+        const gallerySection = document.getElementById('cvGallerySection');
+        const gallery = document.getElementById('cvGallery');
+        gallery.innerHTML = '';
+        if(imagesStr && imagesStr.trim() !== '') {
+            gallerySection.style.display = 'block';
+            const images = imagesStr.split('|||');
+            images.forEach(imgUrl => {
+                if(imgUrl.trim() !== '') {
+                    const div = document.createElement('div');
+                    div.className = 'cv-gallery-item';
+                    div.innerHTML = `<img src="${imgUrl}" alt="Travail de ${name}" loading="lazy">`;
+                    gallery.appendChild(div);
+                }
+            });
+        } else {
+            gallerySection.style.display = 'none';
+        }
+
+        // Show Modal
+        document.getElementById('cvModalOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeCVModal() {
+        document.getElementById('cvModalOverlay').classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close on overlay click
+    document.getElementById('cvModalOverlay').addEventListener('click', function(e) {
+        if(e.target === this) {
+            closeCVModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if(e.key === 'Escape' && document.getElementById('cvModalOverlay').classList.contains('active')) {
+            closeCVModal();
+        }
+    });
+</script>
+{% endblock %}

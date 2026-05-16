@@ -291,28 +291,12 @@
         font-size: 1.2rem;
     }
 
-    /* Scrollable Image Gallery (Slider Style) */
+    /* Auto-scrolling Image Gallery (Marquee Style) */
     .cv-gallery-wrapper {
         width: 100%;
-        overflow-x: auto;
+        overflow: hidden;
         padding-bottom: 1.5rem;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary) #f1f5f9;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .cv-gallery-wrapper::-webkit-scrollbar {
-        height: 10px;
-    }
-    .cv-gallery-wrapper::-webkit-scrollbar-track {
-        background: #f8fafc;
-        border-radius: 10px;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-    }
-    .cv-gallery-wrapper::-webkit-scrollbar-thumb {
-        background: linear-gradient(to right, var(--primary), #0ea5e9);
-        border-radius: 10px;
+        position: relative;
     }
 
     .cv-gallery {
@@ -320,29 +304,37 @@
         gap: 1.5rem;
         width: max-content;
         padding: 0.5rem 0;
+        animation: cv-marquee 20s linear infinite;
+    }
+
+    .cv-gallery:hover {
+        animation-play-state: paused;
     }
 
     .cv-gallery-item {
-        width: 320px;
-        height: 220px;
-        border-radius: 16px;
+        width: 250px;
+        height: 180px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         flex-shrink: 0;
-        scroll-snap-align: start;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
+        transition: transform 0.3s;
     }
 
     .cv-gallery-item:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        transform: scale(1.05);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
 
     .cv-gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    @keyframes cv-marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - 0.75rem)); }
     }
 
     @media (max-width: 768px) {
@@ -524,15 +516,24 @@
         gallery.innerHTML = '';
         if(imagesStr && imagesStr.trim() !== '') {
             gallerySection.style.display = 'block';
-            const images = imagesStr.split('|||');
-            images.forEach(imgUrl => {
-                if(imgUrl.trim() !== '') {
+            const images = imagesStr.split('|||').filter(url => url.trim() !== '');
+            if(images.length > 0) {
+                // Original items
+                images.forEach(imgUrl => {
                     const div = document.createElement('div');
                     div.className = 'cv-gallery-item';
                     div.innerHTML = `<img src="${imgUrl}" alt="Travail de ${name}" loading="lazy">`;
                     gallery.appendChild(div);
-                }
-            });
+                });
+                
+                // Duplicate items for infinite marquee loop
+                images.forEach(imgUrl => {
+                    const div = document.createElement('div');
+                    div.className = 'cv-gallery-item';
+                    div.innerHTML = `<img src="${imgUrl}" alt="Travail de ${name}" loading="lazy">`;
+                    gallery.appendChild(div);
+                });
+            }
         } else {
             gallerySection.style.display = 'none';
         }

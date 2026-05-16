@@ -291,46 +291,52 @@
         font-size: 1.2rem;
     }
 
-    /* Scrollable Image Gallery */
+    /* Scrollable Image Gallery (Slider Style) */
     .cv-gallery-wrapper {
         width: 100%;
         overflow-x: auto;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
         scrollbar-width: thin;
         scrollbar-color: var(--primary) #f1f5f9;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
 
     .cv-gallery-wrapper::-webkit-scrollbar {
-        height: 8px;
+        height: 10px;
     }
     .cv-gallery-wrapper::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 4px;
+        background: #f8fafc;
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
     }
     .cv-gallery-wrapper::-webkit-scrollbar-thumb {
-        background-color: var(--primary);
-        border-radius: 4px;
+        background: linear-gradient(to right, var(--primary), #0ea5e9);
+        border-radius: 10px;
     }
 
     .cv-gallery {
         display: flex;
-        gap: 1rem;
+        gap: 1.5rem;
         width: max-content;
+        padding: 0.5rem 0;
     }
 
     .cv-gallery-item {
-        width: 200px;
-        height: 150px;
-        border-radius: 12px;
+        width: 320px;
+        height: 220px;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         flex-shrink: 0;
-        cursor: pointer;
-        transition: transform 0.3s;
+        scroll-snap-align: start;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
     }
 
     .cv-gallery-item:hover {
-        transform: scale(1.05);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
 
     .cv-gallery-item img {
@@ -353,6 +359,10 @@
         }
         .cv-body {
             padding: 1.5rem;
+        }
+        .cv-gallery-item {
+            width: 280px;
+            height: 200px;
         }
     }
 </style>

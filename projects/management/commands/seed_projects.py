@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 'location': 'Oran',
                 'year': 2023,
                 'challenge': 'Optimisation énergétique pour réduire les coûts de maintenance de la cité.',
-                'solution': 'Utilisation de projecteurs LED ELMARK avec capteurs de luminosité intelligents.'
+                'solution': 'Utilisation de projecteurs LED Garoui Electricity avec capteurs de luminosité intelligents.'
             }
         ]
 

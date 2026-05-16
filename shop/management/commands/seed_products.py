@@ -12,7 +12,7 @@ class Command(BaseCommand):
         cat_industrial, _ = Category.objects.get_or_create(name='Industriel', handle='industriel')
 
         # Create Collection
-        col_elmark, _ = Collection.objects.get_or_create(name='ELMARK Professional', handle='elmark-professional')
+        col_Garoui Electricity, _ = Collection.objects.get_or_create(name='Garoui Electricity Professional', handle='Garoui Electricity-professional')
 
         products_data = [
             {
@@ -23,7 +23,7 @@ class Command(BaseCommand):
                 'price': 4500.00,
                 'weight': 1200,
                 'category': cat_lighting,
-                'thumbnail_url': 'https://www.elmarkholding.eu/uploads/products/12345/thumb.jpg'
+                'thumbnail_url': 'https://www.Garoui Electricityholding.eu/uploads/products/12345/thumb.jpg'
             },
             {
                 'title': 'CIRCUIT BREAKER 1P 16A C-CURVE',
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 'price': 850.00,
                 'weight': 110,
                 'category': cat_protection,
-                'thumbnail_url': 'https://www.elmarkholding.eu/uploads/products/67890/thumb.jpg'
+                'thumbnail_url': 'https://www.Garoui Electricityholding.eu/uploads/products/67890/thumb.jpg'
             },
             {
                 'title': 'INDUSTRIAL BELL 250mm 230V',
@@ -43,7 +43,7 @@ class Command(BaseCommand):
                 'price': 12500.00,
                 'weight': 2500,
                 'category': cat_industrial,
-                'thumbnail_url': 'https://www.elmarkholding.eu/uploads/products/11223/thumb.jpg'
+                'thumbnail_url': 'https://www.Garoui Electricityholding.eu/uploads/products/11223/thumb.jpg'
             }
         ]
 
@@ -57,7 +57,7 @@ class Command(BaseCommand):
                     'sku': data['sku'],
                     'price': data['price'],
                     'weight': data['weight'],
-                    'collection': col_elmark,
+                    'collection': col_Garoui Electricity,
                     'inventory_quantity': 100
                 }
             )

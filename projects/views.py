@@ -9,8 +9,8 @@ MISSION_CATEGORIES = [
         'label': 'Coupure',
         'icon': 'fas fa-power-off',
         'color': '#ef4444',
-        'description': "Chaque jour, les équipes de Garoui Electricity interviennent en urgence sur les réseaux électriques Sonelgaz pour localiser et isoler les zones de coupure. Ce travail de précision requiert une réactivité maximale pour minimiser le temps sans courant pour les abonnés.",
-        'challenge': "Identifier rapidement la source du défaut sur un réseau complexe tout en garantissant la sécurité des techniciens et du voisinage.",
+        'description': "Sur ordre de Sonelgaz, les équipes de Garoui Electricity effectuent des coupures de courant chez les abonnés ayant des impayés de consommation. Cette mission administrative et technique vise à régulariser la situation des abonnés défaillants et à assurer l'équité dans la gestion du réseau.",
+        'challenge': "Intervenir avec professionnalisme et dans le strict respect des procédures Sonelgaz, en localisant précisément le compteur de l'abonné concerné, même dans des immeubles complexes ou des zones difficiles d'accès.",
     },
     {
         'key': 'retablissement',
@@ -30,7 +30,7 @@ MISSION_CATEGORIES = [
     },
     {
         'key': 'detecteur_co',
-        'label': 'Détecteur CO',
+        'label': 'Installation des Détecteurs de Monoxyde de Carbone',
         'icon': 'fas fa-wind',
         'color': '#8b5cf6',
         'description': "Dans le cadre du programme national de sécurité domestique, Garoui Electricity déploie des détecteurs de monoxyde de carbone dans les foyers. Cette mission de prévention contribue directement à la protection des vies humaines contre ce danger invisible.",

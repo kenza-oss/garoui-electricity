@@ -26,10 +26,10 @@
     }
     .real-hero h1 {
         font-family: 'Outfit', sans-serif; font-size: clamp(2.4rem,6vw,4rem);
-        color: white; line-height: 1.15; margin-bottom: 1.2rem; font-weight: 700;
+        color: white; line-height: 1.15; margin-bottom: 1.2rem; font-weight: 300;
     }
-    .real-hero h1 span { color: var(--primary); }
-    .real-hero p { color: #94a3b8; font-size: 1.15rem; max-width: 620px; line-height: 1.7; font-weight: 300; }
+    .real-hero h1 span { color: white; }
+    .real-hero p { color: rgba(255,255,255,.75); font-size: 1.1rem; max-width: 620px; line-height: 1.8; font-weight: 300; }
 
     /* ─── Sectors ─── */
     .sectors-section { padding: 7rem 0; background: #f8fafc; }
@@ -123,20 +123,21 @@
     .s-stat .lbl { color: #64748b; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; }
 
     /* ─── Mission Categories ─── */
-    .missions-section { padding: 7rem 0; background: #0f172a; }
-    .missions-section .section-label h2 { color: white; }
-    .missions-section .section-label p { color: #64748b; }
+    .missions-section { padding: 7rem 0; background: #f8fafc; }
+    .missions-section .section-label h2 { color: var(--dark); }
+    .missions-section .section-label p { color: #475569; }
 
     .mission-card {
-        background: rgba(255,255,255,.04);
-        border: 1px solid rgba(255,255,255,.08);
+        background: white;
+        border: 1px solid #e2e8f0;
         border-radius: 20px;
         padding: 2.5rem;
         margin-bottom: 3rem;
-        transition: border-color .3s;
+        box-shadow: 0 4px 20px rgba(0,0,0,.05);
+        transition: box-shadow .3s, transform .3s;
     }
     .mission-card:last-child { margin-bottom: 0; }
-    .mission-card:hover { border-color: rgba(255,255,255,.18); }
+    .mission-card:hover { box-shadow: 0 12px 35px rgba(0,0,0,.1); transform: translateY(-3px); }
 
     .mission-header {
         display: flex; align-items: center; gap: 1.5rem;
@@ -149,7 +150,7 @@
     }
     .mission-header-text h3 {
         font-family: 'Outfit', sans-serif; font-size: 1.6rem;
-        color: white; font-weight: 700; margin-bottom: .3rem;
+        color: var(--dark); font-weight: 700; margin-bottom: .3rem;
     }
     .mission-header-text .mission-sub {
         color: #64748b; font-size: .85rem; text-transform: uppercase;
@@ -157,17 +158,17 @@
     }
 
     .mission-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
-    .mission-desc p { color: #94a3b8; font-size: .98rem; line-height: 1.75; font-weight: 300; }
+    .mission-desc p { color: #334155; font-size: .98rem; line-height: 1.75; font-weight: 400; }
     .mission-challenge {
-        background: rgba(255,255,255,.04); border-radius: 12px;
+        background: #f8fafc; border-radius: 12px;
         padding: 1.2rem 1.5rem; border-left: 3px solid;
     }
     .mission-challenge .ch-label {
-        color: #64748b; font-size: .72rem; text-transform: uppercase;
+        color: #475569; font-size: .72rem; text-transform: uppercase;
         letter-spacing: 2px; font-weight: 700; margin-bottom: .7rem;
         display: flex; align-items: center; gap: .5rem;
     }
-    .mission-challenge p { color: #cbd5e1; font-size: .9rem; line-height: 1.65; font-weight: 300; }
+    .mission-challenge p { color: #1e293b; font-size: .9rem; line-height: 1.65; font-weight: 400; }
 
     /* ─── Auto-scroll gallery inside mission card ─── */
     .mission-gallery-wrapper { overflow: hidden; position: relative; }
@@ -186,9 +187,9 @@
     .mission-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
     .no-images-placeholder {
         width: 100%; height: 120px; border-radius: 12px;
-        background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.1);
+        background: #f1f5f9; border: 1px dashed #cbd5e1;
         display: flex; align-items: center; justify-content: center;
-        color: #475569; font-size: .9rem; gap: .5rem;
+        color: #94a3b8; font-size: .9rem; gap: .5rem;
     }
 
     @keyframes mission-marquee {
@@ -216,9 +217,9 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="real-hero">
-    <div class="container real-hero-content">
-        <div class="real-hero-badge"><i class="fas fa-hard-hat"></i> Expertise & Terrain</div>
-        <h1>Nos <span>Réalisations</span><br>& Secteurs d'Activité</h1>
+    <div class="container real-hero-content" style="text-align: left;">
+        <div class="real-hero-badge" style="color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.2);"><i class="fas fa-hard-hat"></i> Expertise &amp; Terrain</div>
+        <h1>Nos Réalisations<br>&amp; Secteurs d'Activité</h1>
         <p>Depuis plus de 10 ans, Garoui Electricity intervient sur le terrain aux côtés de Sonelgaz et déploie son expertise dans tous les secteurs de l'économie algérienne.</p>
     </div>
 </section>
@@ -290,7 +291,7 @@
 
             <div class="sector-card">
                 <div class="sector-card-img">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800" alt="Universités">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800" alt="Universités">
                     <div class="badge">Éducation</div>
                 </div>
                 <div class="sector-card-body">
@@ -310,16 +311,6 @@
                 </div>
             </div>
 
-            <div class="sector-card">
-                <div class="sector-card-img">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800" alt="Énergies Renouvelables">
-                    <div class="badge">Énergie Verte</div>
-                </div>
-                <div class="sector-card-body">
-                    <h3>Énergies Renouvelables</h3>
-                    <p>Centrales solaires photovoltaïques et intégration des énergies vertes dans le réseau national.</p>
-                </div>
-            </div>
 
         </div>
     </div>

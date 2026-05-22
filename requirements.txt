@@ -5,3 +5,7 @@ psycopg2-binary
 pillow
 django-cors-headers
 djangorestframework
+dj-database-url
+cloudinary
+django-cloudinary-storage
+python-dotenv

@@ -100,14 +100,17 @@
         background: var(--primary);
         border-radius: 3px;
     }
+
     .product-card:hover {
         transform: translateY(-12px);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
         border-color: var(--primary);
     }
+
     .product-card:hover .product-image img {
         transform: scale(1.08) translateY(-10px);
     }
+
     .product-card:hover .btn-product-arrow {
         background: var(--primary) !important;
         transform: scale(1.1) rotate(90deg);
@@ -235,7 +238,9 @@
                             style="text-decoration: none; color: inherit; display: block;">
                             <div class="product-image"
                                 style="height: 320px; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 2.5rem; position: relative; overflow: hidden;">
-                                <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.02) 100%);"></div>
+                                <div
+                                    style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.02) 100%);">
+                                </div>
                                 {% if product.thumbnail %}
                                 <img src="{{ product.thumbnail.url }}" alt="{{ product.title }}"
                                     style="max-width: 85%; max-height: 85%; object-fit: contain; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));">
@@ -252,24 +257,36 @@
                                 {% else %}
                                 <i class="fas fa-image" style="font-size: 4rem; color: #e2e8f0;"></i>
                                 {% endif %}
-                                
+
                                 <div style="position: absolute; top: 1.5rem; right: 1.5rem;">
-                                    <span style="background: rgba(15, 23, 42, 0.05); backdrop-filter: blur(4px); color: #64748b; font-size: 0.65rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); letter-spacing: 0.5px;">{{ product.sku }}</span>
+                                    <span
+                                        style="background: rgba(15, 23, 42, 0.05); backdrop-filter: blur(4px); color: #64748b; font-size: 0.65rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); letter-spacing: 0.5px;">{{
+                                        product.sku }}</span>
                                 </div>
                             </div>
-                            
+
                             <div class="product-info" style="padding: 2rem 2.5rem 2.5rem;">
-                                <span style="display: inline-block; font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem; opacity: 0.8;">{{ product.collection.name|default:"PRO SERIES" }}</span>
-                                <h3 style="font-size: 1.35rem; color: #0f172a; height: 3.8rem; overflow: hidden; line-height: 1.4; font-weight: 700; font-family: 'Outfit', sans-serif; margin-bottom: 1.5rem;">{{ product.title }}</h3>
-                                
+                                <span
+                                    style="display: inline-block; font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem; opacity: 0.8;">{{
+                                    product.collection.name|default:"PRO SERIES" }}</span>
+                                <h3
+                                    style="font-size: 1.35rem; color: #0f172a; height: 3.8rem; overflow: hidden; line-height: 1.4; font-weight: 700; font-family: 'Outfit', sans-serif; margin-bottom: 1.5rem;">
+                                    {{ product.title }}</h3>
+
                                 <div style="height: 1px; background: #f1f5f9; width: 100%; margin-bottom: 2rem;"></div>
-                                
+
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <div>
-                                        <span style="display: block; font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 0.2rem;">Prix unitaire</span>
-                                        <span style="font-size: 1.6rem; font-weight: 800; color: #0f172a; font-family: 'Outfit', sans-serif;">{{ product.price|floatformat:0 }} <span style="font-size: 0.9rem; color: #64748b; font-weight: 600;">DZD</span></span>
+                                        <span
+                                            style="display: block; font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 0.2rem;">Prix
+                                            unitaire</span>
+                                        <span
+                                            style="font-size: 1.6rem; font-weight: 800; color: #0f172a; font-family: 'Outfit', sans-serif;">{{
+                                            product.price|floatformat:0 }} <span
+                                                style="font-size: 0.9rem; color: #64748b; font-weight: 600;">DZD</span></span>
                                     </div>
-                                    <div class="btn-product-arrow" style="background: #0f172a; color: white; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.4s ease; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);">
+                                    <div class="btn-product-arrow"
+                                        style="background: #0f172a; color: white; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.4s ease; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);">
                                         <i class="fas fa-plus" style="font-size: 0.9rem;"></i>
                                     </div>
                                 </div>

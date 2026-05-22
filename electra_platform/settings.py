@@ -32,6 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-jjnro4qt086pivq*fz(wk
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
+    'garouielectricity.dz',
+    'www.garouielectricity.dz',
     'garoui-electricity-prod.onrender.com',
     'garoui-electricity.onrender.com',
     '.onrender.com',
@@ -41,6 +43,8 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://garouielectricity.dz',
+    'https://www.garouielectricity.dz',
     'https://garoui-electricity.onrender.com',
     'https://garoui-electricity-prod.onrender.com',
 ]

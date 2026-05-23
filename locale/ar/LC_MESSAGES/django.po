@@ -198,3 +198,268 @@ msgstr "قبول"
 
 msgid "Refuser"
 msgstr "رفض"
+
+# --- PAGE D'ACCUEIL (index.html) ---
+msgid "Haute Compétence Électrique"
+msgstr "كفاءة كهربائية عالية"
+
+msgid "Ingénierie Industrielle"
+msgstr "الهندسة الصناعية"
+
+msgid "Secteur Médical"
+msgstr "القطاع الطبي"
+
+msgid "Smart Infra"
+msgstr "البنية الذكية"
+
+msgid "Risques"
+msgstr "إدارة المخاطر"
+
+msgid "Excellence Technique"
+msgstr "التميز التقني"
+
+msgid "Expertise en Ingénierie"
+msgstr "خبرة في الهندسة"
+
+msgid "Énergétique"
+msgstr "الطاقية"
+
+msgid "Nous concevons des infrastructures électriques durables et innovantes pour le secteur industriel, hospitalier et résidentiel de haut standing."
+msgstr "نصمم بنى تحتية كهربائية مستدامة ومبتكرة للقطاع الصناعي والطبي والسكني الراقي."
+
+msgid "Découvrir nos Produits"
+msgstr "اكتشف منتجاتنا"
+
+msgid "Réseau de Confiance"
+msgstr "شبكة الثقة"
+
+msgid "Nos Partenaires Agréés"
+msgstr "شركاؤنا المعتمدون"
+
+msgid "Découvrez les entreprises qualifiées qui collaborent avec Garoui Electricity sur nos chantiers."
+msgstr "اكتشف الشركات المؤهلة التي تتعاون مع Garoui Electricity في مواقع العمل."
+
+msgid "Visiter le site web"
+msgstr "زيارة الموقع الإلكتروني"
+
+msgid "La réalité du terrain"
+msgstr "واقع الميدان"
+
+msgid "Nos Équipes en Action"
+msgstr "فرقنا في العمل"
+
+msgid "Chantier Garoui"
+msgstr "ورشة غاروي"
+
+msgid "Qui sommes-nous ?"
+msgstr "من نحن؟"
+
+msgid "L'ingénierie électrique au service de vos projets."
+msgstr "الهندسة الكهربائية في خدمة مشاريعكم."
+
+msgid "Découvrir l'entreprise"
+msgstr "اكتشف الشركة"
+
+msgid "Garoui Electricity est le partenaire technique des professionnels. Nous concevons, installons et maintenons des infrastructures électriques robustes et conformes aux normes de sécurité internationales."
+msgstr "Garoui Electricity هو الشريك التقني للمحترفين. نصمم ونركب ونصون البنى التحتية الكهربائية المتينة والمطابقة للمعايير الدولية للسلامة."
+
+msgid "Sécurité Maximale"
+msgstr "أقصى درجات السلامة"
+
+msgid "Respect strict des normes."
+msgstr "الالتزام الصارم بالمعايير."
+
+msgid "Haute Puissance"
+msgstr "طاقة عالية"
+
+msgid "Infrastructures industrielles."
+msgstr "البنى التحتية الصناعية."
+
+msgid "Réseaux VDI"
+msgstr "شبكات VDI"
+
+msgid "Courant faible & domotique."
+msgstr "التيار الضعيف والمنزل الذكي."
+
+msgid "Maintenance 7/7"
+msgstr "صيانة 7/7"
+
+msgid "Intervention rapide B2B."
+msgstr "تدخل سريع للشركات."
+
+msgid "Secteurs d'Intervention"
+msgstr "قطاعات التدخل"
+
+msgid "Nos Domaines d'Expertise"
+msgstr "مجالات خبرتنا"
+
+msgid "Nous concevons des installations adaptées aux exigences de chaque secteur d'activité."
+msgstr "نصمم منشآت مكيّفة مع متطلبات كل قطاع نشاط."
+
+msgid "Secteur Industriel"
+msgstr "القطاع الصناعي"
+
+msgid "Infrastructures électriques lourdes conçues spécifiquement pour les usines de production, les entrepôts de stockage massif et les zones logistiques."
+msgstr "بنى تحتية كهربائية ثقيلة مصممة خصيصاً لمصانع الإنتاج ومستودعات التخزين الضخمة والمناطق اللوجستية."
+
+msgid "Secteur Hospitalier"
+msgstr "القطاع الاستشفائي"
+
+msgid "Installations critiques, sécurisées et continues (groupes de secours, onduleurs) pour les cliniques et les laboratoires d'analyses."
+msgstr "منشآت حيوية آمنة ومستمرة (مولدات احتياطية، طاقم لا انقطاعي) للعيادات ومختبرات التحليل."
+
+msgid "Tourisme & Tertiaire"
+msgstr "السياحة والخدمات"
+
+msgid "Aménagements électriques haut de gamme pour les hôtels de luxe, centres commerciaux de grande envergure et tours de bureaux modernes."
+msgstr "تجهيزات كهربائية راقية لفنادق الفخامة والمراكز التجارية الكبرى وأبراج المكاتب الحديثة."
+
+msgid "Secteur Résidentiel"
+msgstr "القطاع السكني"
+
+msgid "Gestion et réalisation complète pour les programmes immobiliers, les villas privées de haut standing et les résidences intégrées."
+msgstr "إدارة وتنفيذ كامل للمشاريع العقارية والفيلات الخاصة الراقية والمجمعات السكنية المتكاملة."
+
+msgid "Prestations Globales"
+msgstr "خدمات شاملة"
+
+msgid "Nos Pôles de Compétences"
+msgstr "أقطاب الكفاءة لدينا"
+
+msgid "Nous maîtrisons l'intégralité du cycle, de la distribution d'énergie à l'installation des réseaux informatiques et sécuritaires."
+msgstr "نتحكم في الدورة الكاملة، من توزيع الطاقة إلى تركيب شبكات المعلوماتية والأمن."
+
+msgid "Courant Fort"
+msgstr "التيار القوي"
+
+msgid "Postes de Transformation"
+msgstr "محطات التحويل"
+
+msgid "Installation complète de transformateurs HT/BT pour les grands complexes."
+msgstr "تركيب كامل لمحولات الجهد العالي/المنخفض للمجمعات الكبرى."
+
+msgid "Armoires (TGBT) et Tableaux"
+msgstr "خزائن التوزيع (TGBT) واللوحات"
+
+msgid "Câblage sur-mesure d'armoires de distribution générale et divisionnaires."
+msgstr "توصيل مخصص لخزائن التوزيع العامة والفرعية."
+
+msgid "Alimentation de Secours"
+msgstr "إمداد الطاقة الاحتياطي"
+
+msgid "Couplage de groupes électrogènes et d'onduleurs pour zéro coupure."
+msgstr "ربط المولدات الكهربائية ووحدات اللاانقطاع لضمان صفر انقطاع."
+
+msgid "Courant Faible"
+msgstr "التيار الضعيف"
+
+msgid "Câblage Structuré (VDI)"
+msgstr "التوصيل المنظم (VDI)"
+
+msgid "Baies de brassage, fibre optique et réseaux informatiques haut débit."
+msgstr "حجرات الربط، الألياف الضوئية وشبكات المعلوماتية عالية السرعة."
+
+msgid "Sécurité & Détection (SDI)"
+msgstr "الأمن والكشف (SDI)"
+
+msgid "Pose de systèmes de détection incendie conformes aux normes ERP."
+msgstr "تركيب أنظمة الكشف عن الحرائق المطابقة لمعايير ERP."
+
+msgid "Gestion Technique (GTC)"
+msgstr "الإدارة التقنية (GTC)"
+
+msgid "Automatisation intelligente de l'éclairage, climatisation et contrôle d'accès."
+msgstr "أتمتة ذكية للإضاءة والتكييف والتحكم في الدخول."
+
+msgid "Phase Critique"
+msgstr "المرحلة الحرجة"
+
+msgid "Maintenance, Tests et Validations Administratives"
+msgstr "الصيانة والاختبارات والتحققات الإدارية"
+
+msgid "Cette section est cruciale pour la livraison des projets au client final."
+msgstr "هذا القسم بالغ الأهمية لتسليم المشاريع للعميل النهائي."
+
+msgid "Tests et Diagnostics"
+msgstr "الاختبارات والتشخيصات"
+
+msgid "Réalisation des tests d'isolement, de continuité et de mesure de terre."
+msgstr "إجراء اختبارات العزل والاستمرارية وقياس التأريض."
+
+msgid "Mise en Conformité"
+msgstr "المطابقة والامتثال"
+
+msgid "Audit des installations existantes selon les normes de sécurité internationales ou locales."
+msgstr "تدقيق المنشآت القائمة وفق معايير السلامة الدولية أو المحلية."
+
+msgid "Maintenance Préventive"
+msgstr "الصيانة الوقائية"
+
+msgid "Contrats d'entretien pour équipements critiques (transformateurs, systèmes de secours)."
+msgstr "عقود صيانة للمعدات الحيوية (المحولات، أنظمة الطوارئ)."
+
+msgid "Processus de Fin de Projet"
+msgstr "إجراءات إنهاء المشروع"
+
+msgid "Le système intègre et archive les tests et les validations administratives obligatoires pour les producteurs et les clients."
+msgstr "يدمج النظام ويؤرشف الاختبارات والتحققات الإدارية الإلزامية للمنتجين والعملاء."
+
+msgid "100% Conforme"
+msgstr "100% مطابق"
+
+msgid "Normes Internationales"
+msgstr "المعايير الدولية"
+
+msgid "Vous souhaitez devenir notre partenaire ?"
+msgstr "هل ترغب في أن تصبح شريكنا؟"
+
+msgid "Obtenez plus d'informations sur notre programme de partenariat."
+msgstr "احصل على مزيد من المعلومات حول برنامج الشراكة لدينا."
+
+msgid "Prendre contact"
+msgstr "تواصل معنا"
+
+msgid "Une Entreprise à Fort Potentiel"
+msgstr "شركة ذات إمكانات عالية"
+
+msgid "Expertise & Qualité au service de l'énergie"
+msgstr "الخبرة والجودة في خدمة الطاقة"
+
+msgid "Garoui Electricity propose un portefeuille de services bien équilibré, des équipements électriques industriels aux solutions d'éclairage les plus élégantes."
+msgstr "تقدم Garoui Electricity محفظة خدمات متوازنة، من المعدات الكهربائية الصناعية إلى أرقى حلول الإضاءة."
+
+msgid "Normes Européennes"
+msgstr "المعايير الأوروبية"
+
+msgid "Tests en Laboratoire"
+msgstr "اختبارات مخبرية"
+
+msgid "Logistique Fiable"
+msgstr "لوجستيك موثوق"
+
+msgid "Garantie Étendue"
+msgstr "ضمان موسّع"
+
+msgid "Lire la suite"
+msgstr "اقرأ المزيد"
+
+msgid "Expertise Terrain"
+msgstr "خبرة ميدانية"
+
+msgid "12 ans de Garantie"
+msgstr "12 سنة ضمان"
+
+msgid "Nous offrons une sécurité inégalée sur tous nos produits certifiés."
+msgstr "نقدم أماناً لا مثيل له على جميع منتجاتنا المعتمدة."
+
+msgid "Économie d'Énergie"
+msgstr "توفير الطاقة"
+
+msgid "Solutions d'éclairage à haute efficacité pour réduire votre empreinte."
+msgstr "حلول إضاءة عالية الكفاءة لتقليل بصمتك الكربونية."
+
+msgid "Maison Intelligente"
+msgstr "المنزل الذكي"
+
+msgid "Contrôlez vos équipements à distance avec nos solutions Smart Home."
+msgstr "تحكم في أجهزتك عن بُعد بفضل حلول المنزل الذكي."

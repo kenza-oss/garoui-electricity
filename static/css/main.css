@@ -953,19 +953,20 @@ h1, h2, h3, h4, h5, h6 {
     .nav-links { 
         position: fixed !important; 
         top: 0 !important; 
-        right: -100% !important; 
+        right: 0 !important; 
+        transform: translateX(100%) !important; 
         width: 300px !important; 
         height: 100vh !important; 
         background: rgba(255, 255, 255, 0.98) !important; 
         backdrop-filter: blur(10px) !important;
         flex-direction: column !important; 
         padding: 80px 2rem 2rem !important; 
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
         box-shadow: -10px 0 30px rgba(0,0,0,0.1) !important;
         gap: 1.5rem !important;
         z-index: 2001 !important;
     }
-    .nav-links.active { right: 0 !important; display: flex !important; }
+    .nav-links.active { transform: translateX(0) !important; display: flex !important; }
     .mobile-menu-btn { display: flex !important; }
     .mobile-nav-close-item { display: block !important; margin-bottom: 2rem !important; }
 

@@ -108,9 +108,8 @@
                 <span class="logo-text">Garoui<span>Electricity</span></span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <!-- Mobile Close Header -->
                 <li class="mobile-nav-close-item" style="display: none;">
-                    <button onclick="closeMenu()" style="width: 100%; justify-content: space-between; background: #f8fafc; border: none; padding: 1rem 1.5rem; display: flex; align-items: center; color: var(--dark); font-weight: 700; font-family: 'Outfit', sans-serif; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                    <button onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.mobile-menu-btn i').className='fas fa-bars';" style="width: 100%; justify-content: space-between; background: #f8fafc; border: none; padding: 1rem 1.5rem; display: flex; align-items: center; color: var(--dark); font-weight: 700; font-family: 'Outfit', sans-serif; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
                         <span>{% trans "Menu de Navigation" %}</span>
                         <i class="fas fa-times" style="font-size: 1.2rem; background: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></i>
                     </button>
@@ -175,7 +174,7 @@
                     <input type="text" name="q" placeholder="{% trans "Rechercher..." %}" style="padding: 0.6rem 1rem; padding-right: 2.5rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; color: var(--dark); width: 180px; outline: none; transition: width 0.3s; font-size: 0.85rem;">
                     <button type="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gray); cursor: pointer;"><i class="fas fa-search"></i></button>
                 </form>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -246,20 +245,6 @@
     <style>.whatsapp-float:hover { transform: scale(1.1); }</style>
 
     <script>
-        // ── Menu Mobile ──
-        function toggleMenu() {
-            var nav = document.getElementById('navLinks');
-            var btn = document.getElementById('mobileMenuBtn');
-            nav.classList.toggle('active');
-            btn.querySelector('i').className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-        }
-        function closeMenu() {
-            var nav = document.getElementById('navLinks');
-            var btn = document.getElementById('mobileMenuBtn');
-            nav.classList.remove('active');
-            btn.querySelector('i').className = 'fas fa-bars';
-        }
-
         // ── Produits Accordion (mobile only) ──
         function toggleMobileProducts(e) {
             e.preventDefault();

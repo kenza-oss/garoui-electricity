@@ -1,0 +1,200 @@
+# Arabic translation for Garoui Electricity
+# Copyright (C) 2026 Garoui Electricity
+msgid ""
+msgstr ""
+"Project-Id-Version: garoui-electricity 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-23 16:00+0200\n"
+"PO-Revision-Date: 2026-05-23 16:00+0200\n"
+"Last-Translator: Garoui Electricity\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+# --- NAVIGATION ---
+msgid "Devenir Partenaire"
+msgstr "كن شريكاً"
+
+msgid "À Propos"
+msgstr "من نحن"
+
+msgid "Demander un Devis"
+msgstr "طلب عرض سعر"
+
+msgid "Produits"
+msgstr "المنتجات"
+
+msgid "Domaines d'Application"
+msgstr "مجالات التطبيق"
+
+msgid "Expertise Technique"
+msgstr "الخبرة التقنية"
+
+msgid "Réalisations"
+msgstr "الإنجازات"
+
+msgid "Notre Équipe"
+msgstr "فريقنا"
+
+msgid "Urgence SAV"
+msgstr "طوارئ خدمة ما بعد البيع"
+
+msgid "Rechercher..."
+msgstr "بحث..."
+
+msgid "Menu de Navigation"
+msgstr "قائمة التنقل"
+
+# --- TOP BAR ---
+msgid "Français"
+msgstr "الفرنسية"
+
+msgid "العربية"
+msgstr "العربية"
+
+# --- FOOTER ---
+msgid "Expertise électrique de haute performance pour infrastructures critiques et projets de haut standing."
+msgstr "خبرة كهربائية عالية الأداء للبنى التحتية الحيوية والمشاريع الراقية."
+
+msgid "Plateforme"
+msgstr "المنصة"
+
+msgid "Partenariat"
+msgstr "الشراكة"
+
+msgid "Nos Produits"
+msgstr "منتجاتنا"
+
+msgid "Voir tout le catalogue"
+msgstr "مشاهدة الكتالوج كاملاً"
+
+msgid "Contact"
+msgstr "التواصل"
+
+msgid "Tous droits réservés."
+msgstr "جميع الحقوق محفوظة."
+
+# --- HERO / HOME PAGE ---
+msgid "Haute Compétence"
+msgstr "كفاءة عالية"
+
+msgid "Électrique"
+msgstr "كهربائية"
+
+msgid "Solutions électriques de haute performance pour infrastructures critiques"
+msgstr "حلول كهربائية عالية الأداء للبنى التحتية الحيوية"
+
+msgid "Découvrir Nos Produits"
+msgstr "اكتشف منتجاتنا"
+
+msgid "Demander un Devis Gratuit"
+msgstr "طلب عرض سعر مجاني"
+
+msgid "années d'expérience"
+msgstr "سنوات من الخبرة"
+
+msgid "Projets Réalisés"
+msgstr "مشاريع منجزة"
+
+msgid "Clients Satisfaits"
+msgstr "عملاء راضون"
+
+msgid "Certifications"
+msgstr "شهادات"
+
+# --- ABOUT ---
+msgid "Notre Histoire"
+msgstr "قصتنا"
+
+msgid "Notre Mission"
+msgstr "مهمتنا"
+
+msgid "Notre Vision"
+msgstr "رؤيتنا"
+
+msgid "Notre Équipe d'Experts"
+msgstr "فريق خبرائنا"
+
+# --- SHOP ---
+msgid "Notre Catalogue"
+msgstr "كتالوجنا"
+
+msgid "Tous les Produits"
+msgstr "جميع المنتجات"
+
+msgid "Filtrer par catégorie"
+msgstr "تصفية حسب الفئة"
+
+msgid "Ajouter au panier"
+msgstr "أضف إلى السلة"
+
+msgid "Voir le produit"
+msgstr "عرض المنتج"
+
+msgid "En stock"
+msgstr "متوفر"
+
+msgid "Rupture de stock"
+msgstr "نفد المخزون"
+
+# --- PROJECTS ---
+msgid "Nos Réalisations"
+msgstr "إنجازاتنا"
+
+msgid "Voir le projet"
+msgstr "عرض المشروع"
+
+msgid "Tous les projets"
+msgstr "جميع المشاريع"
+
+# --- DEVIS ---
+msgid "Demande de Devis"
+msgstr "طلب عرض سعر"
+
+msgid "Votre nom"
+msgstr "اسمك"
+
+msgid "Votre email"
+msgstr "بريدك الإلكتروني"
+
+msgid "Votre téléphone"
+msgstr "رقم هاتفك"
+
+msgid "Votre message"
+msgstr "رسالتك"
+
+msgid "Envoyer"
+msgstr "إرسال"
+
+msgid "Devis envoyé avec succès !"
+msgstr "تم إرسال طلب عرض السعر بنجاح!"
+
+# --- SAV ---
+msgid "Demande d'Intervention"
+msgstr "طلب تدخل"
+
+msgid "Urgence électrique"
+msgstr "طارئ كهربائي"
+
+# --- PARTNERS ---
+msgid "Devenir Partenaire"
+msgstr "كن شريكاً"
+
+msgid "Nos Partenaires"
+msgstr "شركاؤنا"
+
+# --- COOKIES ---
+msgid "Nous utilisons des cookies pour améliorer votre expérience sur notre site."
+msgstr "نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا."
+
+msgid "En savoir plus"
+msgstr "اعرف المزيد"
+
+msgid "Accepter"
+msgstr "قبول"
+
+msgid "Refuser"
+msgstr "رفض"

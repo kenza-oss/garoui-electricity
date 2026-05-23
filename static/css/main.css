@@ -1013,3 +1013,88 @@ h1, h2, h3, h4, h5, h6 {
     .mega-menu.mobile-open { display: block !important; position: static !important; opacity: 1 !important; visibility: visible !important; transform: none !important; }
 }
 
+    /* -- MOBILE ACCORDION (Produits) -- */
+    .desktop-products-link { display: none !important; }
+    .mobile-products-header {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: inherit;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--dark);
+        cursor: pointer;
+    }
+    .mobile-products-list {
+        display: none;
+        flex-direction: column;
+        list-style: none;
+        padding: 0.5rem 0 0 1rem;
+        margin: 0;
+        gap: 0.8rem;
+    }
+    .mobile-products-list.open {
+        display: flex;
+    }
+    .mobile-products-list a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+    
+    /* -- LANG SWITCHER -- */
+    .lang-switcher {
+        position: relative;
+        cursor: pointer;
+    }
+    .lang-current {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #f1f5f9;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+    .lang-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        flex-direction: column;
+        min-width: 120px;
+        z-index: 3000;
+        overflow: hidden;
+    }
+    .lang-switcher.open .lang-dropdown {
+        display: flex;
+    }
+    .lang-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        text-decoration: none;
+        color: var(--dark);
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.9rem;
+    }
+    .lang-item:hover, .lang-item.active {
+        background: #f8fafc;
+        color: var(--primary);
+    }

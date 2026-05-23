@@ -1,24 +1,55 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
-<html lang="fr">
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Garoui Electricity | Excellence en Énergie{% endblock %}</title>
-    <meta name="description" content="Plateforme d'ingénierie électrique et solutions d'éclairage. Domaines d'application résidentiel, hospitalier et industriel.">
+    <title>{% block title %}Garoui Electricity | {% trans "Excellence en Énergie" %}{% endblock %}</title>
+    <meta name="description" content="{% trans "Plateforme d'ingénierie électrique et solutions d'éclairage." %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=4.4">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=5.0">
     
+    {% if LANGUAGE_CODE == 'ar' %}
+    <style>
+        /* ── Arabic RTL Overrides ── */
+        body { font-family: 'Noto Kufi Arabic', 'Outfit', sans-serif; direction: rtl; text-align: right; }
+        .navbar .container { flex-direction: row-reverse; }
+        .logo { flex-direction: row-reverse; }
+        .logo-text { margin-right: 0.75rem; margin-left: 0; }
+        .nav-links { left: 0 !important; right: auto !important; transform: translateX(-100%) !important; }
+        .nav-links.active { transform: translateX(0) !important; }
+        .top-bar-site .container { flex-direction: row-reverse; }
+        .top-bar-links { flex-direction: row-reverse; }
+        .footer-grid { direction: rtl; }
+        .footer-contact p { flex-direction: row-reverse; }
+        .footer-contact p i { margin-right: 0; margin-left: 0.75rem; }
+        .hero-content { text-align: right; }
+        .hero-btns { flex-direction: row-reverse; }
+        .nav-actions { flex-direction: row-reverse; }
+        .mobile-menu-btn { margin-right: auto; margin-left: 0; }
+        /* Mobile accordion RTL */
+        .mobile-products-header { flex-direction: row-reverse; }
+        .mobile-products-list a { flex-direction: row-reverse; }
+        .mobile-products-list a i { margin-right: 0; margin-left: 0.5rem; }
+        /* Cards */
+        .card-body, .service-card, .sector-card { text-align: right; }
+        /* Form labels */
+        label, .form-label { text-align: right; }
+        input, textarea, select { text-align: right; }
+    </style>
+    {% endif %}
+
     {% block extra_css %}{% endblock %}
     <style>
         .mobile-only-link { display: none; }
@@ -32,34 +63,38 @@
     <div class="top-bar-site">
         <div class="container">
             <div class="top-bar-links">
-                <a href="/partners/register/">Devenir Partenaire</a>
-
-                <a href="{% url 'showcase:about' %}">À Propos</a>
-
-                <a href="/devis/" style="color: var(--primary); font-weight: 700;"><i class="fas fa-file-alt" style="margin-right: 0.3rem;"></i>Demander un Devis</a>
+                <a href="{% url 'partners:partner_register' %}">{% trans "Devenir Partenaire" %}</a>
+                <a href="{% url 'showcase:about' %}">{% trans "À Propos" %}</a>
+                <a href="{% url 'devis:demande' %}" style="color: var(--primary); font-weight: 700;"><i class="fas fa-file-alt" style="margin-right: 0.3rem;"></i>{% trans "Demander un Devis" %}</a>
             </div>
             <div class="top-bar-lang">
-                <div class="lang-switcher">
-                    <div class="lang-current">
-                        <img src="https://flagcdn.com/w20/fr.png" width="18" alt="FR">
-                        <span>FRANCE</span>
-                        <i class="fas fa-chevron-down"></i>
+                <!-- Language Switcher -->
+                <form action="{% url 'set_language' %}" method="post" id="lang-form">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <div class="lang-switcher" onclick="this.classList.toggle('open')">
+                        <div class="lang-current">
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                <img src="https://flagcdn.com/w20/dz.png" width="18" alt="DZ">
+                                <span>العربية</span>
+                            {% else %}
+                                <img src="https://flagcdn.com/w20/fr.png" width="18" alt="FR">
+                                <span>Français</span>
+                            {% endif %}
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lang-dropdown">
+                            <button type="submit" name="language" value="fr" class="lang-item{% if LANGUAGE_CODE == 'fr' %} active{% endif %}">
+                                <img src="https://flagcdn.com/w20/fr.png" width="18" alt="FR">
+                                <span>Français</span>
+                            </button>
+                            <button type="submit" name="language" value="ar" class="lang-item{% if LANGUAGE_CODE == 'ar' %} active{% endif %}">
+                                <img src="https://flagcdn.com/w20/dz.png" width="18" alt="DZ">
+                                <span>العربية</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="lang-dropdown">
-                        <a href="#" class="lang-item active">
-                            <img src="https://flagcdn.com/w20/fr.png" width="18" alt="FR">
-                            <span>Français</span>
-                        </a>
-                        <a href="#" class="lang-item">
-                            <img src="https://flagcdn.com/w20/gb.png" width="18" alt="EN">
-                            <span>English</span>
-                        </a>
-                        <a href="#" class="lang-item">
-                            <img src="https://flagcdn.com/w20/dz.png" width="18" alt="AR">
-                            <span>العربية</span>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -72,19 +107,28 @@
                 </div>
                 <span class="logo-text">Garoui<span>Electricity</span></span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <!-- Mobile Close Header -->
                 <li class="mobile-nav-close-item" style="display: none;">
-                    <button onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.mobile-menu-btn i').className='fas fa-bars';" style="width: 100%; justify-content: space-between; background: #f8fafc; border: none; padding: 1rem 1.5rem; display: flex; align-items: center; color: var(--dark); font-weight: 700; font-family: 'Outfit', sans-serif; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
-                        <span>Menu de Navigation</span>
+                    <button onclick="closeMenu()" style="width: 100%; justify-content: space-between; background: #f8fafc; border: none; padding: 1rem 1.5rem; display: flex; align-items: center; color: var(--dark); font-weight: 700; font-family: 'Outfit', sans-serif; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                        <span>{% trans "Menu de Navigation" %}</span>
                         <i class="fas fa-times" style="font-size: 1.2rem; background: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></i>
                     </button>
                 </li>
-                <li class="mobile-only-link"><a href="/partners/register/">Devenir Partenaire</a></li>
-                <li class="mobile-only-link"><a href="{% url 'showcase:about' %}">À Propos</a></li>
-                <li class="mobile-only-link"><a href="/devis/" style="color: var(--primary); font-weight: 700;"><i class="fas fa-file-alt" style="margin-right: 0.3rem;"></i>Demander un Devis</a></li>
-                <li class="has-mega">
-                    <a href="/shop/">Produits <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <li class="mobile-only-link"><a href="{% url 'partners:partner_register' %}">{% trans "Devenir Partenaire" %}</a></li>
+                <li class="mobile-only-link"><a href="{% url 'showcase:about' %}">{% trans "À Propos" %}</a></li>
+                <li class="mobile-only-link"><a href="{% url 'devis:demande' %}" style="color: var(--primary); font-weight: 700;"><i class="fas fa-file-alt" style="margin-right: 0.3rem;"></i>{% trans "Demander un Devis" %}</a></li>
+
+                <!-- Produits — Desktop: Mega Menu | Mobile: Accordion -->
+                <li class="has-mega" id="produits-li">
+                    <!-- Desktop link -->
+                    <a href="/shop/" class="desktop-products-link">{% trans "Produits" %} <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <!-- Mobile accordion toggle -->
+                    <button class="mobile-products-header" onclick="toggleMobileProducts(event)" aria-expanded="false">
+                        <span>{% trans "Produits" %}</span>
+                        <i class="fas fa-chevron-down mobile-chevron"></i>
+                    </button>
+                    <!-- Desktop mega menu -->
                     <div class="mega-menu">
                         <div class="container">
                             <div class="mega-grid">
@@ -93,12 +137,12 @@
                                         <div class="mega-col">
                                             <ul style="list-style: none; padding: 0;">
                                     {% endif %}
-                                                <li style="margin-bottom: 0.75rem;">
-                                                    <a href="/shop/?category={{ cat.handle }}" style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; font-weight: 500;">
-                                                        <i class="{{ cat.icon }}" style="width: 20px; color: var(--primary); opacity: 0.8;"></i>
-                                                        {{ cat.name }}
-                                                    </a>
-                                                </li>
+                                            <li style="margin-bottom: 0.75rem;">
+                                                <a href="/shop/?category={{ cat.handle }}" style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; font-weight: 500;">
+                                                    <i class="{{ cat.icon }}" style="width: 20px; color: var(--primary); opacity: 0.8;"></i>
+                                                    {{ cat.name }}
+                                                </a>
+                                            </li>
                                     {% if forloop.counter|divisibleby:5 or forloop.last %}
                                             </ul>
                                         </div>
@@ -107,22 +151,31 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Mobile category list (accordion) -->
+                    <ul class="mobile-products-list" id="mobileProductsList">
+                        <li><a href="/shop/" style="font-weight: 700; color: var(--primary);">
+                            <i class="fas fa-th-large"></i> {% trans "Tous les Produits" %}
+                        </a></li>
+                        {% for cat in all_categories %}
+                        <li><a href="/shop/?category={{ cat.handle }}">
+                            <i class="{{ cat.icon }}" style="color: var(--primary);"></i> {{ cat.name }}
+                        </a></li>
+                        {% endfor %}
+                    </ul>
                 </li>
-                <li><a href="/#secteurs">Domaines d'Application</a></li>
-                <li><a href="/#expertise">Expertise Technique</a></li>
-                <li><a href="/projects/">Réalisations</a></li>
-                <li><a href="{% url 'team:employee_list' %}">Notre Équipe</a></li>
-                <li><a href="{% url 'sav:intervention_request' %}" style="color: #ef4444; font-weight: 600;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Urgence SAV</a></li>
+
+                <li><a href="/#secteurs">{% trans "Domaines d'Application" %}</a></li>
+                <li><a href="/#expertise">{% trans "Expertise Technique" %}</a></li>
+                <li><a href="/projects/">{% trans "Réalisations" %}</a></li>
+                <li><a href="{% url 'team:employee_list' %}">{% trans "Notre Équipe" %}</a></li>
+                <li><a href="{% url 'sav:intervention_request' %}" style="color: #ef4444; font-weight: 600;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>{% trans "Urgence SAV" %}</a></li>
             </ul>
             <div class="nav-actions">
                 <form action="/shop/" method="GET" class="nav-search" style="margin-right: 1.5rem; position: relative;">
-                    <input type="text" name="q" placeholder="Rechercher..." style="padding: 0.6rem 1rem; padding-right: 2.5rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; color: var(--dark); width: 180px; outline: none; transition: width 0.3s; font-size: 0.85rem;">
+                    <input type="text" name="q" placeholder="{% trans "Rechercher..." %}" style="padding: 0.6rem 1rem; padding-right: 2.5rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; color: var(--dark); width: 180px; outline: none; transition: width 0.3s; font-size: 0.85rem;">
                     <button type="submit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gray); cursor: pointer;"><i class="fas fa-search"></i></button>
                 </form>
-                
-
-
-                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -139,36 +192,33 @@
                         <span class="logo-icon" style="margin-right: 0.5rem;"><img src="{% static 'img/logo.png' %}" alt="Garoui Electricity Logo" style="width: 42px; height: 42px; object-fit: contain; filter: brightness(0) invert(1);"></span>
                         <span class="logo-text" style="color: var(--dark);">GAROUI<span style="color: var(--primary);">ELECTRICITY</span></span>
                     </a>
-                    <p>Expertise électrique de haute performance pour infrastructures critiques et projets de haut standing.</p>
+                    <p>{% trans "Expertise électrique de haute performance pour infrastructures critiques et projets de haut standing." %}</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Plateforme</h4>
-
+                    <h4>{% trans "Plateforme" %}</h4>
                     <ul>
-
-                        <li><a href="/partners/">Partenariat</a></li>
-                        <li><a href="/projects/">Réalisations</a></li>
+                        <li><a href="/partners/">{% trans "Partenariat" %}</a></li>
+                        <li><a href="/projects/">{% trans "Réalisations" %}</a></li>
                     </ul>
-
                 </div>
                 <div class="footer-links">
-                    <h4>Nos Produits</h4>
+                    <h4>{% trans "Nos Produits" %}</h4>
                     <ul>
                         {% for cat in all_categories|slice:":5" %}
                         <li><a href="/shop/?category={{ cat.handle }}">{{ cat.name }}</a></li>
                         {% endfor %}
-                        <li><a href="/shop/" style="font-weight: 700; color: var(--primary);">Voir tout le catalogue</a></li>
+                        <li><a href="/shop/" style="font-weight: 700; color: var(--primary);">{% trans "Voir tout le catalogue" %}</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
+                    <h4>{% trans "Contact" %}</h4>
                     <p><i class="fas fa-envelope"></i> contact@garoui-electricity.com</p>
                     <p><i class="fas fa-phone"></i> +213 540 83 63 21</p>
                     <p><i class="fas fa-map-marker-alt"></i> Alger, Algérie</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Garoui Electricity. Tous droits réservés.</p>
+                <p>&copy; 2026 Garoui Electricity. {% trans "Tous droits réservés." %}</p>
             </div>
         </div>
     </footer>
@@ -176,15 +226,16 @@
     <script src="{% static 'js/main.js' %}"></script>
 
     {% block extra_js %}{% endblock %}
+
     <!-- Cookie Banner -->
     <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); z-index: 1000; display: none; max-width: 600px; width: 90%; align-items: center; justify-content: space-between; border: 1px solid #e2e8f0; font-family: 'Inter', sans-serif;">
         <div style="display: flex; align-items: center; gap: 1rem;">
             <i class="fas fa-cookie-bite" style="font-size: 2rem; color: var(--primary);"></i>
-            <p style="margin: 0; font-size: 0.95rem; color: var(--dark); line-height: 1.4;">Nous utilisons des cookies pour améliorer votre expérience sur notre site. <a href="#" style="color: var(--primary); font-weight: 600; text-decoration: none;">En savoir plus</a></p>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--dark); line-height: 1.4;">{% trans "Nous utilisons des cookies pour améliorer votre expérience sur notre site." %} <a href="#" style="color: var(--primary); font-weight: 600; text-decoration: none;">{% trans "En savoir plus" %}</a></p>
         </div>
         <div style="display: flex; gap: 0.5rem; margin-left: 1rem;">
-            <button onclick="acceptCookies()" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-radius: 6px; border: none; cursor: pointer; background: var(--primary); color: white; font-weight: 600;">Accepter</button>
-            <button onclick="declineCookies()" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-radius: 6px; background: #f1f5f9; color: var(--dark); border: 1px solid #e2e8f0; cursor: pointer; font-weight: 600;">Refuser</button>
+            <button onclick="acceptCookies()" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-radius: 6px; border: none; cursor: pointer; background: var(--primary); color: white; font-weight: 600;">{% trans "Accepter" %}</button>
+            <button onclick="declineCookies()" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; border-radius: 6px; background: #f1f5f9; color: var(--dark); border: 1px solid #e2e8f0; cursor: pointer; font-weight: 600;">{% trans "Refuser" %}</button>
         </div>
     </div>
 
@@ -192,23 +243,54 @@
     <a href="https://wa.me/213540836321" target="_blank" class="whatsapp-float" style="position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 100; text-decoration: none; transition: transform 0.3s ease;">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <style>
-        .whatsapp-float:hover { transform: scale(1.1); }
-    </style>
+    <style>.whatsapp-float:hover { transform: scale(1.1); }</style>
 
     <script>
-        // Cookies Logic
+        // ── Menu Mobile ──
+        function toggleMenu() {
+            var nav = document.getElementById('navLinks');
+            var btn = document.getElementById('mobileMenuBtn');
+            nav.classList.toggle('active');
+            btn.querySelector('i').className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        }
+        function closeMenu() {
+            var nav = document.getElementById('navLinks');
+            var btn = document.getElementById('mobileMenuBtn');
+            nav.classList.remove('active');
+            btn.querySelector('i').className = 'fas fa-bars';
+        }
+
+        // ── Produits Accordion (mobile only) ──
+        function toggleMobileProducts(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var list = document.getElementById('mobileProductsList');
+            var btn = e.currentTarget;
+            var chevron = btn.querySelector('.mobile-chevron');
+            var isOpen = list.classList.contains('open');
+            list.classList.toggle('open');
+            btn.setAttribute('aria-expanded', !isOpen);
+            chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        // ── Language Switcher ──
+        document.addEventListener('click', function(e) {
+            var sw = document.querySelector('.lang-switcher');
+            if (sw && !sw.contains(e.target)) {
+                sw.classList.remove('open');
+            }
+        });
+
+        // ── Cookies ──
         document.addEventListener("DOMContentLoaded", function() {
             if (!localStorage.getItem("cookies_accepted") && !localStorage.getItem("cookies_declined")) {
                 document.getElementById("cookie-banner").style.display = "flex";
             }
         });
-
         function acceptCookies() {
             localStorage.setItem("cookies_accepted", "true");
             document.getElementById("cookie-banner").style.display = "none";
         }
-
         function declineCookies() {
             localStorage.setItem("cookies_declined", "true");
             document.getElementById("cookie-banner").style.display = "none";

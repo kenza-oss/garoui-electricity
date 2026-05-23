@@ -912,9 +912,27 @@ h1, h2, h3, h4, h5, h6 {
     h3 { font-size: 1.4rem !important; }
     p { font-size: 1rem !important; }
 
+    /* ── TOP BAR RESPONSIVE ── */
+    .top-bar-site .container {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    .top-bar-links {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.8rem !important;
+    }
+    .top-bar-links a {
+        font-size: 0.85rem !important;
+        text-align: center !important;
+    }
+    .top-bar-lang {
+        margin-top: 0.5rem !important;
+    }
+
     /* ── NAVBAR ── */
     .navbar { 
-        position: fixed !important; 
+        position: sticky !important; 
         top: 0 !important; 
         width: 100% !important; 
         height: 70px !important;

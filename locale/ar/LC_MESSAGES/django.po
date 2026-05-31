@@ -463,3 +463,32 @@ msgstr "المنزل الذكي"
 
 msgid "Contrôlez vos équipements à distance avec nos solutions Smart Home."
 msgstr "تحكم في أجهزتك عن بُعد بفضل حلول المنزل الذكي."
+
+# --- STRATEGIC PARTNERSHIP ---
+msgid "Partenariat Stratégique"
+msgstr "شراكة استراتيجية"
+
+msgid "Partenaire Technique Agréé de Sonelgaz"
+msgstr "شريك تقني معتمد لدى سونلغاز"
+
+msgid "En tant que partenaire technique et prestataire agréé de la Société Nationale de l'Électricité et du Gaz (Sonelgaz), Garoui Electricity intervient avec rigueur et haute compétence sur le réseau électrique national. Nos équipes qualifiées exécutent au quotidien des missions stratégiques — raccordements d'abonnés, modernisations d'équipements et installations de sécurité — pour garantir un service fiable, performant et conforme aux exigences réglementaires sur l'ensemble du territoire algérien."
+msgstr "بصفتها شريكاً تقنياً ومقدّم خدمات معتمداً لدى الشركة الوطنية للكهرباء والغاز (سونلغاز)، تتدخل شركة غاروي إلكتريسيتي (Garoui Electricity) بدقة وكفاءة عالية على الشبكة الكهربائية الوطنية. تقوم فرقنا المؤهلة يومياً بمهام استراتيجية — تشمل توصيل المشتركين، تحديث المعدات، وتركيب أنظمة السلامة — لضمان خدمة موثوقة وعالية الأداء ومطابقة للمتطلبات التنظيمية عبر كامل التراب الجزائري."
+
+msgid "Découvrir nos Réalisations"
+msgstr "اكتشف إنجازاتنا"
+
+msgid "Prestataire Agréé Principal"
+msgstr "مقدّم خدمات معتمد رئيسي"
+
+msgid "Notre Rôle Clé auprès de Sonelgaz"
+msgstr "دورنا الرئيسي لدى سونلغاز"
+
+msgid "À travers toute l'Algérie, Garoui Electricity intervient en tant que partenaire de confiance pour réaliser des branchements, installer des équipements de sécurité et optimiser la qualité du réseau de distribution électrique national sous la supervision directe de Sonelgaz."
+msgstr "في جميع أنحاء الجزائر، تتدخل شركة غاروي إلكتريسيتي كشريك موثوق لتنفيذ التوصيلات، وتركيب معدات السلامة، وتحسين جودة شبكة توزيع الكهرباء الوطنية تحت الإشراف المباشر لشركة سونلغاز."
+
+msgid "Voir nos interventions"
+msgstr "عرض تدخلاتنا"
+
+msgid "Habilitation Officielle"
+msgstr "تأهيل رسمي"
+

@@ -149,6 +149,37 @@
 
 <section class="partners-section">
     <div class="container">
+        <!-- Bannière de Prestige : Sonelgaz -->
+        <div class="strategic-partner-prestige-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 30px; padding: 4rem; margin-bottom: 5rem; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: rgba(45, 244, 5, 0.03); border-radius: 50%; filter: blur(80px); pointer-events: none;"></div>
+            <div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: rgba(0, 102, 178, 0.05); border-radius: 50%; filter: blur(80px); pointer-events: none;"></div>
+            
+            <div class="prestige-flex" style="display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;">
+                <div class="prestige-logo-side" style="flex-shrink: 0; display: flex; align-items: center; gap: 2rem;">
+                    <div style="width: 110px; height: 110px; border-radius: 24px; background: white; padding: 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                        <img src="{% static 'img/logo.png' %}" alt="Garoui Electricity" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="font-size: 2rem; color: rgba(255, 255, 255, 0.2); font-weight: 300;"><i class="fas fa-plus"></i></div>
+                    <div style="width: 110px; height: 110px; border-radius: 24px; background: white; padding: 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                        <img src="{% static 'img/sonelgaz_logo.png' %}" alt="Sonelgaz" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="prestige-text-side" style="flex: 1; min-width: 300px;">
+                    <span style="background: rgba(45, 244, 5, 0.1); color: var(--primary); border: 1px solid rgba(45, 244, 5, 0.2); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 0.4rem 1.2rem; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-certificate"></i> {% trans "Prestataire Agréé Principal" %}
+                    </span>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; color: white; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem;">{% trans "Notre Rôle Clé auprès de Sonelgaz" %}</h2>
+                    <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.7; font-weight: 300; margin-bottom: 2rem;">
+                        {% blocktrans %}À travers toute l'Algérie, Garoui Electricity intervient en tant que partenaire de confiance pour réaliser des branchements, installer des équipements de sécurité et optimiser la qualité du réseau de distribution électrique national sous la supervision directe de Sonelgaz.{% endblocktrans %}
+                    </p>
+                    <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                        <a href="{% url 'projects:project_list' %}" class="btn-primary" style="padding: 1rem 2.5rem; font-size: 0.95rem; border-radius: 8px;">{% trans "Voir nos interventions" %}</a>
+                        <span style="color: #64748b; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 5px;"></i> {% trans "Habilitation Officielle" %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% if partners %}
             <div class="partners-grid">
                 {% for partner in partners %}

@@ -50,8 +50,41 @@
     </div>
 </section>
 
-<!-- Script to transition background after 10s -->
-
+<!-- Section Partenariat Stratégique Sonelgaz -->
+<section class="strategic-partnership-section" id="partenariat-sonelgaz">
+    <div class="container">
+        <div class="partnership-grid">
+            <!-- Colonne Gauche : Visualisation des Logos connectés -->
+            <div class="partnership-visual">
+                <div class="logo-wrapper garoui-wrapper">
+                    <img src="{% static 'img/logo.png' %}" alt="Garoui Electricity Logo">
+                </div>
+                <div class="connection-line">
+                    <div class="pulse-node"></div>
+                </div>
+                <div class="logo-wrapper sonelgaz-wrapper">
+                    <img src="{% static 'img/sonelgaz_logo.png' %}" alt="Sonelgaz Logo">
+                </div>
+            </div>
+            
+            <!-- Colonne Droite : Textes et Appels à l'action -->
+            <div class="partnership-content">
+                <span class="partnership-badge">
+                    <i class="fas fa-handshake"></i> {% trans "Partenariat Stratégique" %}
+                </span>
+                <h2>{% trans "Partenaire Technique Agréé de Sonelgaz" %}</h2>
+                <p>
+                    {% blocktrans %}En tant que partenaire technique et prestataire agréé de la Société Nationale de l'Électricité et du Gaz (Sonelgaz), Garoui Electricity intervient avec rigueur et haute compétence sur le réseau électrique national. Nos équipes qualifiées exécutent au quotidien des missions stratégiques — raccordements d'abonnés, modernisations d'équipements et installations de sécurité — pour garantir un service fiable, performant et conforme aux exigences réglementaires sur l'ensemble du territoire algérien.{% endblocktrans %}
+                </p>
+                <div class="partnership-actions">
+                    <a href="{% url 'projects:project_list' %}" class="btn-partnership-cta">
+                        {% trans "Découvrir nos Réalisations" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Partenaires (Cartes de Visite) -->
 {% if partners %}

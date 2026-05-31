@@ -8,11 +8,8 @@
 <section class="hero-slider">
     <div class="hero-slide active" style="position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;">
         <div class="hero-bg" style="position: absolute; inset: 0; z-index: 0; background: #0F172A;">
-            <!-- Hero Image -->
-            <img src="{% static 'images/hero-bg-2.png' %}" id="hero-image" alt="Electra Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; z-index: 1;">
-            
             <!-- Hero Video -->
-            <video id="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; z-index: 0; opacity: 0;">
+            <video id="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
                 <source src="{% static 'videos/bg-video.mp4' %}" type="video/mp4">
             </video>
 
@@ -53,18 +50,7 @@
 </section>
 
 <!-- Script to transition background after 10s -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            var heroImage = document.getElementById('hero-image');
-            var heroVideo = document.getElementById('hero-video');
-            if (heroImage && heroVideo) {
-                heroImage.style.opacity = '0';
-                heroVideo.style.opacity = '1';
-            }
-        }, 10000); // 10 secondes
-    });
-</script>
+
 
 <!-- Partenaires (Cartes de Visite) -->
 {% if partners %}

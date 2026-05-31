@@ -7,9 +7,18 @@
 <!-- Hero Section -->
 <section class="hero-slider">
     <div class="hero-slide active" style="position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;">
+        <style>
+            @keyframes slowZoom {
+                0% { transform: scale(1); }
+                100% { transform: scale(1.1); }
+            }
+            .moving-bg {
+                animation: slowZoom 20s infinite alternate ease-in-out;
+            }
+        </style>
         <div class="hero-bg" style="position: absolute; inset: 0; z-index: 0; background: #0F172A;">
             <!-- Hero Image -->
-            <img src="{% static 'images/hero-bg.jpg' %}" id="hero-image" alt="Electra Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; z-index: 1;">
+            <img src="{% static 'images/hero-bg-2.png' %}" id="hero-image" class="moving-bg" alt="Electra Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; z-index: 1;">
             
             <!-- Hero Video -->
             <video id="hero-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; z-index: 0; opacity: 0;">

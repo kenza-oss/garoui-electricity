@@ -39,24 +39,22 @@
     <style>
         /* ── Arabic RTL Overrides ── */
         body { font-family: 'Noto Kufi Arabic', 'Outfit', sans-serif; direction: rtl; text-align: right; }
-        .navbar .container { flex-direction: row-reverse; }
         .logo { flex-direction: row-reverse; }
         .logo-text { margin-right: 0.75rem; margin-left: 0; }
-        .nav-links { left: 0 !important; right: auto !important; transform: translateX(-100%) !important; }
-        .nav-links.active { transform: translateX(0) !important; }
-        .top-bar-site .container { flex-direction: row-reverse; }
-        .top-bar-links { flex-direction: row-reverse; }
+        
         .footer-grid { direction: rtl; }
-        .footer-contact p { flex-direction: row-reverse; }
+        .footer-contact p { flex-direction: row-reverse; justify-content: flex-start; }
         .footer-contact p i { margin-right: 0; margin-left: 0.75rem; }
         .hero-content { text-align: right; }
-        .hero-btns { flex-direction: row-reverse; }
-        .nav-actions { flex-direction: row-reverse; }
-        .mobile-menu-btn { margin-right: auto; margin-left: 0; }
-        /* Mobile accordion RTL */
-        .mobile-products-header { flex-direction: row-reverse; }
-        .mobile-products-list a { flex-direction: row-reverse; }
         .mobile-products-list a i { margin-right: 0; margin-left: 0.5rem; }
+        
+        @media (max-width: 992px) {
+            .nav-links { left: 0 !important; right: auto !important; transform: translateX(-100%) !important; }
+            .nav-links.active { transform: translateX(0) !important; }
+            .mobile-menu-btn { margin-right: auto; margin-left: 0; }
+            .nav-actions { flex-direction: row-reverse; }
+        }
+        
         /* Cards */
         .card-body, .service-card, .sector-card { text-align: right; }
         /* Form labels */
@@ -84,9 +82,16 @@
             </div>
             <div class="top-bar-lang">
                 <!-- Language Switcher -->
-                <form action="{% url 'set_language' %}" method="post" id="lang-form">
+                <form action="{% url 'set_language' %}" method="post" id="lang-form" onsubmit="
+                    var next_url = '{{ request.get_full_path|escapejs }}';
+                    if (next_url === '/ar/') {
+                        this.elements['next'].value = '/';
+                    } else if (next_url.startsWith('/ar/')) {
+                        this.elements['next'].value = next_url.replace('/ar/', '/');
+                    }
+                ">
                     {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
                     <div class="lang-switcher" onclick="this.classList.toggle('open')">
                         <div class="lang-current">
                             {% if LANGUAGE_CODE == 'ar' %}

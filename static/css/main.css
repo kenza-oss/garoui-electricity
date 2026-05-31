@@ -708,9 +708,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
-    gap: 4rem;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: 3rem;
     margin-bottom: 4rem;
+    align-items: start;
+}
+
+.footer-map iframe {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 220px;
+    border: none;
 }
 
 .footer-info p {
@@ -993,6 +1002,7 @@ h1, h2, h3, h4, h5, h6 {
     /* ── FOOTER ── */
     .footer-grid { grid-template-columns: 1fr !important; text-align: center !important; gap: 3rem !important; }
     .footer-contact p { justify-content: center !important; }
+    .footer-map iframe { height: 160px !important; }
 
     /* Project Grid Mobile Isolation */
     .grid-projets {

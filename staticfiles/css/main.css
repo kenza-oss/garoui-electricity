@@ -1114,11 +1114,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Strategic Partnership (Sonelgaz) ─── */
 .strategic-partnership-section {
-    background: #0f172a;
+    background: #ffffff;
     padding: 7rem 0;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .strategic-partnership-section::before {
@@ -1223,7 +1223,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Content Column */
 .partnership-content {
-    color: #ffffff;
+    color: #0f172a;
 }
 
 .partnership-badge {
@@ -1249,14 +1249,15 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.15;
     margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
+    color: #0f172a;
 }
 
 .partnership-content p {
-    color: #94a3b8;
+    color: #000000;
     font-size: 1.1rem;
     line-height: 1.75;
     margin-bottom: 2.5rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .btn-partnership-cta {

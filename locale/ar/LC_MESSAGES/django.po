@@ -492,3 +492,57 @@ msgstr "عرض تدخلاتنا"
 msgid "Habilitation Officielle"
 msgstr "تأهيل رسمي"
 
+# --- MEGA MENU ---
+msgid "Catégories"
+msgstr "الفئات"
+
+msgid "Luminaires LED, éclairage public et industriel."
+msgstr "إنارة LED، الإنارة العمومية والصناعية."
+
+msgid "Tableaux électriques, armoires TGBT et automatismes."
+msgstr "لوحات كهربائية، خزائن TGBT وأنظمة التحكم الآلي."
+
+msgid "Disjoncteurs, fusibles et relais de protection."
+msgstr "قواطع كهربائية، صمامات ومرحلات الحماية."
+
+msgid "Matériel électrique professionnel certifié."
+msgstr "معدات كهربائية مهنية معتمدة."
+
+msgid "Solutions"
+msgstr "الحلول"
+
+msgid "Infrastructures Tertiaires"
+msgstr "البنية التحتية الخدمية"
+
+msgid "Solutions complètes pour bureaux, hôpitaux et commerces."
+msgstr "حلول متكاملة للمكاتب، المستشفيات والمحلات التجارية."
+
+msgid "Équipements Industriels"
+msgstr "المعدات الصناعية"
+
+msgid "Conception d'armoires et distribution force motrice."
+msgstr "تصميم الخزائن وتوزيع القوى المحركة."
+
+msgid "Matériel Phare"
+msgstr "المعدات الرئيسية"
+
+msgid "Projecteurs LED Haute Puissance"
+msgstr "كشافات LED عالية القوة"
+
+msgid "Armoires de Distribution TGBT"
+msgstr "خزائن التوزيع الكهربائي TGBT"
+
+msgid "Disjoncteurs Boîtier Moulé"
+msgstr "قواطع كهربائية مصبوبة القالب"
+
+msgid "Agrément Sonelgaz"
+msgstr "اعتماد سونلغاز"
+
+msgid "Besoin d'une Étude ?"
+msgstr "هل تحتاج إلى دراسة؟"
+
+msgid "Nos ingénieurs certifiés conçoivent vos projets électriques sur-mesure."
+msgstr "مهندسونا المعتمدون يصممون مشاريعكم الكهربائية حسب المقاس."
+
+msgid "Estimer mon Projet"
+msgstr "تقدير مشروعي"

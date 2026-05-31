@@ -148,25 +148,111 @@
                         <i class="fas fa-chevron-down mobile-chevron"></i>
                     </button>
                     <!-- Desktop mega menu -->
-                    <div class="mega-menu">
+                    <div class="mega-menu" style="box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-bottom: 3px solid var(--primary); background: #ffffff;">
                         <div class="container">
                             <div class="mega-grid">
-                                {% for cat in all_categories %}
-                                    {% if forloop.counter0|divisibleby:5 %}
-                                        <div class="mega-col">
-                                            <ul style="list-style: none; padding: 0;">
-                                    {% endif %}
-                                            <li style="margin-bottom: 0.75rem;">
-                                                <a href="/shop/?category={{ cat.handle }}" style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray); text-decoration: none; transition: all 0.3s; font-size: 0.9rem; font-weight: 500;">
-                                                    <i class="{{ cat.icon }}" style="width: 20px; color: var(--primary); opacity: 0.8;"></i>
-                                                    {{ cat.name }}
+                                <!-- Colonne 1 : Catégories Dynamiques -->
+                                <div class="mega-col">
+                                    <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--dark); font-weight: 700; margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 1px;">
+                                        <i class="fas fa-list-ul" style="color: var(--primary); margin-right: 5px;"></i> {% trans "Catégories" %}
+                                    </h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        {% for cat in all_categories %}
+                                            <li style="margin-bottom: 1rem;">
+                                                <a href="/shop/?category={{ cat.handle }}" style="display: flex; flex-direction: column; text-decoration: none;" class="mega-menu-link">
+                                                    <span style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); font-weight: 600; font-size: 0.9rem; transition: color 0.2s;">
+                                                        <i class="{{ cat.icon }}" style="color: var(--primary); font-size: 0.95rem; width: 18px; text-align: center;"></i>
+                                                        {{ cat.name }}
+                                                    </span>
+                                                    <span style="color: #64748b; font-size: 0.75rem; margin-left: 28px; margin-top: 0.15rem; font-weight: 400; line-height: 1.3;">
+                                                        {% if cat.handle == 'eclairage' %}
+                                                            {% trans "Luminaires LED, éclairage public et industriel." %}
+                                                        {% elif cat.handle == 'industriel' %}
+                                                            {% trans "Tableaux électriques, armoires TGBT et automatismes." %}
+                                                        {% elif cat.handle == 'protection-electrique' %}
+                                                            {% trans "Disjoncteurs, fusibles et relais de protection." %}
+                                                        {% else %}
+                                                            {% trans "Matériel électrique professionnel certifié." %}
+                                                        {% endif %}
+                                                    </span>
                                                 </a>
                                             </li>
-                                    {% if forloop.counter|divisibleby:5 or forloop.last %}
-                                            </ul>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                                <!-- Colonne 2 : Solutions & Ingénierie -->
+                                <div class="mega-col">
+                                    <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--dark); font-weight: 700; margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 1px;">
+                                        <i class="fas fa-cogs" style="color: var(--primary); margin-right: 5px;"></i> {% trans "Solutions" %}
+                                    </h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="margin-bottom: 1rem;">
+                                            <a href="/shop/" style="display: flex; flex-direction: column; text-decoration: none;">
+                                                <span style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); font-weight: 600; font-size: 0.9rem;">
+                                                    <i class="fas fa-city" style="color: var(--primary); font-size: 0.95rem; width: 18px; text-align: center;"></i>
+                                                    {% trans "Infrastructures Tertiaires" %}
+                                                </span>
+                                                <span style="color: #64748b; font-size: 0.75rem; margin-left: 28px; margin-top: 0.15rem; font-weight: 400;">
+                                                    {% trans "Solutions complètes pour bureaux, hôpitaux et commerces." %}
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li style="margin-bottom: 1rem;">
+                                            <a href="/shop/" style="display: flex; flex-direction: column; text-decoration: none;">
+                                                <span style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); font-weight: 600; font-size: 0.9rem;">
+                                                    <i class="fas fa-industry" style="color: var(--primary); font-size: 0.95rem; width: 18px; text-align: center;"></i>
+                                                    {% trans "Équipements Industriels" %}
+                                                </span>
+                                                <span style="color: #64748b; font-size: 0.75rem; margin-left: 28px; margin-top: 0.15rem; font-weight: 400;">
+                                                    {% trans "Conception d'armoires et distribution force motrice." %}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Colonne 3 : Produits Phares -->
+                                <div class="mega-col">
+                                    <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--dark); font-weight: 700; margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 1px;">
+                                        <i class="fas fa-star" style="color: var(--primary); margin-right: 5px;"></i> {% trans "Matériel Phare" %}
+                                    </h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="margin-bottom: 0.75rem;">
+                                            <a href="/shop/" style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 6px; border: 1px solid #f1f5f9;">
+                                                <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span>
+                                                {% trans "Projecteurs LED Haute Puissance" %}
+                                            </a>
+                                        </li>
+                                        <li style="margin-bottom: 0.75rem;">
+                                            <a href="/shop/" style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 6px; border: 1px solid #f1f5f9;">
+                                                <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span>
+                                                {% trans "Armoires de Distribution TGBT" %}
+                                            </a>
+                                        </li>
+                                        <li style="margin-bottom: 0.75rem;">
+                                            <a href="/shop/" style="display: flex; align-items: center; gap: 0.75rem; color: var(--dark); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 6px; border: 1px solid #f1f5f9;">
+                                                <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></span>
+                                                {% trans "Disjoncteurs Boîtier Moulé" %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Colonne 4 : Encart Promotionnel Prestige -->
+                                <div class="mega-col" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: -50px; right: -50px; width: 120px; height: 120px; background: rgba(45, 244, 5, 0.05); border-radius: 50%; filter: blur(30px); pointer-events: none;"></div>
+                                    <div>
+                                        <span style="background: rgba(45, 244, 5, 0.15); color: var(--primary); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 0.8rem; border-radius: 999px; display: inline-block; margin-bottom: 0.75rem;">
+                                            <i class="fas fa-shield-alt"></i> {% trans "Agrément Sonelgaz" %}
+                                        </span>
+                                        <h5 style="font-family: 'Outfit', sans-serif; color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;">{% trans "Besoin d'une Étude ?" %}</h5>
+                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.4; margin-bottom: 1.25rem;">{% trans "Nos ingénieurs certifiés conçoivent vos projets électriques sur-mesure." %}</p>
+                                    </div>
+                                    <a href="{% url 'devis:demande' %}" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem; font-weight: 700; border-radius: 6px; text-align: center; text-decoration: none; display: block; width: 100%;">
+                                        {% trans "Estimer mon Projet" %} <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

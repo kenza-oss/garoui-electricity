@@ -1,0 +1,669 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$hBRrds2juUj2IaGQe8LCRf$Q1Xy8jAkDchKc5RiEYmLPRmTfm/ub4UQdzH0k1rOQGA=",
+        "last_login": "2026-05-09T11:56:07.552Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-06T14:38:42.257Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2o3ge0tgo863ssllfb1mlj30fcey13vd",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAQRf-la9MwLQXHpXu-gcyjI6iBhMLK-O9KwkK395xzX66nbR36reSlH9VdHLjT78YkjzztQO803WYv87QuI_td8Qctvps1P6-H-3cwUBm-dcYQrUE4G1htyFxBRKkthtaAKlFVzMkCpBZToMgVC1MDKCyKydz7A-zSOJU:1wKdQ1:Cu0qTEwT3aQ77CfiN9PSz_Pk_N1sUBI8YCu2OyF8Oqg",
+        "expire_date": "2026-05-20T14:40:09.407Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ru2hni56l5lxl4hauz91mp6ms4r9dwhx",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAQRf-la9MwLQXHpXu-gcyjI6iBhMLK-O9KwkK395xzX66nbR36reSlH9VdHLjT78YkjzztQO803WYv87QuI_td8Qctvps1P6-H-3cwUBm-dcYQrUE4G1htyFxBRKkthtaAKlFVzMkCpBZToMgVC1MDKCyKydz7A-zSOJU:1wKdU2:WdDsTv3k5JA2yGTInbELyHveIeAqdhP7S1K5Dn6zDVE",
+        "expire_date": "2026-05-20T14:44:18.401Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "t4ah6v6k9guudnzg6afmm8uzsc7yxbf8",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAQRf-la9MwLQXHpXu-gcyjI6iBhMLK-O9KwkK395xzX66nbR36reSlH9VdHLjT78YkjzztQO803WYv87QuI_td8Qctvps1P6-H-3cwUBm-dcYQrUE4G1htyFxBRKkthtaAKlFVzMkCpBZToMgVC1MDKCyKydz7A-zSOJU:1wLgHv:zkufwS6nlUJR9x6DxhyOqC7CU617Qtk1GMVOyVfpok8",
+        "expire_date": "2026-05-23T11:56:07.564Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+        "name": "Appareillage électrique mural",
+        "handle": "appareillage-electrique-mural",
+        "icon": "fas fa-plug"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+        "name": "Plaques de finition & design",
+        "handle": "plaques-de-finition-and-design",
+        "icon": "fas fa-border-all"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+        "name": "Mécanismes & supports",
+        "handle": "mecanismes-and-supports",
+        "icon": "fas fa-tools"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+        "name": "Prises techniques & multimédia",
+        "handle": "prises-techniques-and-multimedia",
+        "icon": "fas fa-broadcast-tower"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+        "name": "Fiches, prises mobiles & adaptateurs",
+        "handle": "fiches-prises-mobiles-and-adaptateurs",
+        "icon": "fas fa-plug-circle-bolt"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+        "name": "Multiprises & solutions d’alimentation",
+        "handle": "multiprises-and-solutions-d’alimentation",
+        "icon": "fas fa-charging-station"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+        "name": "Tableaux électriques & coffrets",
+        "handle": "tableaux-electriques-and-coffrets",
+        "icon": "fas fa-box"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 11,
+    "fields": {
+        "name": "Protection électrique",
+        "handle": "protection-electrique",
+        "icon": "fas fa-shield-alt"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 12,
+    "fields": {
+        "name": "Boîtes d’installation & dérivation",
+        "handle": "boîtes-d’installation-and-derivation",
+        "icon": "fas fa-archive"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 13,
+    "fields": {
+        "name": "Gestion & protection des câbles",
+        "handle": "gestion-and-protection-des-câbles",
+        "icon": "fas fa-project-diagram"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 14,
+    "fields": {
+        "name": "Éclairage & contrôle",
+        "handle": "eclairage-and-contrôle",
+        "icon": "fas fa-lightbulb"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 15,
+    "fields": {
+        "name": "Domotique & Smart Home",
+        "handle": "domotique-and-smart-home",
+        "icon": "fas fa-home"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 16,
+    "fields": {
+        "name": "Appareillage étanche & extérieur",
+        "handle": "appareillage-etanche-and-exterieur",
+        "icon": "fas fa-umbrella"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 17,
+    "fields": {
+        "name": "Équipements électriques industriels",
+        "handle": "equipements-electriques-industriels",
+        "icon": "fas fa-industry"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 18,
+    "fields": {
+        "name": "Accessoires d’installation",
+        "handle": "accessoires-d’installation",
+        "icon": "fas fa-cogs"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 19,
+    "fields": {
+        "name": "Connexion & bornier",
+        "handle": "connexion-and-bornier",
+        "icon": "fas fa-link"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 20,
+    "fields": {
+        "name": "Mise à la terre & protection",
+        "handle": "mise-a-la-terre-and-protection",
+        "icon": "fas fa-bolt"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 21,
+    "fields": {
+        "name": "Éclairage",
+        "handle": "eclairage",
+        "icon": ""
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 22,
+    "fields": {
+        "name": "Industriel",
+        "handle": "industriel",
+        "icon": ""
+    }
+},
+{
+    "model": "shop.collection",
+    "pk": 1,
+    "fields": {
+        "name": "ELMARK Professional",
+        "handle": "elmark-professional"
+    }
+},
+{
+    "model": "shop.collection",
+    "pk": 2,
+    "fields": {
+        "name": "Garoui Electricity Professional",
+        "handle": "garoui-professional"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+        "title": "LED PANEL 600x600 40W 4000K",
+        "subtitle": "Dalle LED haute performance",
+        "description": "Panneau LED professionnel pour bureaux et hôpitaux. Flux lumineux élevé et faible consommation.",
+        "handle": "led-panel-600x600-40w-4000k",
+        "sku": "ELM-LP-40W-600",
+        "barcode": null,
+        "collection": 1,
+        "tags": "",
+        "product_type": "",
+        "weight": 1200.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "4500.00",
+        "categories": [],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+        "title": "CIRCUIT BREAKER 1P 16A C-CURVE",
+        "subtitle": "Disjoncteur divisionnaire",
+        "description": "Disjoncteur magnéto-thermique pour la protection des circuits résidentiels et tertiaires.",
+        "handle": "circuit-breaker-1p-16a-c-curve",
+        "sku": "ELM-CB-1P-16A",
+        "barcode": null,
+        "collection": 1,
+        "tags": "",
+        "product_type": "",
+        "weight": 110.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "850.00",
+        "categories": [],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+        "title": "INDUSTRIAL BELL 250mm 230V",
+        "subtitle": "Alarme sonore industrielle",
+        "description": "Sonnette industrielle de haute puissance pour zones logistiques et usines.",
+        "handle": "industrial-bell-250mm-230v",
+        "sku": "ELM-IB-250",
+        "barcode": null,
+        "collection": 1,
+        "tags": "",
+        "product_type": "",
+        "weight": 2500.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "12500.00",
+        "categories": [],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+        "title": "Dalle LED 600x600 40W 4000K",
+        "subtitle": "Éclairage professionnel haute performance",
+        "description": "Panneau LED professionnel pour bureaux et hôpitaux. Flux lumineux élevé et faible consommation.",
+        "handle": "dalle-led-600x600-40w-4000k",
+        "sku": "GAR-LP-40W-600",
+        "barcode": null,
+        "collection": 2,
+        "tags": "",
+        "product_type": "",
+        "weight": 1200.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "4500.00",
+        "categories": [
+            21
+        ],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+        "title": "Disjoncteur 1P 16A Courbe C",
+        "subtitle": "Protection modulaire certifiée",
+        "description": "Disjoncteur magnéto-thermique pour la protection des circuits résidentiels et tertiaires.",
+        "handle": "disjoncteur-1p-16a-courbe-c",
+        "sku": "GAR-CB-1P-16A",
+        "barcode": null,
+        "collection": 2,
+        "tags": "",
+        "product_type": "",
+        "weight": 110.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "850.00",
+        "categories": [
+            11
+        ],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 7,
+    "fields": {
+        "title": "Sonnette Industrielle 250mm 230V",
+        "subtitle": "Alarme sonore forte puissance",
+        "description": "Sonnette industrielle de haute puissance pour zones logistiques et usines.",
+        "handle": "sonnette-industrielle-250mm-230v",
+        "sku": "GAR-IB-250",
+        "barcode": null,
+        "collection": 2,
+        "tags": "",
+        "product_type": "",
+        "weight": 2500.0,
+        "length": 0.0,
+        "height": 0.0,
+        "width": 0.0,
+        "ip_rating": "",
+        "material": "",
+        "wattage": "",
+        "color_temperature": "",
+        "warranty_years": 2,
+        "technical_pdf": "",
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "thumbnail": "",
+        "price": "12500.00",
+        "categories": [
+            22
+        ],
+        "certificates": []
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 2,
+    "fields": {
+        "product": 5,
+        "image": "",
+        "url": "https://images.unsplash.com/photo-1565814636199-ae8133055c1c?q=80&w=800"
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 3,
+    "fields": {
+        "product": 6,
+        "image": "",
+        "url": "https://images.unsplash.com/photo-1558444479-2753ada33040?q=80&w=800"
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 4,
+    "fields": {
+        "product": 7,
+        "image": "",
+        "url": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800"
+    }
+},
+{
+    "model": "shop.order",
+    "pk": 1,
+    "fields": {
+        "created_at": "2026-05-06T15:03:49.273Z",
+        "updated_at": "2026-05-06T15:03:49.297Z",
+        "status": "pending",
+        "total_price": "55.99",
+        "customer_name": "Client Web",
+        "customer_email": "",
+        "customer_phone": ""
+    }
+},
+{
+    "model": "shop.orderitem",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "product": null,
+        "product_title": "kenza",
+        "quantity": 1,
+        "price": "55.99"
+    }
+},
+{
+    "model": "partners.partner",
+    "pk": 1,
+    "fields": {
+        "company_name": "sonelgaz",
+        "description": "le principal groupe énergétique en Algérie, spécialisé dans la production, le transport et la distribution de l’électricité et du gaz. L’entreprise joue un rôle stratégique dans le développement énergétique national et propose également des solutions industrielles, techniques et d’investissement dans le secteur de l’énergie.",
+        "logo": "partners/logos/Capture_décran_2026-05-09_150114.png",
+        "website": "https://www.sonelgaz.dz/fr",
+        "email": "inchighalet.invest@sonelgaz.dz",
+        "phone": "Fax: +213 21 72 26 9",
+        "address": "Adresse: 02 Boulevard Krim Belkacem, Alger - Algérie",
+        "is_verified": true,
+        "created_at": "2026-05-09T13:05:29.705Z"
+    }
+},
+{
+    "model": "projects.projectcategory",
+    "pk": 1,
+    "fields": {
+        "name": "Hospitalier",
+        "handle": "hospitalier",
+        "icon": "fas fa-bolt"
+    }
+},
+{
+    "model": "projects.projectcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Industriel",
+        "handle": "industriel",
+        "icon": "fas fa-bolt"
+    }
+},
+{
+    "model": "projects.projectcategory",
+    "pk": 3,
+    "fields": {
+        "name": "Résidentiel",
+        "handle": "residentiel",
+        "icon": "fas fa-bolt"
+    }
+},
+{
+    "model": "projects.project",
+    "pk": 1,
+    "fields": {
+        "title": "Hôpital Militaire d'Alger",
+        "slug": "hopital-militaire-dalger-1",
+        "client": "",
+        "description": "Installation complète du système d'alimentation de secours et des tableaux TGBT de haute sécurité.",
+        "category": 1,
+        "location": "Alger",
+        "wilaya": "",
+        "year": 2024,
+        "duree": "",
+        "statut": "termine",
+        "main_image": "",
+        "featured": false,
+        "superficie": "",
+        "puissance_installee": "",
+        "metres_cables": "",
+        "nombre_points": "",
+        "challenge": "Garantir une continuité de service 24h/24 sans aucune micro-coupure.",
+        "solution": "Mise en place d'un système redondant de groupes électrogènes couplés à des onduleurs de forte puissance.",
+        "resultat": "",
+        "temoignage_client": "",
+        "temoignage_auteur": "",
+        "created_at": "2026-05-09T12:10:54.068Z",
+        "products_used": []
+    }
+},
+{
+    "model": "projects.project",
+    "pk": 2,
+    "fields": {
+        "title": "Promotion Immobilière AADL 2000 Logements",
+        "slug": "promotion-immobiliere-aadl-2000-logements-2",
+        "client": "",
+        "description": "Déploiement du réseau électrique basse tension et installation de l'éclairage public LED pour l'ensemble du site.",
+        "category": 3,
+        "location": "Oran",
+        "wilaya": "",
+        "year": 2023,
+        "duree": "",
+        "statut": "termine",
+        "main_image": "",
+        "featured": false,
+        "superficie": "",
+        "puissance_installee": "",
+        "metres_cables": "",
+        "nombre_points": "",
+        "challenge": "Optimisation énergétique pour réduire les coûts de maintenance de la cité.",
+        "solution": "Utilisation de projecteurs LED ELMARK avec capteurs de luminosité intelligents.",
+        "resultat": "",
+        "temoignage_client": "",
+        "temoignage_auteur": "",
+        "created_at": "2026-05-09T12:10:54.068Z",
+        "products_used": []
+    }
+},
+{
+    "model": "devis.demandedevis",
+    "pk": 1,
+    "fields": {
+        "nom_entreprise": "Meriem tires",
+        "nom_contact": "Meriem tires",
+        "poste_contact": "directeur",
+        "email": "fennec.dev19@gmail.com",
+        "telephone": "+213654888665",
+        "wilaya": "alger",
+        "secteur": "hospitalier",
+        "type_travaux": "courant_faible",
+        "description_projet": "dgfh",
+        "superficie": "",
+        "budget_estimatif": "",
+        "delai_souhaite": "",
+        "plan_architectural": "",
+        "cahier_des_charges": "",
+        "statut": "nouveau",
+        "notes_internes": "",
+        "date_soumission": "2026-05-09T11:57:17.304Z",
+        "date_modification": "2026-05-09T11:57:17.304Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-05-06T14:50:57.407Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "4",
+        "object_repr": "kenza",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"product image\", \"object\": \"ProductImage object (1)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-05-06T16:49:23.883Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "4",
+        "object_repr": "kenza",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-05-09T13:05:29.707Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "partners",
+            "partner"
+        ],
+        "object_id": "1",
+        "object_repr": "sonelgaz",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-05-09T13:10:14.658Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "partners",
+            "partner"
+        ],
+        "object_id": "1",
+        "object_repr": "sonelgaz",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Logo\"]}}]"
+    }
+}
+]
